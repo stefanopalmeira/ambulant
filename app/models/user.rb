@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :buying_inventories, through: :orders, source: :inventory
   validates :name, presence: true, uniqueness: true
   validates :lat, :long, presence: true
+  has_one_attached :photo
 end
