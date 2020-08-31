@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :reviews, through: :orders
   has_one :selling_inventory, class_name: 'Inventory', foreign_key: 'user_id'
   has_many :buying_inventories, through: :orders, source: :inventory
+  validates :name, presence: true, uniqueness: true
+  validates :lat, :long, presence: true
 end
