@@ -10,10 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_31_152018) do
+ActiveRecord::Schema.define(version: 2020_08_31_170057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "inventories", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_inventories_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.boolean "completed"
+    t.bigint "user_id", null: false
+    t.bigint "inventory_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["inventory_id"], name: "index_orders_on_inventory_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "description"
+    t.integer "rating"
+    t.bigint "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_reviews_on_order_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +51,17 @@ ActiveRecord::Schema.define(version: 2020_08_31_152018) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.text "bio"
+    t.boolean "seller"
+    t.float "lat"
+    t.float "long"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "inventories", "users"
+  add_foreign_key "orders", "inventories"
+  add_foreign_key "orders", "users"
+  add_foreign_key "reviews", "orders"
 end
