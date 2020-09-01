@@ -1,0 +1,13 @@
+<h2><%= @inventory.name %></h2>
+<h3><%= @inventory.selling_user.name %><h3>
+<h4><%= @inventory.description %></h4>
+
+<% unless policy(@inventory).edit? %>
+  <%= link_to 'Quero', inventory_order_index_path(@inventory) %>
+<% end %>
+<% if policy(@inventory).edit? %>
+    <%= link_to "Editar", edit_inventory_path(@inventory) %>
+<% end %>
+<% if policy(@inventory).destroy? %>
+    <%= link_to "Deletar", inventory_path(@inventory), method: :delete, data: { confirm: 'Tem certeza?' } %>
+<% end %>
