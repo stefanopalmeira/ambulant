@@ -1,9 +1,12 @@
 <h2><%= @inventory.name %></h2>
 <h3><%= @inventory.selling_user.name %><h3>
 <h4><%= @inventory.description %></h4>
+<% @inventory.photos.each do |photo| %>
+  <%=  cl_image_tag photo.key, height: 300, width: 400, crop: :fill %> 
+<% end %>
 
 <% unless policy(@inventory).edit? %>
-  <%= link_to 'Quero', inventory_order_index_path(@inventory) %>
+  <%= link_to 'Quero', inventory_orders_path(@inventory), method: :post %>
 <% end %>
 <% if policy(@inventory).edit? %>
     <%= link_to "Editar", edit_inventory_path(@inventory) %>
