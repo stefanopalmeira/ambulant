@@ -1,6 +1,5 @@
 class InventoriesController < ApplicationController
   before_action :set_inventory, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user!, only: :show
 
  def show
   authorize @inventory

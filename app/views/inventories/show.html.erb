@@ -6,11 +6,11 @@
 <% end %>
 
 <% unless policy(@inventory).edit? %>
-  <%= link_to 'Quero', inventory_orders_path(@inventory), method: :post %>
+  <%= link_to 'Quero', inventory_orders_path(@inventory, authenticity_token: form_authenticity_token), method: :post %>
 <% end %>
 <% if policy(@inventory).edit? %>
-    <%= link_to "Editar", edit_inventory_path(@inventory) %>
+  <%= link_to "Editar", edit_inventory_path(@inventory) %>
 <% end %>
 <% if policy(@inventory).destroy? %>
-    <%= link_to "Deletar", inventory_path(@inventory), method: :delete, data: { confirm: 'Tem certeza?' } %>
+  <%= link_to "Deletar", inventory_path(@inventory), method: :delete, data: { confirm: 'Tem certeza?' } %>
 <% end %>
