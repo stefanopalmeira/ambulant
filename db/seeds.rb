@@ -39,34 +39,34 @@ sanduiche = [sand1, sand2]
 
 u1 = User.create!(email: 'jose@ambulant.com', password: '123123', name: 'Jose da Silva',
                   bio: 'Adoro servir meus clientes e trazer meus produtos com a melhor qualidade até eles.',
-                  lat: -19.922681, long:-43.941139, seller: true)
+                  lat: -19.922681, long:-43.941139, seller: true, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
 u2 = User.create!(email: 'maria@ambulant.com', password: '123123', name: 'Maria Oliveira',
                   bio: 'Estou sempre disponível pra atender os pedidos dos clientes com rapidez e bom atendimento.',
-                  lat: -19.925263, long:-43.941139, seller: true)
+                  lat: -19.925263, long:-43.941139, seller: true, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
 u3 = User.create!(email: 'antonio@ambulant.com', password: '123123', name: 'Antonio Pereira',
                   bio: 'Eu e minha esposa temos muito gosto em ir por todos os bairros e distribuir bons produtos e alegria.',
-                  lat: -19.924214, long:-43.937360, seller: true)
+                  lat: -19.924214, long:-43.937360, seller: true, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
 u4 = User.create!(email: 'joao@ambulant.com', password: '123123', name: 'João dos Santos',
                   bio: 'Sempre trabalhei com vendas, de casa em casa, e estou pronto para servir ainda mais, agora, com o Ambulant.',
-                  lat: -19.927523, long:-43.943458, seller: true)
+                  lat: -19.927523, long:-43.943458, seller: true, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
 u5 = User.create!(email: 'ana@ambulant.com', password: '123123', name: 'Ana Maria',
                   bio: 'Meus produtos são todos produzidos e vendidos com muito carinho',
-                  lat: -19.918243, long:-43.939936, seller: true)
+                  lat: -19.918243, long:-43.939936, seller: true, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
 u6 = User.create!(email: 'ricardo@ambulant.com', password: '123123', name: 'Ricardo Marinho',
                   bio: 'Adoro servir meus clientes e trazer meus produtos com a melhor qualidade até eles.',
-                  lat: -19.916710, long:-43.935814, seller: true)
+                  lat: -19.916710, long:-43.935814, seller: true, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
 u7 = User.create!(email: 'bruna@ambulant.com', password: '123123', name: 'Bruna Carvalho',
                   bio: 'Estou sempre disponível pra atender os pedidos dos clientes com rapidez e bom atendimento.',
-                  lat: -19.919695, long:-43.941053)
+                  lat: -19.919695, long:-43.941053, address: 'Rua dos Tamôios, 500 - Centro, Belo Horizonte - MG, 30120-050')
 u8 = User.create!(email: 'elena@ambulant.com', password: '123123', name: 'Elena Carneiro',
                   bio: 'Tenho muito gosto em ir por todos os bairros e distribuir bons produtos e alegria.',
-                  lat: -19.927119, long:-43.945004)
+                  lat: -19.927119, long:-43.945004, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
 u9 = User.create!(email: 'marcos@ambulant.com', password: '123123', name: 'Marcos Palmeira',
                   bio: 'Sempre trabalhei com vendas, de casa em casa, e estou pronto para servir ainda mais, agora, com o Ambulant.',
-                  lat: -19.923690, long:-43.918378)
+                  lat: -19.923690, long:-43.918378, address:'R. Niquelina, 93 - Santa Efigênia, Belo Horizonte - MG, 30260-100')
 u10 = User.create!(email: 'renata@ambulant.com', password: '123123', name: 'Renata Queiroz',
                   bio: 'Meus produtos são todos produzidos e vendidos com muito carinho',
-                  lat: -19.904443, long:-43.958945)
+                  lat: -19.904443, long:-43.958945, address: 'Rua Frei Orlando, 291 - Alto Caiçaras, Belo Horizonte - MG, 31230-120')
 
 i1 = Inventory.new(name: 'Ovos', 
                description: 'Ovos frescos de granja.')
@@ -238,3 +238,5 @@ r9.save!
 r10 = Review.new(description: "Não recomendo de forma alguma", rating:1 )
 r10.order = o10
 r10.save!
+
+puts "Users, inventories and everything else created, son!!"
