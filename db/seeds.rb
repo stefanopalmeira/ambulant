@@ -76,6 +76,8 @@ ovos.each_with_index do |ovo_url, index|
   i1.photos.attach(io: file, filename: "ovo#{index}.jpg", content_type: 'image/jpg')
 end
 i1.save!
+Product.create!(name: "Caixa de Ovos Brancos", price: 10.00, inventory: i1)
+
 i2 = Inventory.new(name: 'Produtos de limpeza', 
                description: 'Todos os tipos de produtos pra sua casa ficar limpinha!')
 i2.selling_user = u3
@@ -84,6 +86,8 @@ limpeza.each_with_index do |limpeza_url, index|
   i2.photos.attach(io: file, filename: "limpeza#{index}.jpg", content_type: 'image/jpg')
 end
 i2.save!
+Product.create!(name: "Água sanitária", price: 5.00, inventory: i2)
+
 i3 = Inventory.new(name: 'Pamonha', 
                description: 'Pamonha quentinha e outros produtos deliciosos para você.')
 i3.selling_user = u3
@@ -92,6 +96,8 @@ pamonha.each_with_index do |pamonha_url, index|
   i3.photos.attach(io: file, filename: "pamonha#{index}.jpg", content_type: 'image/jpg')
 end
 i3.save!
+Product.create!(name: "Pamonha de Piracicaba", price: 4.00, inventory: i3)
+
 i4 = Inventory.new(name: 'Churrasquinho', 
                description: 'Churrasquinho de carne, frango e linguiça de primeira qualidade!')
 i4.selling_user = u4
@@ -100,6 +106,8 @@ churrasco.each_with_index do |churrasco_url, index|
   i4.photos.attach(io: file, filename: "churrasco#{index}.jpg", content_type: 'image/jpg')
 end
 i4.save!
+Product.create!(name: "Espetinho de carne", price: 5.00, inventory: i4)
+
 i5 = Inventory.new(name: 'Sanduíche natural', 
                description: 'Sanduíches naturais, fresquinhos e saudáveis.')
 i5.selling_user = u5
@@ -108,6 +116,8 @@ sanduiche.each_with_index do |sanduiche_url, index|
   i5.photos.attach(io: file, filename: "sanduiche#{index}.jpg", content_type: 'image/jpg')
 end
 i5.save!
+Product.create!(name: "Queijo e salame", price: 6.00, inventory: i5)
+
 i6 = Inventory.new(name: 'Churrasquinho', 
 description: 'Churrasquinho de carne, frango e linguiça de primeira qualidade!')
 i6.selling_user = u6
@@ -116,6 +126,8 @@ churrasco.each_with_index do |churrasco_url, index|
   i6.photos.attach(io: file, filename: "churrasco#{index}.jpg", content_type: 'image/jpg')
 end
 i6.save!
+Product.create!(name: "Espetinho de frango", price: 5.00, inventory: i4)
+
 i7 = Inventory.new(name: 'Sanduíche natural', 
 description: 'Sanduíches naturais, fresquinhos e saudáveis.')
 i7.selling_user = u1
@@ -124,6 +136,8 @@ sanduiche.each_with_index do |sanduiche_url, index|
   i7.photos.attach(io: file, filename: "sanduiche#{index}.jpg", content_type: 'image/jpg')
 end
 i7.save!
+Product.create!(name: "Palmito e cenoura", price: 6.00, inventory: i7)
+
 i8 = Inventory.new(name: 'Pamonha', 
 description: 'Pamonha quentinha e outros produtos deliciosos para você.')
 i8.selling_user = u2
@@ -132,6 +146,8 @@ pamonha.each_with_index do |pamonha_url, index|
   i8.photos.attach(io: file, filename: "pamonha#{index}.jpg", content_type: 'image/jpg')
 end
 i8.save!
+Product.create!(name: "Curau", price: 3.00, inventory: i8)
+
 i9 = Inventory.new(name: 'Produtos de limpeza', 
 description: 'Todos os tipos de produtos pra sua casa ficar limpinha!')
 i9.selling_user = u3
@@ -140,6 +156,8 @@ limpeza.each_with_index do |limpeza_url, index|
   i9.photos.attach(io: file, filename: "limpeza#{index}.jpg", content_type: 'image/jpg')
 end
 i9.save!
+Product.create!(name: "Desinfetante", price: 8.00, inventory: i9)
+
 i10 = Inventory.new(name: 'Ovos', 
 description: 'Ovos frescos de granja.')
 i10.selling_user = u4
@@ -148,6 +166,7 @@ ovos.each_with_index do |ovo_url, index|
   i10.photos.attach(io: file, filename: "ovo#{index}.jpg", content_type: 'image/jpg')
 end
 i10.save!
+Product.create!(name: "Caixa de Ovos Vermelhor", price: 12.00, inventory: i10)
 
 o1 = Order.new(completed: true)
 o1.inventory = i1
