@@ -17,12 +17,13 @@ User.destroy_all
 puts "Creating Users and Inventories..."
 
 ovos1 = "https://res.cloudinary.com/dkljkjqlg/image/upload/v1598906818/Ambulant%20seed/Carro-do-ovo_qqwvhr.jpg"
-pamonha1 = "https://res.cloudinary.com/dkljkjqlg/image/upload/v1598906818/Ambulant%20seed/maxresdefault_1_b16aof.jpg"
-pamonha2 = "https://res.cloudinary.com/dkljkjqlg/image/upload/v1598906817/Ambulant%20seed/download_1_m5hhkh.jpg"
-ovos2 = "https://res.cloudinary.com/dkljkjqlg/image/upload/v1598906818/Ambulant%20seed/tumblr_inline_o3u6bsi8tr1u3xerw_500_dexim5.jpg"
+ovos2 = "https://res.cloudinary.com/dkljkjqlg/image/upload/v1598979449/ovos_1_s9hylr.jpg"
+ovos3 = "https://res.cloudinary.com/dkljkjqlg/image/upload/v1598979609/aves_ovos_ernesto_de_souza--_jaoye0.jpg"
+pamonha1 = "https://res.cloudinary.com/dkljkjqlg/image/upload/v1598979523/8e3pemkdz3fzj64wsdditv0lp_doz1zy.jpg"
+pamonha2 = "https://res.cloudinary.com/dkljkjqlg/image/upload/v1598979523/pamonha-com-queijo_gfnmzu.jpg"
+pamonha3 = "https://res.cloudinary.com/dkljkjqlg/image/upload/v1598979818/pamonha-comida-de-rua-alex-silva-estadao_j9wuco.jpg"
 limpeza2 = "https://res.cloudinary.com/dkljkjqlg/image/upload/v1598906921/Ambulant%20seed/limpeza_ecq43i.jpg"
 limpeza1 = "https://res.cloudinary.com/dkljkjqlg/image/upload/v1598906921/Ambulant%20seed/limpeza3_myxgah.jpg"
-ovos3 = "https://res.cloudinary.com/dkljkjqlg/image/upload/v1598906818/Ambulant%20seed/2fb5551f2886cef37b148482457a5670_sywrdj.jpg"
 sand1 = "https://res.cloudinary.com/dkljkjqlg/image/upload/v1598907069/Ambulant%20seed/capa-43_czbbsn.jpg"
 sand2 = "https://res.cloudinary.com/dkljkjqlg/image/upload/v1598907069/Ambulant%20seed/wp-1460822800900_f9dx7b.jpg"
 churras2 = "https://res.cloudinary.com/dkljkjqlg/image/upload/v1598907178/Ambulant%20seed/vendedor-ambulante-que-cozinha-carne-em-espetos-127352487_jzzr7k.jpg"
@@ -30,7 +31,7 @@ churras3 = "https://res.cloudinary.com/dkljkjqlg/image/upload/v1598907178/Ambula
 churras1 = "https://res.cloudinary.com/dkljkjqlg/image/upload/v1598907214/Ambulant%20seed/churrasquinho_fyw9ji.jpg"
 
 ovos = [ovos1, ovos2, ovos3]
-pamonha =[pamonha1, pamonha2]
+pamonha =[pamonha1, pamonha2, pamonha3]
 limpeza = [limpeza1, limpeza2]
 churrasco = [churras1, churras2, churras3]
 sanduiche = [sand1, sand2]
@@ -43,7 +44,7 @@ u2 = User.create!(email: 'maria@ambulant.com', password: '123123', name: 'Maria 
                   bio: 'Estou sempre disponível pra atender os pedidos dos clientes com rapidez e bom atendimento.',
                   lat: -19.925263, long:-43.941139, seller: true)
 u3 = User.create!(email: 'antonio@ambulant.com', password: '123123', name: 'Antonio Pereira',
-                  bio: 'Tenho muito gosto em ir por todos os bairros e distribuir bons produtos e alegria.',
+                  bio: 'Eu e minha esposa temos muito gosto em ir por todos os bairros e distribuir bons produtos e alegria.',
                   lat: -19.924214, long:-43.937360, seller: true)
 u4 = User.create!(email: 'joao@ambulant.com', password: '123123', name: 'João dos Santos',
                   bio: 'Sempre trabalhei com vendas, de casa em casa, e estou pronto para servir ainda mais, agora, com o Ambulant.',
