@@ -5,6 +5,10 @@ class SellerOrdersController < ApplicationController
     @orders = policy_scope(Order, policy_scope_class: SellerOrdersPolicy::Scope)
   end
 
+  def update
+    authorize @order, policy_class: BuyerOrdersPolicy 
+  end
+
   private
 
   def check_seller
