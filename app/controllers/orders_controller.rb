@@ -1,11 +1,6 @@
 class OrdersController < ApplicationController
 
 
-  def index
-    @orders = policy_scope(Order)
-  end
-
-
   def show
     @order = Order.find(params[:id])
     authorize @order
@@ -33,4 +28,5 @@ class OrdersController < ApplicationController
     @order.destroy
     redirect_to root_path #adaptar rota
   end
+
 end
