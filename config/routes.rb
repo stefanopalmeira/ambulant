@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   resources :orders, only: [:destroy, :show] do
       resources :reviews, only: [:create, :new]
   end
-
-  resources :orders, only: [:destroy]
   
   resources :buyers, only: [:show, :index, :edit, :update]
 
