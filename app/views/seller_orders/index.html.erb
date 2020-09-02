@@ -1,11 +1,18 @@
 <div>
-  <% policy_scope(@orders).each do |order| %>
-  <% if order.accepted == 1 %>
-   <div>Aguarde</div>
-  <% elsif order.accepted == 2 %>
-  <div>Pedido aceito =)</div>
-  <% else %>
-  <div>Pedido negado =(</div>
-  <% end %>
+  <% @orders.each_with_index do |order, index| %>
+    <p> Pedido n: <%= index + 1 %></p>
+    <p><%= order.user.name %></p>
+    <% if order.accepted == 1 %>
+      <p>Status: Aguardando Resposta</p>
+      <%= render 'shared/seller_order', order: order %>
+      <br><br>
+    <% elsif order.accepted == 2 %>
+      <p>Status: Pedido aceito =)</p>
+      <br>
+    <% else %>
+      <p>Status: Pedido negado =(</p>
+      <br>
+    <% end %>
   <% end %>
 </div>
+
