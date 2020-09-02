@@ -3,14 +3,14 @@
     <p> Pedido n: <%= index + 1 %></p>
     <p><%= order.user.name %></p>
     <% if order.accepted == 1 %>
-      <p>Status: Aguardando Resposta</p>
+      <p id="order-<%= order.id %>">Status: Aguardando Resposta</p>
       <%= render 'shared/seller_order', order: order %>
       <br><br>
     <% elsif order.accepted == 2 %>
-      <p>Status: Pedido aceito =)</p>
+      <p id="order-<%= order.id %>">Status: Pedido aceito =)</p>
       <br>
     <% else %>
-      <p>Status: Pedido negado =(</p>
+      <p id="order-<%= order.id %>">Status: Pedido negado =(</p>
       <br>
     <% end %>
   <% end %>

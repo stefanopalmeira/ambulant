@@ -18,7 +18,7 @@ class SellerOrdersController < ApplicationController
       @order.accepted = 3
       authorize @order, policy_class: SellerOrdersPolicy
       if @order.save
-        redirect_to seller_orders_path
+        redirect_to (seller_orders_path, anchor: "review-#{@order.id}"
       end
     end 
   end
