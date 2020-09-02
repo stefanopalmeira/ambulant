@@ -3,9 +3,10 @@ Rails.application.routes.draw do
 
   resources :inventories, except: :index do
     resources :orders, only: [:show, :create]
-  end
-  
+  end  
   resources :orders, only: [:destroy]
+  
+  resources :buyers, only: [:show, :index, :edit, :update]
 
   resources :sellers, only: [:show, :index, :edit, :update]
 
