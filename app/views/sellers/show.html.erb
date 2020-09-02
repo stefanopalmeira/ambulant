@@ -6,5 +6,6 @@
   <% @inventory.photos.each do |photo| %>
     <%=  cl_image_tag photo.key, height: 300, width: 400, crop: :fill %> 
   <% end %>
+  <%= link_to 'Quero', inventory_orders_path(@inventory, authenticity_token: form_authenticity_token), method: :post %>
   <%= link_to "Back", sellers_path%>
 </div>

@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
+  include Pundit
+
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  include Pundit
+  before_action :dispatch_user
+  
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
@@ -27,7 +30,13 @@ class ApplicationController < ActionController::Base
       sellers_path
     end   
   end
-
+  
+  def dispatch_user
+    return unless current_user && request.get?
+    path = sellers_path if request.path == root_path && current_user.seller
+    path = buyers_path if request.path == root_path && !current_user.seller
+    redirect_to path unless path.nil? || path == request.path
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :address, :bio, :lat, :long, :seller, :photo])
