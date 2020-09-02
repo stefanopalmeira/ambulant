@@ -1,0 +1,10 @@
+<%= simple_form_for([@order, @review]) do |f| %>
+<%= f.input :rating, required: true %>
+<%= f.input :description %>
+<%= radio_button_tag :completed, 1, true %>
+<%= label_tag :y_completed, 'Pedido concluído' %>
+<%= radio_button_tag :completed, 0, false %>
+<%= label_tag :not_completed, "Pedido não concluído" %>
+<%= f.button :submit, "Criar nova review" %>
+<% end %>
+

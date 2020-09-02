@@ -12,4 +12,8 @@ class OrderPolicy < ApplicationPolicy
   def create?
     user != record.inventory.selling_user
   end
+
+  def destroy?
+    user == record.user
+  end
 end

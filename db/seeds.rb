@@ -10,6 +10,7 @@ require "open-uri"
 puts 'Cleaning database...'
 
 Review.destroy_all
+Product.destroy_all
 Order.destroy_all
 Inventory.destroy_all
 User.destroy_all
@@ -39,34 +40,34 @@ sanduiche = [sand1, sand2]
 
 u1 = User.create!(email: 'jose@ambulant.com', password: '123123', name: 'Jose da Silva',
                   bio: 'Adoro servir meus clientes e trazer meus produtos com a melhor qualidade até eles.',
-                  lat: -19.922681, long:-43.941139, seller: true)
+                  lat: -19.922681, long:-43.941139, seller: true, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
 u2 = User.create!(email: 'maria@ambulant.com', password: '123123', name: 'Maria Oliveira',
                   bio: 'Estou sempre disponível pra atender os pedidos dos clientes com rapidez e bom atendimento.',
-                  lat: -19.925263, long:-43.941139, seller: true)
+                  lat: -19.925263, long:-43.941139, seller: true, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
 u3 = User.create!(email: 'antonio@ambulant.com', password: '123123', name: 'Antonio Pereira',
                   bio: 'Eu e minha esposa temos muito gosto em ir por todos os bairros e distribuir bons produtos e alegria.',
-                  lat: -19.924214, long:-43.937360, seller: true)
+                  lat: -19.924214, long:-43.937360, seller: true, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
 u4 = User.create!(email: 'joao@ambulant.com', password: '123123', name: 'João dos Santos',
                   bio: 'Sempre trabalhei com vendas, de casa em casa, e estou pronto para servir ainda mais, agora, com o Ambulant.',
-                  lat: -19.927523, long:-43.943458, seller: true)
+                  lat: -19.927523, long:-43.943458, seller: true, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
 u5 = User.create!(email: 'ana@ambulant.com', password: '123123', name: 'Ana Maria',
                   bio: 'Meus produtos são todos produzidos e vendidos com muito carinho',
-                  lat: -19.918243, long:-43.939936, seller: true)
+                  lat: -19.918243, long:-43.939936, seller: true, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
 u6 = User.create!(email: 'ricardo@ambulant.com', password: '123123', name: 'Ricardo Marinho',
                   bio: 'Adoro servir meus clientes e trazer meus produtos com a melhor qualidade até eles.',
-                  lat: -19.916710, long:-43.935814, seller: true)
+                  lat: -19.916710, long:-43.935814, seller: true, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
 u7 = User.create!(email: 'bruna@ambulant.com', password: '123123', name: 'Bruna Carvalho',
                   bio: 'Estou sempre disponível pra atender os pedidos dos clientes com rapidez e bom atendimento.',
-                  lat: -19.919695, long:-43.941053)
+                  lat: -19.919695, long:-43.941053, address: 'Rua dos Tamôios, 500 - Centro, Belo Horizonte - MG, 30120-050')
 u8 = User.create!(email: 'elena@ambulant.com', password: '123123', name: 'Elena Carneiro',
                   bio: 'Tenho muito gosto em ir por todos os bairros e distribuir bons produtos e alegria.',
-                  lat: -19.927119, long:-43.945004)
+                  lat: -19.927119, long:-43.945004, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
 u9 = User.create!(email: 'marcos@ambulant.com', password: '123123', name: 'Marcos Palmeira',
                   bio: 'Sempre trabalhei com vendas, de casa em casa, e estou pronto para servir ainda mais, agora, com o Ambulant.',
-                  lat: -19.923690, long:-43.918378)
+                  lat: -19.923690, long:-43.918378, address:'R. Niquelina, 93 - Santa Efigênia, Belo Horizonte - MG, 30260-100')
 u10 = User.create!(email: 'renata@ambulant.com', password: '123123', name: 'Renata Queiroz',
                   bio: 'Meus produtos são todos produzidos e vendidos com muito carinho',
-                  lat: -19.904443, long:-43.958945)
+                  lat: -19.904443, long:-43.958945, address: 'Rua Frei Orlando, 291 - Alto Caiçaras, Belo Horizonte - MG, 31230-120')
 
 i1 = Inventory.new(name: 'Ovos', 
                description: 'Ovos frescos de granja.')
@@ -76,6 +77,8 @@ ovos.each_with_index do |ovo_url, index|
   i1.photos.attach(io: file, filename: "ovo#{index}.jpg", content_type: 'image/jpg')
 end
 i1.save!
+Product.create!(name: "Caixa de Ovos Brancos", price: 10.00, inventory: i1)
+
 i2 = Inventory.new(name: 'Produtos de limpeza', 
                description: 'Todos os tipos de produtos pra sua casa ficar limpinha!')
 i2.selling_user = u3
@@ -84,6 +87,8 @@ limpeza.each_with_index do |limpeza_url, index|
   i2.photos.attach(io: file, filename: "limpeza#{index}.jpg", content_type: 'image/jpg')
 end
 i2.save!
+Product.create!(name: "Água sanitária", price: 5.00, inventory: i2)
+
 i3 = Inventory.new(name: 'Pamonha', 
                description: 'Pamonha quentinha e outros produtos deliciosos para você.')
 i3.selling_user = u3
@@ -92,6 +97,8 @@ pamonha.each_with_index do |pamonha_url, index|
   i3.photos.attach(io: file, filename: "pamonha#{index}.jpg", content_type: 'image/jpg')
 end
 i3.save!
+Product.create!(name: "Pamonha de Piracicaba", price: 4.00, inventory: i3)
+
 i4 = Inventory.new(name: 'Churrasquinho', 
                description: 'Churrasquinho de carne, frango e linguiça de primeira qualidade!')
 i4.selling_user = u4
@@ -100,6 +107,8 @@ churrasco.each_with_index do |churrasco_url, index|
   i4.photos.attach(io: file, filename: "churrasco#{index}.jpg", content_type: 'image/jpg')
 end
 i4.save!
+Product.create!(name: "Espetinho de carne", price: 5.00, inventory: i4)
+
 i5 = Inventory.new(name: 'Sanduíche natural', 
                description: 'Sanduíches naturais, fresquinhos e saudáveis.')
 i5.selling_user = u5
@@ -108,6 +117,8 @@ sanduiche.each_with_index do |sanduiche_url, index|
   i5.photos.attach(io: file, filename: "sanduiche#{index}.jpg", content_type: 'image/jpg')
 end
 i5.save!
+Product.create!(name: "Queijo e salame", price: 6.00, inventory: i5)
+
 i6 = Inventory.new(name: 'Churrasquinho', 
 description: 'Churrasquinho de carne, frango e linguiça de primeira qualidade!')
 i6.selling_user = u6
@@ -116,6 +127,8 @@ churrasco.each_with_index do |churrasco_url, index|
   i6.photos.attach(io: file, filename: "churrasco#{index}.jpg", content_type: 'image/jpg')
 end
 i6.save!
+Product.create!(name: "Espetinho de frango", price: 5.00, inventory: i4)
+
 i7 = Inventory.new(name: 'Sanduíche natural', 
 description: 'Sanduíches naturais, fresquinhos e saudáveis.')
 i7.selling_user = u1
@@ -124,6 +137,8 @@ sanduiche.each_with_index do |sanduiche_url, index|
   i7.photos.attach(io: file, filename: "sanduiche#{index}.jpg", content_type: 'image/jpg')
 end
 i7.save!
+Product.create!(name: "Palmito e cenoura", price: 6.00, inventory: i7)
+
 i8 = Inventory.new(name: 'Pamonha', 
 description: 'Pamonha quentinha e outros produtos deliciosos para você.')
 i8.selling_user = u2
@@ -132,6 +147,8 @@ pamonha.each_with_index do |pamonha_url, index|
   i8.photos.attach(io: file, filename: "pamonha#{index}.jpg", content_type: 'image/jpg')
 end
 i8.save!
+Product.create!(name: "Curau", price: 3.00, inventory: i8)
+
 i9 = Inventory.new(name: 'Produtos de limpeza', 
 description: 'Todos os tipos de produtos pra sua casa ficar limpinha!')
 i9.selling_user = u3
@@ -140,6 +157,8 @@ limpeza.each_with_index do |limpeza_url, index|
   i9.photos.attach(io: file, filename: "limpeza#{index}.jpg", content_type: 'image/jpg')
 end
 i9.save!
+Product.create!(name: "Desinfetante", price: 8.00, inventory: i9)
+
 i10 = Inventory.new(name: 'Ovos', 
 description: 'Ovos frescos de granja.')
 i10.selling_user = u4
@@ -148,6 +167,7 @@ ovos.each_with_index do |ovo_url, index|
   i10.photos.attach(io: file, filename: "ovo#{index}.jpg", content_type: 'image/jpg')
 end
 i10.save!
+Product.create!(name: "Caixa de Ovos Vermelhor", price: 12.00, inventory: i10)
 
 o1 = Order.new(completed: true)
 o1.inventory = i1
@@ -238,3 +258,5 @@ r9.save!
 r10 = Review.new(description: "Não recomendo de forma alguma", rating:1 )
 r10.order = o10
 r10.save!
+
+puts "Users, inventories and everything else created, son!!"
