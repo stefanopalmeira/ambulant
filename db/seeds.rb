@@ -69,7 +69,7 @@ u10 = User.create!(email: 'renata@ambulant.com', password: '123123', name: 'Rena
                   bio: 'Meus produtos são todos produzidos e vendidos com muito carinho',
                   lat: -19.904443, long:-43.958945, address: 'Rua Frei Orlando, 291 - Alto Caiçaras, Belo Horizonte - MG, 31230-120')
 
-i1 = Inventory.new(name: 'Ovos', 
+i1 = Inventory.new(name: 'Ovos',
                description: 'Ovos frescos de granja.')
 i1.selling_user = u1
 ovos.each_with_index do |ovo_url, index|
@@ -79,7 +79,7 @@ end
 i1.save!
 Product.create!(name: "Caixa de Ovos Brancos", price: 10.00, inventory: i1)
 
-i2 = Inventory.new(name: 'Produtos de limpeza', 
+i2 = Inventory.new(name: 'Produtos de limpeza',
                description: 'Todos os tipos de produtos pra sua casa ficar limpinha!')
 i2.selling_user = u3
 limpeza.each_with_index do |limpeza_url, index|
@@ -89,7 +89,7 @@ end
 i2.save!
 Product.create!(name: "Água sanitária", price: 5.00, inventory: i2)
 
-i3 = Inventory.new(name: 'Pamonha', 
+i3 = Inventory.new(name: 'Pamonha',
                description: 'Pamonha quentinha e outros produtos deliciosos para você.')
 i3.selling_user = u3
 pamonha.each_with_index do |pamonha_url, index|
@@ -99,7 +99,7 @@ end
 i3.save!
 Product.create!(name: "Pamonha de Piracicaba", price: 4.00, inventory: i3)
 
-i4 = Inventory.new(name: 'Churrasquinho', 
+i4 = Inventory.new(name: 'Churrasquinho',
                description: 'Churrasquinho de carne, frango e linguiça de primeira qualidade!')
 i4.selling_user = u4
 churrasco.each_with_index do |churrasco_url, index|
@@ -109,7 +109,7 @@ end
 i4.save!
 Product.create!(name: "Espetinho de carne", price: 5.00, inventory: i4)
 
-i5 = Inventory.new(name: 'Sanduíche natural', 
+i5 = Inventory.new(name: 'Sanduíche natural',
                description: 'Sanduíches naturais, fresquinhos e saudáveis.')
 i5.selling_user = u5
 sanduiche.each_with_index do |sanduiche_url, index|
@@ -119,7 +119,7 @@ end
 i5.save!
 Product.create!(name: "Queijo e salame", price: 6.00, inventory: i5)
 
-i6 = Inventory.new(name: 'Churrasquinho', 
+i6 = Inventory.new(name: 'Churrasquinho',
 description: 'Churrasquinho de carne, frango e linguiça de primeira qualidade!')
 i6.selling_user = u6
 churrasco.each_with_index do |churrasco_url, index|
@@ -129,7 +129,7 @@ end
 i6.save!
 Product.create!(name: "Espetinho de frango", price: 5.00, inventory: i4)
 
-i7 = Inventory.new(name: 'Sanduíche natural', 
+i7 = Inventory.new(name: 'Sanduíche natural',
 description: 'Sanduíches naturais, fresquinhos e saudáveis.')
 i7.selling_user = u1
 sanduiche.each_with_index do |sanduiche_url, index|
@@ -139,7 +139,7 @@ end
 i7.save!
 Product.create!(name: "Palmito e cenoura", price: 6.00, inventory: i7)
 
-i8 = Inventory.new(name: 'Pamonha', 
+i8 = Inventory.new(name: 'Pamonha',
 description: 'Pamonha quentinha e outros produtos deliciosos para você.')
 i8.selling_user = u2
 pamonha.each_with_index do |pamonha_url, index|
@@ -149,7 +149,7 @@ end
 i8.save!
 Product.create!(name: "Curau", price: 3.00, inventory: i8)
 
-i9 = Inventory.new(name: 'Produtos de limpeza', 
+i9 = Inventory.new(name: 'Produtos de limpeza',
 description: 'Todos os tipos de produtos pra sua casa ficar limpinha!')
 i9.selling_user = u3
 limpeza.each_with_index do |limpeza_url, index|
@@ -159,7 +159,7 @@ end
 i9.save!
 Product.create!(name: "Desinfetante", price: 8.00, inventory: i9)
 
-i10 = Inventory.new(name: 'Ovos', 
+i10 = Inventory.new(name: 'Ovos',
 description: 'Ovos frescos de granja.')
 i10.selling_user = u4
 ovos.each_with_index do |ovo_url, index|
@@ -169,52 +169,52 @@ end
 i10.save!
 Product.create!(name: "Caixa de Ovos Vermelhor", price: 12.00, inventory: i10)
 
-o1 = Order.new(completed: true)
+o1 = Order.new(completed: true, accepted: 2)
 o1.inventory = i1
 o1.user = u7
 o1.save!
 
-o2 = Order.new(completed: true)
+o2 = Order.new(completed: true, accepted: 2)
 o2.inventory = i2
 o2.user = u8
 o2.save!
 
-o3 = Order.new(completed: true)
+o3 = Order.new(completed: true, accepted: 2)
 o3.inventory = i3
 o3.user = u9
 o3.save!
 
-o4 = Order.new(completed: true)
+o4 = Order.new(completed: true, accepted: 2)
 o4.inventory = i4
 o4.user = u10
 o4.save!
 
-o5 = Order.new(completed: true)
+o5 = Order.new(completed: true, accepted: 2)
 o5.inventory = i5
 o5.user = u7
 o5.save!
 
-o6 = Order.new(completed: true)
+o6 = Order.new(completed: true, accepted: 2)
 o6.inventory = i6
 o6.user = u8
 o6.save!
 
-o7 = Order.new(completed: true)
-o7.inventory = i7
+o7 = Order.new(completed: false, accepted: 1)
+o7.inventory = i1
 o7.user = u9
 o7.save!
 
-o8 = Order.new(completed: true)
+o8 = Order.new(completed: false, accepted: 1)
 o8.inventory = i8
 o8.user = u10
 o8.save!
 
-o9 = Order.new(completed: true)
-o9.inventory = i9
+o9 = Order.new(completed: false, accepted: 3)
+o9.inventory = i1
 o9.user = u7
 o9.save!
 
-o10 = Order.new(completed: true)
+o10 = Order.new(completed: false, accepted: 3)
 o10.inventory = i10
 o10.user = u10
 o10.save!
