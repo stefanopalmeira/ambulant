@@ -5,6 +5,7 @@ class SellerOrdersController < ApplicationController
     @orders = policy_scope(Order, policy_scope_class: SellerOrdersPolicy::Scope)
   end
 
+  private
 
   def check_seller
     redirect_to buyer_orders_path unless current_user.seller

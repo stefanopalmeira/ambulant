@@ -6,7 +6,7 @@ class InventoryPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    !user.seller
   end
 
   def edit?
