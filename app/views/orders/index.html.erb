@@ -1,10 +1,11 @@
 <div>
-  <% @orders.each do |order| %>
+  <% policy_scope(@orders).each do |order| %>
   <% if order.accepted == 1 %>
    <div>Aguarde</div>
   <% elsif order.accepted == 2 %>
-  <div>Pedido aceito :)</div>
+  <div>Pedido aceito =)</div>
   <% else %>
-  <div>Pedido negado :(</div>
+  <div>Pedido negado =(</div>
+  <% end %>
   <% end %>
 </div>
