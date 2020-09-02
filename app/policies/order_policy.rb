@@ -1,11 +1,7 @@
 class OrderPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if user.seller
-        @orders = scope.joins(inventory: :selling_user).where(user: user)
-      else
-        false
-      end
+      scope.all
     end
   end
 

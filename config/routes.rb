@@ -15,6 +15,10 @@ Rails.application.routes.draw do
 
   resources :sellers, only: [:show, :index, :edit, :update]
 
+  resources :buyer_orders, only: :index
+
+  resources :seller_orders, only: :index
+
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
