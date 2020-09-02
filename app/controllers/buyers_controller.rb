@@ -1,10 +1,11 @@
 class BuyersController < ApplicationController
   before_action :set_user, except: :index
+  before_action :check_seller, only: :index
 
   def index
     all_users = User.all
-    @sellers = all_users.select do |user|
-      user.seller
+    @buyers = all_users.select do |user|
+      user.seller.blank?
     end
   end
 
@@ -31,7 +32,13 @@ class BuyersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
+
   def user_params
     params.require(:user).permit(:name, :address, :bio, :lat, :long, :seller, :photo)
   end
+
+  def check_seller
+    redirect_to buyers_path unless current_user.seller
+  end
+   
 end

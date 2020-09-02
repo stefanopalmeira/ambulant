@@ -1,8 +1,7 @@
 <div>
-  <% @buyers.each do |buyer| %>
-  <%= buyer.address %>
-  <p>
-    <%= buyer.name %>
-  </p>
-  <% end %>
+  <%  @sellers.each do |seller| %>
+  <p> <%= link_to seller.name, seller_path(seller) %> </p>
+  <p><%= seller.lat %></p>
+  <p><%= seller.long %></p>  
+  <% end %>  
 </div>
