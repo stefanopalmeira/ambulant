@@ -1,7 +1,11 @@
 class OrderPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      if user.seller
+        @orders = scope.all.where(inventory:{ selling_user: user })
+      else
+        false
+      end
     end
   end
 
