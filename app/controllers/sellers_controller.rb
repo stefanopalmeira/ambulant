@@ -38,7 +38,7 @@ class SellersController < ApplicationController
   end
 
   def check_buyer
-    redirect_to sellers_path if current_user.seller
-   end  
+    redirect_to buyers_path if current_user.seller
+  end  
 
 end
