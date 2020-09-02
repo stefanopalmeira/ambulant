@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       resources :reviews, only: [:create, :new]
   end
   
+  resources :reviews, only: [:show]
+
   resources :buyers, only: [:show, :index, :edit, :update]
 
   resources :sellers, only: [:show, :index, :edit, :update]
