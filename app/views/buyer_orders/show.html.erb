@@ -1,0 +1,11 @@
+<div>
+    <p><%= @order.accepted %></p> 
+    <% if @order.accepted == 1 %>
+    <div>Aguarde</div>
+    <% elsif @order.accepted == 2 %>
+    <div>Pedido aceito =)</div>
+    <% else %>
+    <div>Pedido negado =(</div>
+    <% end %>
+</div>
+<%= link_to "Deu certo?", new_buyer_order_review_path(@order) %>

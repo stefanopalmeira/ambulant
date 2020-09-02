@@ -10,8 +10,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
-
-    @order = Order.find(params[:order_id])
+    @order = Order.find(params[:buyer_order_id])
     @review = Review.new
     @review.order = @order
     authorize @review
@@ -19,7 +18,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(set_params)
-    @order = Order.find(params[:order_id])
+    @order = Order.find(params[:buyer_order_id])
     @review.order = @order
     if params[:complete].to_i == 1
       @review.order.completed = true
