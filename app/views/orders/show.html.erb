@@ -2,3 +2,4 @@
 <h3><%= @order.inventory.selling_user.name %></h3>
 <h3><%= @order.user.name %></h3>
 <h4><%= @order.inventory.description %></h4>
+<%= link_to "Cancelar", order_path(@order), method: :delete, data: { confirm: 'Tem certeza que deseja cancelar seu pedido?' }  %>

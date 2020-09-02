@@ -2,9 +2,12 @@ Rails.application.routes.draw do
   devise_for :users 
 
   resources :inventories, except: :index do
-    resources :orders, only: [:show, :create]
-  end  
-  resources :orders, only: [:destroy]
+    resources :orders, only: [:create]
+  end
+
+  resources :orders, only: [:destroy, :show] do
+      resources :reviews, only: [:create, :new]
+  end
   
   resources :buyers, only: [:show, :index, :edit, :update]
 
