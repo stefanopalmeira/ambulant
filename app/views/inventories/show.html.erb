@@ -1,6 +1,12 @@
 <h2><%= @inventory.name %></h2>
 <h3><%= @inventory.selling_user.name %><h3>
-<h4><%= @inventory.description %></h4>
+<% @inventory.products.each do |product| %>
+  <table>
+    <tr>
+      <th><%= product.name %></th><th><%= product.price %></th>
+    </tr>
+  </table>
+<% end %>
 <% @inventory.photos.each do |photo| %>
   <%=  cl_image_tag photo.key, height: 300, width: 400, crop: :fill %> 
 <% end %>
