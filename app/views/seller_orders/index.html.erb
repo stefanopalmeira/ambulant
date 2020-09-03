@@ -1,6 +1,6 @@
 <div>
   <% @orders.each_with_index do |order, index| %>
-    <p> Pedido n: <%= index + 1 %></p>
+    <p> Pedido n: <%= @orders.length - index %></p>
     <p><%= order.user.name %></p>
     <% if order.accepted == 1 %>
       <p id="order-<%= order.id %>">Status: Aguardando Resposta</p>
