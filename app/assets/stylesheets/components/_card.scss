@@ -1,4 +1,7 @@
 .profile-card {
+  h2{
+    font-size: 40px;
+  }
   font-family: sans-serif;
   display: flex;
   flex-direction: column;
@@ -6,9 +9,9 @@
   box-shadow: 1px 1px 5px rgba($gray, 0.4);
   padding: 30px;
   width: 50%;
-  background-color: rgba($purple, 0.8);
-  border-radius: 30px;
-  color: $green;
+  background-color: rgba($orange, 0.8);
+  border-radius: 20px;
+  color: $purple;
   width: 200;
   margin: 0 auto;
 }

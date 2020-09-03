@@ -10,7 +10,7 @@ class SellersController < ApplicationController
         lng: seller.long,
         iconSize: [45, 45],
         url: seller_url(seller.id),
-        image: seller.photo.attached? ? cl_image_path(seller.photo&.key) : helpers.asset_url('Logo_sem_nome.png')
+        image: seller.photo.attached? ? cl_image_path(seller.photo&.key) : helpers.asset_url('Logo_pointer.png')
       }
     end
   end
