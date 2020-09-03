@@ -1,20 +1,19 @@
 .logo-home{
   position: fixed;
-  right: 0;
+  top: 5%;
+  right: 5%;
+  z-index: 10;
 }
 
 .display-none{
   display: none;
 }
 
-.wrapper{
-  position: relative;
-  position: fixed;
-  top: 5%;
-  right: 5%;
-  z-index: 10;
-}
-
 .menu{
-
+  width: 50px;
+  height: 60px;
+  position: fixed;
+  top: 12%;
+  right: 8%;
+  z-index: 10;
 }
