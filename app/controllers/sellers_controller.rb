@@ -8,9 +8,9 @@ class SellersController < ApplicationController
       {
         lat: seller.lat,
         lng: seller.long,
-        iconSize: [25, 25],
+        iconSize: [50, 50],
         url: seller_url(seller.id),
-        image: seller.photo.attached? ? cl_image_path(seller.photo&.key) : helpers.asset_url('logo.png')
+        image: seller.photo.attached? ? cl_image_path(seller.photo&.key) : helpers.asset_url('ambulant_icon.png')
       }
     end
   end
