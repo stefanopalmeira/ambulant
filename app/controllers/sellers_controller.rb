@@ -1,5 +1,5 @@
 class SellersController < ApplicationController
-  before_action :set_user, except: :index  
+  before_action :set_user, except: :index
   before_action :check_buyer, only: :index
 
   def index
@@ -8,9 +8,9 @@ class SellersController < ApplicationController
       {
         lat: seller.lat,
         lng: seller.long,
-        iconSize: [25, 25],
+        iconSize: [45, 45],
         url: seller_url(seller.id),
-        image: seller.photo.attached? ? cl_image_path(seller.photo&.key) : helpers.asset_url('logo.png')
+        image: seller.photo.attached? ? cl_image_path(seller.photo&.key) : helpers.asset_url('Logo_sem_nome.png')
       }
     end
   end
@@ -45,6 +45,6 @@ class SellersController < ApplicationController
 
   def check_buyer
     redirect_to buyers_path if current_user.seller
-  end  
+  end
 
 end

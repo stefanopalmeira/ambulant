@@ -16,6 +16,7 @@ const addMarkersToMap = (map, markers) => {
     el.className = 'marker';
     el.style.backgroundImage = 'url(' + marker.image + ')';
     el.style.backgroundSize = 'contain';
+    el.style.backgroundRepeat = 'no-repeat';
     el.style.width = marker.iconSize[0] + 'px';
     el.style.height = marker.iconSize[1] + 'px';
 
