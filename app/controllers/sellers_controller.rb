@@ -3,9 +3,12 @@ class SellersController < ApplicationController
   before_action :check_buyer, only: :index
 
   def index
-    all_users = User.all
-    @sellers = all_users.select do |user|
-      user.seller
+    @sellers = User.where(seller: true)
+    @markers = @sellers.geocoded.map do |seller|
+      {
+        lat: seller.lat,
+        lng: seller.long
+      }
     end
   end
 
