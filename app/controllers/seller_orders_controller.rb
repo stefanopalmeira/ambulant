@@ -12,13 +12,13 @@ class SellerOrdersController < ApplicationController
       @order.accepted = 2
       authorize @order, policy_class: SellerOrdersPolicy
       if @order.save
-        redirect_to seller_orders_path
+        redirect_to seller_orders_path(anchor: "order-#{@order.id}")
       end
     elsif status == 3
       @order.accepted = 3
       authorize @order, policy_class: SellerOrdersPolicy
       if @order.save
-        redirect_to seller_orders_path
+        redirect_to seller_orders_path(anchor: "order-#{@order.id}")
       end
     end 
   end
