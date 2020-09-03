@@ -2,7 +2,7 @@
   position: fixed;
   top: 6px;
   left: 24px;
-  z-index: 10;
+  z-index: 1000;
 }
 
 .menu{
@@ -14,7 +14,7 @@
   left: 20px;
   opacity: 1;
   transition: visibility 0s, z-index 0s, opacity .3s; 
-  z-index: 10;
+  z-index: 1000;
   background: rgba(120, 76, 197, .8);
   border-radius: 5px;
   box-shadow: 1px 1px 5px rgb(210, 210, 210);

@@ -1,10 +1,12 @@
-<div class="card-pedido">
-  <% if @order.accepted == 1 %>
-  <div>Aguarde</div>
-  <% elsif @order.accepted == 2 %>
-  <div>Pedido aceito =)</div>
-  <% else %>
-  <div>Pedido negado =(</div>
-  <% end %>
+<div class="wrapper d-flex">
+  <div class="card-pedido">
+    <% if @order.accepted == 1 %>
+    <p class="text-center">Aguarde</p>
+    <% elsif @order.accepted == 2 %>
+    <p class="text-center">Pedido aceito =)</p>
+    <% else %>
+    <p class="text-center">Pedido negado =(</p>
+    <% end %>
+  </div>
 </div>
 <%= link_to "Deu certo?", new_buyer_order_review_path(@order) %>
