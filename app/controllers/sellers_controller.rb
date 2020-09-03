@@ -7,7 +7,10 @@ class SellersController < ApplicationController
     @markers = @sellers.geocoded.map do |seller|
       {
         lat: seller.lat,
-        lng: seller.long
+        lng: seller.long,
+        iconSize: [25, 25],
+        url: seller_url(seller.id),
+        image: seller.photo.attached? ? cl_image_path(seller.photo&.key) : helpers.asset_url('logo.png')
       }
     end
   end
