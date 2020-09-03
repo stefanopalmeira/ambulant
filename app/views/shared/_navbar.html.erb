@@ -1,12 +1,16 @@
 
-<div class="wrapper">
-  <%= image_tag "Logo_sem_nome.png", class: "avatar logo-home", id: "dropdownmenu", 'aria-haspopup': true, 'aria-expanded': false %>
-  <div class="display-none menu" id="logoaction">
-  <%= link_to "Home", root_path %>
-  <% if current_user.orders.last.completed.nil? %>
-    <%= link_to "Acompanhar pedido", buyer_order_path(current_user.orders.last) %>
-  <% end %>
-  </div>
+<%= image_tag "Logo_sem_nome.png", class: "avatar logo-home", id: "dropdownmenu", 'aria-haspopup': true, 'aria-expanded': false %>
+<div class="display-none menu" id="logoaction">
+  <ul>
+    <li>
+      <%= link_to "Home", root_path %>
+    </li>
+    <li>
+      <% if current_user.orders.last.completed.nil? %>
+        <%= link_to "Acompanhar pedido", buyer_order_path(current_user.orders.last) %>
+      <% end %>
+    </li>
+  </ul>
 </div>
 
 
