@@ -13,7 +13,6 @@ class BuyerOrdersController < ApplicationController
     @order.inventory = @inventory
     @order.user = current_user
     @order.accepted = 1
-
     authorize @order, policy_class: BuyerOrdersPolicy 
     if @order.save
       redirect_to buyer_order_path(@order)

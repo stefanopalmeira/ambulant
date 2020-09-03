@@ -15,4 +15,8 @@
     <% end %>
   <% end %>
 </div>
+<% if current_user.orders.last.completed.blank %>
+  <%= link_to "Acompanhar meu pedido", buyer_order_path(current_user.orders.last) %>
+<% end %>
+
 

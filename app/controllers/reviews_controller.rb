@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(set_params)
     @order = Order.find(params[:buyer_order_id])
     @review.order = @order
-    if params[:complete].to_i == 1
+    if params[:completed].to_i == 1
       @review.order.completed = true
     else
       @review.order.completed = false
