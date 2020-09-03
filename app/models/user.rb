@@ -10,4 +10,6 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :address, presence: true
   has_one_attached :photo
+  geocoded_by :address, latitude: :lat, longitude: :long
+  after_validation :geocode, if: :will_save_change_to_address?
 end
