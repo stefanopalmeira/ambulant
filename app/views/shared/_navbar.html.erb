@@ -6,10 +6,13 @@
       <%= link_to "Home", root_path %>
     </li>
     <li>
-      <% if current_user.orders.last.completed.nil? %>
-        <%= link_to "Acompanhar pedido", buyer_order_path(current_user.orders.last) %>
-      <% end %>
+      <%= link_to "Logout", destroy_user_session_path %>
     </li>
+    <% if current_user.orders.last.completed.nil? %>
+      <li>
+        <%= link_to "Pedido", buyer_order_path(current_user.orders.last) %>
+      </li>
+    <% end %>
   </ul>
 </div>
 
