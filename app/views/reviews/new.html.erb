@@ -1,10 +1,17 @@
-<%= simple_form_for([@order, @review], url: buyer_order_reviews_path(@order)) do |f| %>
-<%= f.input :rating, required: true, collection: 1..5 %>
-<%= f.input :description %>
-<%= radio_button_tag :completed, 1, true %>
-<%= label_tag :y_completed, 'Pedido concluído' %>
-<%= radio_button_tag :completed, 0, false %>
-<%= label_tag :not_completed, "Pedido não concluído" %>
-<%= f.button :submit, "Criar nova review" %>
-<% end %>
-
+<%= render 'shared/navbar' %>
+<header>
+  <%= image_tag 'Logo_ambulant-removebg-preview.png', class: 'image-login' %>
+</header>
+<div class="container card-new-review aguarde">
+  <%= simple_form_for([@order, @review], url: buyer_order_reviews_path(@order)) do |f| %>
+  <%= f.input :rating, label: 'Nota', required: true, collection: 1..5 %>
+  <%= f.input :description, label: "Descreva sua experiência" %>
+    <div class="form-check form-check-inline">
+      <%= radio_button_tag :completed, 1, true, class: "form-check-input" %>
+      <%= label_tag :y_completed, 'Concluído', class: "form-check-label mr-4" %>
+      <%= radio_button_tag :completed, 0, false, class: "form-check-input" %>
+      <%= label_tag :not_completed, "Não concluído", class: "form-check-label"  %>
+    </div>
+  <%= f.button :submit, "Enviar review", class: 'btn general form-button mt-3' %>
+  <% end %>
+</div>

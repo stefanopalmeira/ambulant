@@ -1,0 +1,61 @@
+.card-pedido {
+  border-radius: 20px;
+  width: 200px;
+  height: 200px;
+  box-shadow: 2px 2px 5px rgb(80, 80, 80);
+  margin: 0 auto;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30%;
+}
+
+.card-new-review {
+  border-radius: 20px;
+  width: 100%;
+  padding: 20px;
+  box-shadow: 2px 2px 5px rgb(80, 80, 80);
+  margin: 0 auto;
+  border-radius: 20px;
+}
+
+.card-review {
+  border-radius: 20px;
+  width: 100%;
+  padding: 20px;
+  box-shadow: 2px 2px 5px rgb(80, 80, 80);
+  margin: 0 auto;
+  border-radius: 20px;
+  margin-top: 30%;
+}
+
+.aguarde {
+  background-color: #EF985B;
+}
+
+.aceito {
+  background-color: $green;
+}
+
+.negado {
+  background-color: $red;
+}
+
+.card-pedido p {
+  line-height: 50px;
+  font-size: 20px;
+}
+
+.wrapper {
+  height: 20vh;
+  margin-top: 100px;
+  align-items: center;
+}
+
+.buttons {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
