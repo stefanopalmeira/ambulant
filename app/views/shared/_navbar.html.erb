@@ -5,12 +5,23 @@
     <li>
       <%= link_to "Home", root_path %>
     </li>
-    <li>
-      <% if current_user.orders.last.completed.nil? %>
-        <%= link_to "Acompanhar pedido", buyer_order_path(current_user.orders.last) %>
-      <% end %>
-    </li>
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      </li>
+      <li>
+        <% unless current_user.seller %>
+          <% if current_user.orders.last.completed.nil? %>
+            <%= link_to "Pedido", buyer_order_path(current_user.orders.last) %>
+          <% end %>
+        <% else %>
+          <%= link_to "Pedidos", seller_orders_path %>
+        <% end %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "Login", new_user_session_path %>
+      </li>
+    <% end %>
   </ul>
 </div>
-
-
