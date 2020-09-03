@@ -1,12 +1,20 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.logo-home{
+  position: fixed;
+  right: 0;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.display-none{
+  display: none;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.wrapper{
+  position: relative;
+  position: fixed;
+  top: 5%;
+  right: 5%;
+  z-index: 10;
+}
+
+.menu{
+
 }
