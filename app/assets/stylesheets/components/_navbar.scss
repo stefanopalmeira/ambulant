@@ -1,8 +1,8 @@
 .logo-home{
   position: fixed;
-  top: 6px;
-  left: 24px;
-  z-index: 10;
+  top: 15px;
+  left: 38px;
+  z-index: 1000;
 }
 
 .menu{
@@ -10,14 +10,13 @@
   padding-top: 5px;
   position: fixed;
   visibility: visible;
-  top: 54px;
+  top: 65px;
   left: 20px;
   opacity: 1;
   transition: visibility 0s, z-index 0s, opacity .3s; 
-  z-index: 10;
-  background: rgba(120, 76, 197, .8);
+  z-index: 1000;
+  background: rgba(120, 76, 197, 1);
   border-radius: 5px;
-  box-shadow: 1px 1px 5px rgb(210, 210, 210);
 }
 
 .menu ul {
@@ -29,7 +28,7 @@
 .menu ul li, .menu ul li a {
   width: 100%;
   text-align: center;
-  font-size: .8em;
+  font-size: 1em;
   margin: 5px 0;
 }
 
