@@ -15,17 +15,19 @@
     <p class="text-center"><%= @inventory.description %></p>
     <div class="row justify-content-around">
       <% @inventory.photos.each do |photo| %>
-      <div class="col-4">
-        <%=  cl_image_tag photo.key, height: 130, width: 130, crop: :fill %>      </div>
+      <div class="col-6">
+        <div>
+        <%=  cl_image_tag photo.key, height: 130, crop: :fill, class: "width-full" %>      </div>
+        </div>
       <% end %>
-      </div>
+     </div>
   </div>
 </div>
 
 
 <div class="w-100">
   <%= link_to 'Quero', inventory_buyer_orders_path(@inventory, authenticity_token: form_authenticity_token), method: :post, class:"btn general" %>
-  <%= link_to "Back", sellers_path, class:"btn general" %>
+  <%= link_to "Voltar", sellers_path, class:"btn general" %>
 </div>
 
 
