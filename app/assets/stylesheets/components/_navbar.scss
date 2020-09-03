@@ -1,7 +1,7 @@
 .logo-home{
   position: fixed;
-  top: 10px;
-  right: 26px;
+  top: 6px;
+  left: 26px;
   z-index: 10;
 }
 
@@ -10,13 +10,14 @@
   padding-top: 5px;
   position: fixed;
   visibility: visible;
-  top: 60px;
-  right: 20px;
+  top: 54px;
+  left: 20px;
   opacity: 1;
   transition: visibility 0s, z-index 0s, opacity .3s; 
   z-index: 10;
   background: rgba(120, 76, 197, .8);
   border-radius: 5px;
+  box-shadow: 1px 1px 5px rgb(210, 210, 210);
 }
 
 .menu ul {
