@@ -5,3 +5,11 @@
   cursor: pointer;
   padding: 0;
   }
+
+  #map {
+    z-index: 50;
+  }
+  
+  span.mapboxgl-ctrl-icon {
+    right: 30% !important;
+  }

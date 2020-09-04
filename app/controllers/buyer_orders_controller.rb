@@ -5,17 +5,17 @@ class BuyerOrdersController < ApplicationController
   def show
     @order = Order.last
     authorize @order, policy_class: BuyerOrdersPolicy
-    # seller = User.where(selling_inventory: {orders: Order.last })
-    # [@order.inventory.selling_user]    
-    # @markers = seller.geocoded.map do |seller|
-    #   {
-    #     lat: seller.lat,
-    #     lng: seller.long,
-    #     iconSize: [45, 45],
-    #     url: seller_url(seller.id),
-    #     image: seller.photo.attached? ? cl_image_path(seller.photo&.key) : helpers.asset_url('Logo_pointer.png')
-    #   }
-    # end
+    seller = User.where(id: Order.last.inventory.selling_user)
+    [@order.inventory.selling_user]    
+    @markers = seller.geocoded.map do |seller|
+      {
+        lat: seller.lat,
+        lng: seller.long,
+        iconSize: [45, 45],
+        url: seller_url(seller.id),
+        image: seller.photo.attached? ? cl_image_path(seller.photo&.key) : helpers.asset_url('Logo_pointer.png')
+      }
+    end
   end
 
   def create

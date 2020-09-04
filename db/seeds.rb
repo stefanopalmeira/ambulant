@@ -59,17 +59,17 @@ u9 = User.new(email: 'marcos@buyer.com', password: '123123', name: 'Marcos P Pal
 u10 = User.new(email: 'renata@buyer.com', password: '123123', name: 'Renata E Queiroz',
                   bio: 'Chegando agora para conhecer o Ambulant, e por enquanto estou adorando!')
 
-u1.address = 'Rua Cayowaá, 560 - Perdizes, São Paulo - SP'
+u1.address = 'Rua Cotoxó, 580 - Perdizes, São Paulo - SP'
 u1.save
 u2.address = 'Rua Ministro Gastão Mesquita, 728 - Pompeia, São Paulo - SP'
 u2.save
-u3.address = 'Rua Iperoig, 486 - Perdizes, São Paulo - SP'
+u3.address = 'Rua Cajaíba, 959 - Pompeia, São Paulo - SP'
 u3.save
 u4.address = 'Rua Campevas, 489 - Perdizes, São Paulo - SP'
 u4.save
 u5.address = 'Rua Raul Pompéia, 330 - Pompeia - São Paulo - SP'
 u5.save
-u6.address = 'Rua Cotoxó, 472 - Perdizes, São Paulo - SP'
+u6.address = 'Rua Coriolano, 215 - Vila Romana, São Paulo - SP'
 u6.save
 u7.address = 'Rua Aimberê, 507 - Perdizes, São Paulo - SP'
 u7.save
