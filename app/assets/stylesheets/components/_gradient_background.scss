@@ -1,3 +1,5 @@
 .gradient-background{
-  background-color: linear-gradient($orange, $lightgray, $purple);
+  background-image: linear-gradient($purple, $light-gray, $light-gray);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
