@@ -5,8 +5,7 @@ class BuyerOrdersController < ApplicationController
   def show
     @order = Order.last
     authorize @order, policy_class: BuyerOrdersPolicy
-    seller = User.where(id: Order.last.inventory.selling_user)
-    [@order.inventory.selling_user]    
+    seller = User.where(id: Order.last.inventory.selling_user) 
     @markers = seller.geocoded.map do |seller|
       {
         lat: seller.lat,
