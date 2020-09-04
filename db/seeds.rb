@@ -141,7 +141,7 @@ Product.create!(name: "Espetinho de frango", price: 5.00, inventory: i4)
 
 i7 = Inventory.new(name: 'Sanduíche natural',
 description: 'Sanduíches naturais, fresquinhos e saudáveis.')
-i7.selling_user = u1
+i7.selling_user = u5
 sanduiche.each_with_index do |sanduiche_url, index|
   file = URI.open(sanduiche_url)
   i7.photos.attach(io: file, filename: "sanduiche#{index}.jpg", content_type: 'image/jpg')
