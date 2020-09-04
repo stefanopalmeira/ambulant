@@ -1,11 +1,20 @@
-<div>
-    <p><%= @order.accepted %></p> 
+ <%= render 'shared/navbar' %>
+  <div class="container">
     <% if @order.accepted == 1 %>
-    <div>Aguarde</div>
+    <div class="card-pedido aguarde">
+      <h4 class="text-center">Aguarde</h4>
+    </div>
     <% elsif @order.accepted == 2 %>
-    <div>Pedido aceito =)</div>
+    <div class="card-pedido aceito">
+      <h4 class="text-center">Pedido aceito =)</h4>
+    </div>
     <% else %>
-    <div>Pedido negado =(</div>
+    <div class="card-pedido negado">
+      <h4 class="text-center">Pedido aceito =)</h4>
+    </div>
     <% end %>
+  </div>
+
+<div class="container buttons mt-3">
+  <%= link_to "Deu certo?", new_buyer_order_review_path(@order), class:'btn general' %>
 </div>
-<%= link_to "Deu certo?", new_buyer_order_review_path(@order) %>

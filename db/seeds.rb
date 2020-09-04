@@ -38,39 +38,49 @@ churrasco = [churras1, churras2, churras3]
 sanduiche = [sand1, sand2]
 
 
-u1 = User.create!(email: 'jose@ambulant.com', password: '123123', name: 'Jose da Silva',
-                  bio: 'Adoro servir meus clientes e trazer meus produtos com a melhor qualidade até eles.',
-                  lat: -19.922681, long:-43.941139, seller: true, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
-u2 = User.create!(email: 'maria@ambulant.com', password: '123123', name: 'Maria Oliveira',
-                  bio: 'Estou sempre disponível pra atender os pedidos dos clientes com rapidez e bom atendimento.',
-                  lat: -19.925263, long:-43.941139, seller: true, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
-u3 = User.create!(email: 'antonio@ambulant.com', password: '123123', name: 'Antonio Pereira',
-                  bio: 'Eu e minha esposa temos muito gosto em ir por todos os bairros e distribuir bons produtos e alegria.',
-                  lat: -19.924214, long:-43.937360, seller: true, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
-u4 = User.create!(email: 'joao@ambulant.com', password: '123123', name: 'João dos Santos',
-                  bio: 'Sempre trabalhei com vendas, de casa em casa, e estou pronto para servir ainda mais, agora, com o Ambulant.',
-                  lat: -19.927523, long:-43.943458, seller: true, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
-u5 = User.create!(email: 'ana@ambulant.com', password: '123123', name: 'Ana Maria',
-                  bio: 'Meus produtos são todos produzidos e vendidos com muito carinho',
-                  lat: -19.918243, long:-43.939936, seller: true, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
-u6 = User.create!(email: 'ricardo@ambulant.com', password: '123123', name: 'Ricardo Marinho',
-                  bio: 'Adoro servir meus clientes e trazer meus produtos com a melhor qualidade até eles.',
-                  lat: -19.916710, long:-43.935814, seller: true, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
-u7 = User.create!(email: 'bruna@ambulant.com', password: '123123', name: 'Bruna Carvalho',
-                  bio: 'Estou sempre disponível pra atender os pedidos dos clientes com rapidez e bom atendimento.',
-                  lat: -19.919695, long:-43.941053, address: 'Rua dos Tamôios, 500 - Centro, Belo Horizonte - MG, 30120-050')
-u8 = User.create!(email: 'elena@ambulant.com', password: '123123', name: 'Elena Carneiro',
-                  bio: 'Tenho muito gosto em ir por todos os bairros e distribuir bons produtos e alegria.',
-                  lat: -19.927119, long:-43.945004, address: 'R. Santa Catarina, 859 - Centro, Belo Horizonte - MG, 30170-080')
-u9 = User.create!(email: 'marcos@ambulant.com', password: '123123', name: 'Marcos Palmeira',
-                  bio: 'Sempre trabalhei com vendas, de casa em casa, e estou pronto para servir ainda mais, agora, com o Ambulant.',
-                  lat: -19.923690, long:-43.918378, address:'R. Niquelina, 93 - Santa Efigênia, Belo Horizonte - MG, 30260-100')
-u10 = User.create!(email: 'renata@ambulant.com', password: '123123', name: 'Renata Queiroz',
-                  bio: 'Meus produtos são todos produzidos e vendidos com muito carinho',
-                  lat: -19.904443, long:-43.958945, address: 'Rua Frei Orlando, 291 - Alto Caiçaras, Belo Horizonte - MG, 31230-120')
+u1 = User.new(email: 'jose@seller.com', password: '123123', name: 'Jose Silva',
+              seller: true, bio: 'Adoro servir meus clientes e trazer meus produtos com a melhor qualidade até eles.')
+u2 = User.new(email: 'maria@seller.com', password: '123123', name: 'Maria de Oliveira',
+              seller: true, bio: 'Estou sempre disponível pra atender os pedidos dos clientes com rapidez e bom atendimento.')
+u3 = User.new(email: 'antonio@seller.com', password: '123123', name: 'Antonio M Pereira',
+              seller: true, bio: 'Eu e minha esposa temos muito gosto em ir por todos os bairros e distribuir bons produtos e alegria.')
+u4 = User.new(email: 'joao@seller.com', password: '123123', name: 'João Santos',
+              seller: true, bio: 'Sempre trabalhei com vendas, de casa em casa, e estou pronto para servir ainda mais, agora, com o Ambulant.')
+u5 = User.new(email: 'ana@seller.com', password: '123123', name: 'Ana Maria Santos',
+              seller: true, bio: 'Meus produtos são todos produzidos e vendidos com muito carinho')
+u6 = User.new(email: 'ricardo@seller.com', password: '123123', name: 'Ricardo R Marinho',
+              seller: true, bio: 'Adoro servir meus clientes e trazer meus produtos com a melhor qualidade até eles.')
+u7 = User.new(email: 'bruna@buyer.com', password: '123123', name: 'Bruna de Carvalho', 
+                  bio: 'Chegando agora para conhecer o Ambulant, e por enquanto estou adorando!')                  
+u8 = User.new(email: 'elena@buyer.com', password: '123123', name: 'Elena T Carneiro',
+                  bio: 'Chegando agora para conhecer o Ambulant, e por enquanto estou adorando!')
+u9 = User.new(email: 'marcos@buyer.com', password: '123123', name: 'Marcos P Palmeira',
+                  bio: 'Chegando agora para conhecer o Ambulant, e por enquanto estou adorando!')
+u10 = User.new(email: 'renata@buyer.com', password: '123123', name: 'Renata E Queiroz',
+                  bio: 'Chegando agora para conhecer o Ambulant, e por enquanto estou adorando!')
 
-i1 = Inventory.new(name: 'Ovos',
-               description: 'Ovos frescos de granja.')
+u1.address = 'Rua Cayowaá, 560 - Perdizes, São Paulo - SP'
+u1.save
+u2.address = 'Rua Ministro Gastão Mesquita, 728 - Pompeia, São Paulo - SP'
+u2.save
+u3.address = 'Rua Iperoig, 486 - Perdizes, São Paulo - SP'
+u3.save
+u4.address = 'Rua Campevas, 489 - Perdizes, São Paulo - SP'
+u4.save
+u5.address = 'Rua Raul Pompéia, 330 - Pompeia - São Paulo - SP'
+u5.save
+u6.address = 'Rua Cotoxó, 472 - Perdizes, São Paulo - SP'
+u6.save
+u7.address = 'Rua Aimberê, 507 - Perdizes, São Paulo - SP'
+u7.save
+u8.address = 'Rua Aimberê, 507 - Perdizes, São Paulo - SP'
+u8.save
+u9.address = 'Rua Aimberê, 507 - Perdizes, São Paulo - SP'
+u9.save
+u10.address = 'Rua Aimberê, 507 - Perdizes, São Paulo - SP'
+u10.save
+
+i1 = Inventory.new(name: 'Ovos', description: 'Ovos frescos de granja.')
 i1.selling_user = u1
 ovos.each_with_index do |ovo_url, index|
   file = URI.open(ovo_url)
