@@ -12,7 +12,9 @@
     <h4 class="text-center"><%= product.name %> - R$<%= product.price %>
     <% if current_user.seller %>
     - <%= link_to "editar", edit_product_path(product.id) %>
-    <%= link_to "apagar", product_path(product), method: :delete %>
+     <%= link_to product_path(product), method: :delete do%>
+      <i class="far fa-trash-alt"></i>
+    <% end %>
     <% end %></h4>
     <% end %>
     <% if current_user.seller %>

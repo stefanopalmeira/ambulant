@@ -2,7 +2,10 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:edit, :update, :destroy]
 
   def new
+    @user = @current_user
+    @inventory = @user.selling_inventory
     @product = Product.new
+    @product.inventory = @inventory
     authorize @product
   end
 
@@ -18,10 +21,13 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @user = @product.inventory.selling_user
+    @inventory = @user.selling_inventory
     authorize @product
   end
 
   def update
+    @user = @product.inventory.selling_user
     authorize @product
     if @product.update(product_params)
       redirect_to seller_path(current_user)
@@ -31,6 +37,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    @user = @product.inventory.selling_user
     authorize @product
     @product.destroy
     redirect_to seller_path(current_user), notice: 'Produto apagado.'
@@ -40,7 +47,6 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
-    @user = @product.inventory.selling_user
   end
 
   def product_params

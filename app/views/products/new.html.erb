@@ -1,11 +1,67 @@
 <%= render 'shared/navbar' %>
-<header>
-  <%= image_tag 'Logo_ambulant-removebg-preview.png', class: 'image-login' %>
-</header>
-<div class="container card-new-review aguarde mb-3">
+<div class='container pt-1'>
+
+
+<div class="profile-card mt-1">
+  <div class="">
+    <%= image_tag 'https://thispersondoesnotexist.com/image', class: 'avatar-large' %>
+    <h2 class="text-center mb-2 mt-2"><%= @user.name %></h2>
+     <p class="text-center mb-0"><%= @user.bio %></p>
+     <div>
+     <h3 class="text-center mb-2 mt-2">Eu vendo</h3>
+      <% @inventory.products.each do |product| %>
+    <h4 class="text-center"><%= product.name %> - R$<%= product.price %>
+    <% if current_user.seller %>
+    - <%= link_to "editar", edit_product_path(product.id) %>
+     <%= link_to product_path(product), method: :delete do%>
+      <i class="far fa-trash-alt"></i>
+    <% end %>
+    <% end %></h4>
+    <% end %>
+    </div>
+    <div class="card-new-review mb-3">
   <%= simple_form_for(@product) do |f| %>
   <%= f.input :name, label: 'Produto', required: true %>
   <%= f.input :price, label: "Preço", required: true %>
   <%= f.button :submit, "Cadastrar", class: 'btn general form-button mt-3' %>
   <% end %>
+  <%= link_to "Voltar", seller_path(current_user), class: "btn general" %>
+</div>
+</div>
+</div>
+<% unless current_user.seller %>
+  <div class="mt-3">
+  <%= link_to 'Quero comprar!', inventory_buyer_orders_path(@inventory, authenticity_token: form_authenticity_token), method: :post, class:"btn general quero" %>
+  </div>
+<% else %>
+  <div class="mt-3">
+  <%= link_to 'Editar perfil', edit_seller_path(current_user), class:"btn general" %>
+  </div>
+<% end %>
+
+<div class="profile-card inventory mt-3">
+  <div class="w-100">
+    <h3 class="text-center"><%= @inventory.name %></h3>
+    <p class="text-center mb-0"><%= @inventory.description %></p>
+    <div class="row justify-content-around">
+      <% @inventory.photos.each do |photo| %>
+      <div class="col-12">
+        <div>
+        <%=  cl_image_tag photo.key, crop: :fill, class: "grid-left width-height-full mt-2" %>      </div>
+        </div>
+      <% end %>
+     </div>
+  </div>
+</div>
+
+
+<div class="mt-4 mb-5 pb-3">
+  <%= link_to "Voltar", sellers_path, class:"btn general" %>
+</div>
+
+
+
+
+</div>
+
 </div>
