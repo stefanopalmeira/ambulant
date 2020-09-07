@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_02_143540) do
+ActiveRecord::Schema.define(version: 2020_09_07_153529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 2020_09_02_143540) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "chats", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "sender_id"
+    t.bigint "recipient_id"
+    t.index ["recipient_id"], name: "index_chats_on_recipient_id"
+    t.index ["sender_id"], name: "index_chats_on_sender_id"
+  end
+
   create_table "inventories", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -43,6 +52,14 @@ ActiveRecord::Schema.define(version: 2020_09_02_143540) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_inventories_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "chat_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chat_id"], name: "index_messages_on_chat_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -93,7 +110,10 @@ ActiveRecord::Schema.define(version: 2020_09_02_143540) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chats", "users", column: "recipient_id"
+  add_foreign_key "chats", "users", column: "sender_id"
   add_foreign_key "inventories", "users"
+  add_foreign_key "messages", "chats"
   add_foreign_key "orders", "inventories"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "inventories"

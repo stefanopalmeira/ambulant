@@ -1,0 +1,11 @@
+<div class="message-container" id="message-<%= message.id %>"> 
+  <i class="author">
+    <% if current_user.seller %>
+      <%= message.chat.recipient.name %>
+    <% else %>
+      <%= message.chat.sender.name %>
+    <% end %>
+  </i>
+  <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+  <p><%= message.content %></p>
+</div>

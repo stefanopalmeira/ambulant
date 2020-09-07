@@ -15,6 +15,8 @@
     <% end %>
   </div>
 
+  <%= link_to "Chat", buyer_order_chats_path(@order.first), method: :post %>
+
 <div id="map"
      style="width: 85%; margin: 25px auto; height: 30vh;"
      data-markers="<%= @markers.to_json %>"
