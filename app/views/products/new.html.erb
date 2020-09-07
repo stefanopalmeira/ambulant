@@ -1,0 +1,11 @@
+<%= render 'shared/navbar' %>
+<header>
+  <%= image_tag 'Logo_ambulant-removebg-preview.png', class: 'image-login' %>
+</header>
+<div class="container card-new-review aguarde mb-3">
+  <%= simple_form_for(@product) do |f| %>
+  <%= f.input :name, label: 'Produto', required: true %>
+  <%= f.input :price, label: "Preço", required: true %>
+  <%= f.button :submit, "Cadastrar", class: 'btn general form-button mt-3' %>
+  <% end %>
+</div>
