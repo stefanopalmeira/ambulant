@@ -1,0 +1,16 @@
+<h1> Chatroom </h1>
+<div id="messages" data-chat-id="<%= @chat.id %>">
+  <% @chat.messages.each do |message| %>
+    <div class="message-container" id="message-<%= message.id %>">
+      <i class="author">
+        <span></span>
+        <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+      </i>
+      <p><%= message.content %></p>
+    </div>
+  <% end %>
+</div>
+<%= simple_form_for [ @chat, @message ], remote: true do |f| %>
+  <%= f.input :content, label: false, placeholder: "Digite sua mensagem" %>
+  <%= f.button :submit %>
+<% end %>

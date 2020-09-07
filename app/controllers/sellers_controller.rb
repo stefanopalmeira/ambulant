@@ -3,7 +3,7 @@ class SellersController < ApplicationController
   before_action :check_buyer, only: :index
 
   def index
-    @sellers = User.where(seller: true)
+    @sellers = User.near(current_user.address, 10).where(seller: true)    
     @markers = @sellers.geocoded.map do |seller|
       {
         lat: seller.lat,
@@ -13,10 +13,15 @@ class SellersController < ApplicationController
         image: seller.photo.attached? ? cl_image_path(seller.photo&.key) : helpers.asset_url('Logo_pointer.png')
       }
     end
+ 
   end
 
   def show
     @inventory = @user.selling_inventory
+    respond_to do |format|
+      format.html
+      format.json { render json: { lat: @user.lat, lng: @user.long } }
+    end
   end
 
   def edit
