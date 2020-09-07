@@ -9,13 +9,15 @@
      <p class="text-center mb-0"><%= @user.bio %></p>
      <h3 class="text-center mb-2 mt-2">Eu vendo</h3>
       <% @inventory.products.each do |product| %>
-    <h4 class="text-center"><%= product.name %> - R$<%= product.price %> -
+    <h4 class="text-center"><%= product.name %> - R$<%= product.price %>
     <% if current_user.seller %>
-    <%= link_to "editar", edit_product_path(product.id) %>
+    - <%= link_to "editar", edit_product_path(product.id) %>
     <%= link_to "apagar", product_path(product), method: :delete %>
     <% end %></h4>
     <% end %>
+    <% if current_user.seller %>
     <%= link_to "Novo produto", new_product_path, class: "btn general" %>
+    <% end %>
   </div>
 </div>
 
