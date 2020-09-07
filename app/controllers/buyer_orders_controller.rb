@@ -3,9 +3,9 @@ class BuyerOrdersController < ApplicationController
   before_action :check_seller
 
   def show
-    @order = Order.last
-    authorize @order, policy_class: BuyerOrdersPolicy
-    seller = User.where(id: Order.last.inventory.selling_user) 
+    @order = Order.where(user_id: current_user).order(created_at: :desc).limit(1)
+    authorize @order.first, policy_class: BuyerOrdersPolicy
+    seller = User.includes(selling_inventory: :orders).where(id: Order.last.inventory.selling_user, orders: {user: current_user}) 
     @markers = seller.geocoded.map do |seller|
       {
         lat: seller.lat,

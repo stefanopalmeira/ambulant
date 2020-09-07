@@ -1,10 +1,10 @@
  <%= render 'shared/navbar' %>
   <div class="container">
-    <% if @order.accepted == 1 %>
+    <% if @order.first.accepted == 1 %>
     <div class="card-pedido aguarde">
       <h4 class="text-center">Aguarde</h4>
     </div>
-    <% elsif @order.accepted == 2 %>
+    <% elsif @order.first.accepted == 2 %>
     <div class="card-pedido aceito">
       <h4 class="text-center">Pedido aceito =)</h4>
     </div>
