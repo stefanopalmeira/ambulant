@@ -23,12 +23,14 @@ class InventoriesController < ApplicationController
 
  def edit
   authorize @inventory
+  @user = @inventory.selling_user
  end
 
  def update
-  authorize @inventory 
+  authorize @inventory
+  @user = @inventory.selling_user
   if @inventory.update(inventory_params)
-    redirect_to inventory_path(@inventory)
+    redirect_to seller_path(@current_user)
   else
     render :edit
   end
@@ -45,10 +47,10 @@ class InventoriesController < ApplicationController
 
  def set_inventory
   @inventory = Inventory.find(params[:id])
- end 
+ end
 
  def inventory_params
-  params.require(:inventory).permit(:name, :description, :photos [])
+  params.require(:inventory).permit(:name, :description, :photos)
  end
 
 end
