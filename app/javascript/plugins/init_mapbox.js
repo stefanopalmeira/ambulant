@@ -9,8 +9,7 @@ const buildMap = () => {
     zoom: 3
   });
 };
-const addMarkersToMap = (map, markers) => {
-  console.log(markers)
+const addMarkersToMap = (map, markers) => {  
   markers.forEach((marker) => {
     const el = document.createElement('div');
     el.className = 'marker';
@@ -35,8 +34,7 @@ const addMarkersToMap = (map, markers) => {
         currMarker.setLngLat([
           data.lng, data.lat
         ]);
-        currMarker.addTo(map);
-        console.log(data)
+        currMarker.addTo(map);        
       });
       }
     } 
@@ -65,13 +63,19 @@ const initMapbox = () => {
         trackUserLocation: true
       })
     );
+    const buyerMap = document.querySelector('.buyers-map');
+    const sellerMap = document.querySelector('.sellers-map');
     navigator.geolocation.getCurrentPosition((position) => {
       const el = document.createElement('div');
       el.className = 'marker';
-      el.style.backgroundImage = 'url("https://www.clipartmax.com/png/small/140-1407097_raise-hand-raise-your-hand-icon.png")';
+      if (buyerMap) {
+        el.style.backgroundImage = 'url("https://res.cloudinary.com/dkljkjqlg/image/upload/v1599595773/Ambulant%20Icons/kombi_Ambulant_th384q.png")';
+      } else if (sellerMap) { 
+        el.style.backgroundImage = 'url("https://res.cloudinary.com/dkljkjqlg/image/upload/v1599595626/Ambulant%20Icons/raise_hand_aqognr.jpg")';
+      }
       el.style.backgroundSize = 'contain';
-      el.style.width = '30px';
-      el.style.height = '30px';
+      el.style.width = '40px';
+      el.style.height = '40px';
       new mapboxgl.Marker(el)
         .setLngLat([position.coords.longitude, position.coords.latitude])
         .addTo(map);
