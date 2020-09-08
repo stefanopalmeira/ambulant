@@ -66,7 +66,9 @@ const initMapbox = () => {
 
       map.flyTo({
         center: [position.coords.longitude, position.coords.latitude],
-        essential: true
+        essential: true,
+        zoom: 14,
+        duration: 0
       })
     });
   }

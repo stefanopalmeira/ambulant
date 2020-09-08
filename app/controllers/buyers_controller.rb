@@ -3,9 +3,15 @@ class BuyersController < ApplicationController
   before_action :check_seller, only: :index
 
   def index
-    all_users = User.all
-    @buyers = all_users.select do |user|
-      user.seller.blank?
+    @buyers = User.where(seller: false)
+    @markers = @buyers.geocoded.map do |buyer|
+      {
+        lat: buyer.lat,
+        lng: buyer.long,
+        iconSize: [45, 45],
+        url: buyers_url,
+        image: buyer.photo.attached? ? cl_image_path(buyer.photo&.key) : helpers.asset_url('buyer_icon2.jpg')
+      }
     end
   end
 
