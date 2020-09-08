@@ -1,7 +1,7 @@
- <%= render 'shared/navbar' %>
+ <%= render 'shared/new_navbar' %>
 <div>
   <% policy_scope(@orders).each do |order| %>
-    <p><%= order.accepted %></p> 
+    <p><%= order.accepted %></p>
     <% if order.accepted == 1 %>
     <div>Aguarde</div>
     <% elsif order.accepted == 2 %>

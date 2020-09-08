@@ -1,0 +1,70 @@
+<div class="navbar-dimensions">
+ <div class="row mt-2">
+
+    <% if user_signed_in? %>
+      <div class="col text-center">
+        <%= link_to root_path do%>
+          <i class="fas fa-map-marker-alt"></i>
+          <p>Home</p>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if user_signed_in? %>
+      <div class="col text-center">
+        <%= link_to root_path do%>
+          <i class="fas fa-comment-alt"></i>
+          <p>Mensagens</p>
+          <% end %>
+      </div>
+    <% end %>
+
+    <% if user_signed_in? %>
+      <% unless current_user.seller %>
+        <% if current_user.orders.last.completed.nil? %>
+          <div class="col text-center">
+            <%= link_to buyer_order_path(current_user.orders.last) do%>
+              <i class="fas fa-shopping-bag"></i>
+              <p>Pedido</p>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="col text-center">
+          <%= link_to seller_orders_path do %>
+            <i class="far fa-money-bill-alt"></i>
+            <p>Pedidos</p>
+          <% end %>
+        </div>
+      <% end %>
+
+    <% unless current_user.seller %>
+      <% if current_user.orders.last.completed.nil? %>
+        <div class="col text-center">
+          <%= link_to buyer_order_path(current_user.orders.last) do %>
+            <i class="far fa-address-card"></i>
+            <p>Perfil</p>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="col text-center">
+        <%= link_to seller_path(current_user) do %>
+          <i class="far fa-address-card"></i>
+          <p>Perfil</p>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="col text-center">
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <i class="fas fa-sign-out-alt"></i>
+        <p>Logout</p>
+      <% end %>
+    </div>
+
+    <% else %>
+      <%= link_to "Login", new_user_session_path %>
+    <% end %>
+  </div>
+</div>
