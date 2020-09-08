@@ -6,9 +6,9 @@ class UpdateSellersController < ApplicationController
       @seller.long = params[:long]
     end
     if @seller.lat != params[:lat] 
-      @seller.lat != params[:lat]
+      @seller.lat = params[:lat]
     end
     @seller.save
-    puts 'deu certo' 
+    puts params
   end
 end

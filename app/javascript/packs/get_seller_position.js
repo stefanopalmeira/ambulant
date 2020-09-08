@@ -1,5 +1,6 @@
 function updateSellerLocation() {
-  
+  let teste = 0;
+
   const options = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -15,9 +16,9 @@ function updateSellerLocation() {
         'lat': pos.coords.latitude, 
         'long': pos.coords.longitude 
       };
+      teste += 0.001
+      const url = `update_sellers/${id}?lat=${params['lat'] + teste}&long=${params['long']}`;
       
-      const url = `update_sellers/${id}?lat=${params['lat']}&long=${params['long']}`;
-     
       fetch(url, {
         method: "PATCH", 
         headers: { "X-CSRF-Token": csrfToken }
