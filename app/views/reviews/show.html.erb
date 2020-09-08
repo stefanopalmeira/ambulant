@@ -1,4 +1,4 @@
- <%= render 'shared/navbar' %>
+ <%= render 'shared/new_navbar' %>
 <div class="container">
   <div class="card-review aguarde">
     <% if @review.rating >= 4 %>
@@ -7,8 +7,8 @@
       <h2 class="text-center my-3">Da próxima vez iremos melhorar, ok?</h2>
     <% else %>
       <h2 class="text-center my-3">Pedimos desculpas, e prometemos melhorar!</h2>
-    <% end %>    
-    <p></p>    
+    <% end %>
+    <p></p>
     <h4 class="text-center mb-2"><%= @review.description %></h4>
     <h4 class="text-center mb-2">
       <% @review.rating.times do %>
