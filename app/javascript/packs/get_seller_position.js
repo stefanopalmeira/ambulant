@@ -14,7 +14,7 @@ function updateSellerLocation() {
         'lat': pos.coords.latitude, 
         'long': pos.coords.longitude 
       };
-      const url = `update_sellers/${id}?lat=${params['lat'] + teste}&long=${params['long']}`;
+      const url = `update_sellers/${id}?lat=${params['lat']}&long=${params['long']}`;
       
       fetch(url, {
         method: "PATCH", 
@@ -32,7 +32,3 @@ function updateSellerLocation() {
 }
 
 export { updateSellerLocation };
-
-
-
-
