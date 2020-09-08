@@ -13,6 +13,8 @@ Review.destroy_all
 Product.destroy_all
 Order.destroy_all
 Inventory.destroy_all
+Message.destroy_all
+Chat.destroy_all
 User.destroy_all
 
 puts "Creating Users and Inventories..."
