@@ -1,14 +1,10 @@
 class UpdateSellersController < ApplicationController
   def update
     @seller = User.find(params[:id])
+    address = Geocoder.search([params[:lat].to_f, params[:long].to_f]).first.address
+    puts address
+    @seller.address = address
     authorize @seller, policy_class: UpdateSellersPolicy
-    if @seller.long != params[:long] 
-      @seller.long = params[:long]
-    end
-    if @seller.lat != params[:lat] 
-      @seller.lat = params[:lat]
-    end
     @seller.save
-    puts params
   end
 end

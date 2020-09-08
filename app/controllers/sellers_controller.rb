@@ -18,9 +18,9 @@ class SellersController < ApplicationController
 
   def show
     @inventory = @user.selling_inventory
-    respond_to do |format|
-      format.html
-      format.json { render json: { lat: @user.lat, lng: @user.long } }
+    respond_to do |format| 
+      format.html 
+      format.json { render json: { lat: @user.lat, lng: @user.long } } 
     end
   end
 

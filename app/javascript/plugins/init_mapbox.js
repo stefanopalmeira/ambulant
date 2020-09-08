@@ -10,6 +10,7 @@ const buildMap = () => {
   });
 };
 const addMarkersToMap = (map, markers) => {
+  console.log(markers)
   markers.forEach((marker) => {
     const el = document.createElement('div');
     el.className = 'marker';
@@ -25,8 +26,6 @@ const addMarkersToMap = (map, markers) => {
       .setLngLat([marker.lng, marker.lat])
       .addTo(map);
     function animateMarker() {
-      const csrfToken = document.head.querySelector("[name='csrf-token']").content;
-
       fetch(marker.url, { headers: { accept: 'application/json' } })
       .then(response => response.json())
       .then((data) => {
@@ -34,9 +33,10 @@ const addMarkersToMap = (map, markers) => {
           data.lng, data.lat
         ]);
         currMarker.addTo(map);
+        console.log(data)
       });
     } 
-    setInterval(animateMarker, 2000)
+    setInterval(animateMarker, 5000)
   });
 };
 
