@@ -19,13 +19,16 @@ const addMarkersToMap = (map, markers) => {
     el.style.backgroundRepeat = 'no-repeat';
     el.style.width = marker.iconSize[0] + 'px';
     el.style.height = marker.iconSize[1] + 'px';
-    el.addEventListener('click', function () {
-      window.location.href = marker.url;
-    });
+    if (marker.url) {
+      el.addEventListener('click', function () {
+        window.location.href = marker.url;
+      });
+    }
     let currMarker = new mapboxgl.Marker(el)
       .setLngLat([marker.lng, marker.lat])
       .addTo(map);
     function animateMarker() {
+      if (marker.url) {
       fetch(marker.url, { headers: { accept: 'application/json' } })
       .then(response => response.json())
       .then((data) => {
@@ -35,6 +38,7 @@ const addMarkersToMap = (map, markers) => {
         currMarker.addTo(map);
         console.log(data)
       });
+      }
     } 
     setInterval(animateMarker, 5000)
   });
