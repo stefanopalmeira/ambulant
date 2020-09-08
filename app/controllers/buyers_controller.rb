@@ -20,6 +20,7 @@ class BuyersController < ApplicationController
   end
 
   def update
+    puts user_params
     if @user.update(user_params)
       redirect_to buyer_path(@user), notice: 'Your profile was successfully updated.'
     else

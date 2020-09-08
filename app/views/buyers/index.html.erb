@@ -1,5 +1,5 @@
  <%= render 'shared/navbar' %>
-<div>
+<div id="seller-view" data-seller-id="<%= current_user.id %>">
   <% @buyers.each do |buyer| %>
   <%= buyer.address %>
   <p>

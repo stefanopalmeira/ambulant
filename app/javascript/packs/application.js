@@ -27,6 +27,7 @@ import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
 import { showMenu } from './dropdownmenu';
 import { initChatCable } from '../channels/chat_channel'
+import { updateSellerLocation } from './get_seller_position'
 // import { initAutocomplete } from '../plugins/init_autocomplete';
 
 // Internal imports, e.g:
@@ -38,6 +39,7 @@ document.addEventListener('turbolinks:load', () => {
   // initAutocomplete();
   showMenu();
   initChatCable();
+  updateSellerLocation();
   initMapbox();
 });
 
