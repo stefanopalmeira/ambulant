@@ -1,4 +1,4 @@
- <%= render 'shared/navbar' %>
+<%= render 'shared/navbar' %>
 <div class='container pt-1'>
 
 
@@ -7,19 +7,25 @@
     <%= image_tag 'https://thispersondoesnotexist.com/image', class: 'avatar-large' %>
     <h2 class="text-center mb-2 mt-2"><%= @user.name %></h2>
      <p class="text-center mb-0"><%= @user.bio %></p>
+      <div>
      <h3 class="text-center mb-2 mt-2">Eu vendo</h3>
       <% @inventory.products.each do |product| %>
+      <% if product.id != @product.id %>
     <h4 class="text-center"><%= product.name %> - R$<%= product.price %>
     <% if current_user.seller %>
     - <%= link_to "editar", edit_product_path(product.id) %>
-     <%= link_to product_path(product), method: :delete do%>
+    <%= link_to product_path(product), method: :delete do%>
       <i class="far fa-trash-alt"></i>
     <% end %>
     <% end %></h4>
     <% end %>
-    <% if current_user.seller %>
-    <%= link_to "Novo produto", new_product_path, class: "btn general" %>
     <% end %>
+    </div>
+      <%= simple_form_for(@product) do |f| %>
+<%= f.input :name %>
+<%= f.input :price %>
+ <%= f.button :submit, class: 'btn general' %>
+<% end %>
   </div>
 </div>
 

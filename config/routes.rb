@@ -20,6 +20,9 @@ Rails.application.routes.draw do
 
   resources :seller_chats, only: :index
 
+  resources :products, only: [:edit, :update, :create, :new, :destroy]
+
+
   resources :reviews, only: [:show]
 
   resources :seller_orders, only: [:index, :update]

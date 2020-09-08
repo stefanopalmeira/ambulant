@@ -1,4 +1,4 @@
- <%= render 'shared/navbar' %>
+<%= render 'shared/navbar' %>
 <div class='container pt-1'>
 
 
@@ -7,6 +7,7 @@
     <%= image_tag 'https://thispersondoesnotexist.com/image', class: 'avatar-large' %>
     <h2 class="text-center mb-2 mt-2"><%= @user.name %></h2>
      <p class="text-center mb-0"><%= @user.bio %></p>
+     <div>
      <h3 class="text-center mb-2 mt-2">Eu vendo</h3>
       <% @inventory.products.each do |product| %>
     <h4 class="text-center"><%= product.name %> - R$<%= product.price %>
@@ -17,19 +18,24 @@
     <% end %>
     <% end %></h4>
     <% end %>
-    <% if current_user.seller %>
-    <%= link_to "Novo produto", new_product_path, class: "btn general" %>
-    <% end %>
-  </div>
+    </div>
+    <div class="card-new-review mb-3">
+  <%= simple_form_for(@product) do |f| %>
+  <%= f.input :name, label: 'Produto', required: true %>
+  <%= f.input :price, label: "Preço", required: true %>
+  <%= f.button :submit, "Cadastrar", class: 'btn general form-button mt-3' %>
+  <% end %>
+  <%= link_to "Voltar", seller_path(current_user), class: "btn general" %>
 </div>
-
+</div>
+</div>
 <% unless current_user.seller %>
   <div class="mt-3">
   <%= link_to 'Quero comprar!', inventory_buyer_orders_path(@inventory, authenticity_token: form_authenticity_token), method: :post, class:"btn general quero" %>
   </div>
 <% else %>
   <div class="mt-3">
-  <%= link_to 'Editar perfil', edit_seller_path, class:"btn general" %>
+  <%= link_to 'Editar perfil', edit_seller_path(current_user), class:"btn general" %>
   </div>
 <% end %>
 
@@ -58,3 +64,4 @@
 
 </div>
 
+</div>
