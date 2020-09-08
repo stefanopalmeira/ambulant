@@ -23,7 +23,7 @@
             <%= link_to "Perfil", buyer_order_path(current_user.orders.last) %>
           <% end %>
         <% else %>
-          <%= link_to "Perfil", seller_orders_path %>
+          <%= link_to "Perfil", seller_path(current_user) %>
         <% end %>
       </li>
 
