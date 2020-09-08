@@ -13,6 +13,7 @@ class SellersController < ApplicationController
         image: seller.photo.attached? ? cl_image_path(seller.photo&.key) : helpers.asset_url('Logo_pointer.png')
       }
     end
+
   end
 
   def show

@@ -26,8 +26,11 @@ require("channels")
 import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
 import { showMenu } from './dropdownmenu';
-import { initChatCable } from '../channels/chat_channel'
+
 import { updateSellerLocation } from './get_seller_position'
+import { initChatCable } from '../channels/chat_channel';
+import { sendMessage } from '../channels/send_message';
+
 // import { initAutocomplete } from '../plugins/init_autocomplete';
 
 // Internal imports, e.g:
@@ -40,6 +43,6 @@ document.addEventListener('turbolinks:load', () => {
   showMenu();
   initChatCable();
   updateSellerLocation();
-  initMapbox();
+  sendMessage();
+  initMapbox();  
 });
-

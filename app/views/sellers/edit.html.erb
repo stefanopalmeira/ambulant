@@ -1,0 +1,6 @@
+<%= simple_form_for(@user, url: seller_path(@current_user)) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :bio %>
+  <%= f.input :photo %>
+  <%= f.button :submit, class: 'btn general' %>
+  <% end %>

@@ -14,15 +14,22 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
 
-  resources :chats, only: [:show] do
+  resources :chats, only: [:show, :destroy] do
     resources :messages, only: [:create]
   end
+
+  resources :seller_chats, only: :index
+
+  resources :products, only: [:edit, :update, :create, :new, :destroy]
+
 
   resources :reviews, only: [:show]
 
   resources :seller_orders, only: [:index, :update]
 
+
   resources :update_sellers, only: :update
+
 
 
   root to: 'pages#home'
