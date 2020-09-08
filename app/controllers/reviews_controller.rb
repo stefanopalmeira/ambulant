@@ -20,6 +20,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(set_params)
     @order = Order.find(params[:buyer_order_id])
     @review.order = @order
+    # chat = Chat.where(sender: @order.user)
     if params[:completed].to_i == 1
       @review.order.completed = true
     else
@@ -28,6 +29,7 @@ class ReviewsController < ApplicationController
     authorize @review
     if @review.save
       @order.save
+      # chat.destroy
       redirect_to review_path(@review)
     else
       render :new

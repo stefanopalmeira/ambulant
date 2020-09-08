@@ -18,6 +18,16 @@
         <% end %>
       </li>
       <li>
+        <% unless current_user.seller %>
+          <% if current_user.orders.last.completed.nil? %>
+            <%= link_to "Perfil", buyer_order_path(current_user.orders.last) %>
+          <% end %>
+        <% else %>
+          <%= link_to "Perfil", seller_orders_path %>
+        <% end %>
+      </li>
+
+      <li>
         <%= link_to "Logout", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>

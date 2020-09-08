@@ -26,6 +26,7 @@ const addMarkersToMap = (map, markers) => {
       .addTo(map);
     function animateMarker() {
       const csrfToken = document.head.querySelector("[name='csrf-token']").content;
+
       fetch(marker.url, { headers: { accept: 'application/json' } })
       .then(response => response.json())
       .then((data) => {
@@ -38,11 +39,13 @@ const addMarkersToMap = (map, markers) => {
     setInterval(animateMarker, 2000)
   });
 };
+
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
   markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
   map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
 };
+ 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
   if (mapElement) {
