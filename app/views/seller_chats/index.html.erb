@@ -1,0 +1,11 @@
+<div>
+  <% @chats.each do |chat| %>  
+    <%= link_to chat_path(chat) do %>
+    <h3> <%=chat.sender.name%> </h3>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="mt-4 mb-5 pb-3">
+  <%= link_to "Home", root_path, class:"btn general" %>
+</div>

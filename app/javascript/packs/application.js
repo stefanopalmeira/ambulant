@@ -30,6 +30,7 @@ import { showMenu } from './dropdownmenu';
 import { updateSellerLocation } from './get_seller_position'
 import { initChatCable } from '../channels/chat_channel';
 import { sendMessage } from '../channels/send_message';
+import { updateMessage } from './update_msg';
 
 // import { initAutocomplete } from '../plugins/init_autocomplete';
 
@@ -44,5 +45,6 @@ document.addEventListener('turbolinks:load', () => {
   initChatCable();
   updateSellerLocation();
   sendMessage();
+  updateMessage();
   initMapbox();  
 });

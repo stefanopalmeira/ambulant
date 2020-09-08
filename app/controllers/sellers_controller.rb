@@ -17,10 +17,12 @@ class SellersController < ApplicationController
   end
 
   def show
+    @messages = Message.includes(:chat).where(chats:{recipient: @user, 
+                created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day}).count
     @inventory = @user.selling_inventory
     respond_to do |format| 
       format.html 
-      format.json { render json: { lat: @user.lat, lng: @user.long } } 
+      format.json { render json: { lat: @user.lat, lng: @user.long, msg: @messages } } 
     end
   end
 
