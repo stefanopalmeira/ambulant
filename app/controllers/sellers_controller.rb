@@ -13,7 +13,6 @@ class SellersController < ApplicationController
         image: seller.photo.attached? ? cl_image_path(seller.photo&.key) : helpers.asset_url('Logo_pointer.png')
       }
     end
-
   end
 
   def show
@@ -24,6 +23,16 @@ class SellersController < ApplicationController
       format.html 
       format.json { render json: { lat: @user.lat, lng: @user.long, msg: @messages } } 
     end
+    # Review.last.order.inventory.selling_user
+    # @ratings = Review.joins(:order).where(selling_user:@inventory.selling_user)
+    @orders = @inventory.orders
+    @nota = 0
+    @reviewtimes = 0
+    @orders.each do |order|
+      @nota += order.review.rating unless order.review.nil?
+      @reviewtimes += 1 unless order.review.nil?
+    end
+    @rating = @nota/@reviewtimes
   end
 
   def edit
