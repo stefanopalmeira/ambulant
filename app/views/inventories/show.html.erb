@@ -3,7 +3,7 @@
 <% @inventory.products.each do |product| %>
   <table>
     <tr>
-      <th><%= product.name %></th> <th><%= product.price %></th>
+      <th><%= product.name %></th> <th><%= product.to_s.gsub(".", ",") + 0.to_s %></th>
     </tr>
   </table>
 <% end %>

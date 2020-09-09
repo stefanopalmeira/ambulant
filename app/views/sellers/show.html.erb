@@ -3,24 +3,24 @@
  <%= render 'seller_profile' %>
 
 <% unless current_user.seller %>
-  <div class="mt-3">
+  <div class="mt-1">
   <% if @inventory %>
     <%= link_to 'Quero comprar!', inventory_buyer_orders_path(@inventory, authenticity_token: form_authenticity_token), method: :post, class:"btn general quero" %>
   <% end %>
   </div>
 <% else %>
-  <div class="mt-3">
+  <div class="mt-1">
   <%= link_to 'Editar perfil', edit_seller_path, class:"btn general" %>
   </div>
 <% end %>
 
 <% if @inventory %>
-  <div class="profile-card inventory mt-3">
+  <div class="profile-card inventory mt-1">
     <div class="w-100">    
-      <h3 class="text-center"><%= @inventory.name %></h3>
-      <p class="text-center mb-0"><%= @inventory.description %></p>
+      <h2 class="mb-0"><%= @inventory.name %></h2>
+      <p><%= @inventory.description %></p>
       <% @inventory&.products&.each do |product| %>
-      <h4 class="text-center"><%= product.name %> - R$<%= product.price %>
+      <h4 ><%= product.name %> - R$<%= product.price.to_s.gsub(".", ",") + 0.to_s %>
       <% if current_user.seller %>
       - <%= link_to "editar", edit_product_path(product.id) %>
       <%= link_to product_path(product), method: :delete do%>
@@ -40,10 +40,10 @@
 </div>
 
 <% if current_user.seller %>
-<div class="mt-4 mb-1 pb-1">
+<div class="mt-1 mb-1 pb-1">
   <%= link_to "Editar inventário", edit_inventory_path, class:"btn general" %>
 </div>
 <% end %>
-<div class="mt-4 mb-5 pb-3">
+<div class="mt-1 mb-5 pb-3">
   <%= link_to "Voltar", sellers_path, class:"btn general" %>
 </div>
