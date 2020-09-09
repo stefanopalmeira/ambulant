@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_07_153529) do
+ActiveRecord::Schema.define(version: 2020_09_09_153741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,10 @@ ActiveRecord::Schema.define(version: 2020_09_07_153529) do
     t.bigint "chat_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "read", default: false
+    t.bigint "user_id", null: false
     t.index ["chat_id"], name: "index_messages_on_chat_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -101,7 +104,7 @@ ActiveRecord::Schema.define(version: 2020_09_07_153529) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.text "bio"
-    t.boolean "seller"
+    t.boolean "seller", default: false
     t.float "lat"
     t.float "long"
     t.string "address"
@@ -114,6 +117,7 @@ ActiveRecord::Schema.define(version: 2020_09_07_153529) do
   add_foreign_key "chats", "users", column: "sender_id"
   add_foreign_key "inventories", "users"
   add_foreign_key "messages", "chats"
+  add_foreign_key "messages", "users"
   add_foreign_key "orders", "inventories"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "inventories"

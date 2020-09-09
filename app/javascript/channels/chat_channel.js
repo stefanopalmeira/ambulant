@@ -10,6 +10,13 @@ const initChatCable = () => {
         input.value = "";
         input.focus();
         messagesContainer.insertAdjacentHTML('beforeend', data);
+        const message = document.querySelector('.message-container:last-child');
+        if (messagesContainer.dataset.userId != message.dataset.senderId ) {
+          // fetch para marcar msg como lida
+          const csrfToken = document.head.querySelector("[name='csrf-token']").content;
+          fetch(message.dataset.markPath, { method: "post", headers: { "X-CSRF-Token": csrfToken }});
+          console.log("mensagem de outro");          
+        }
       },
     });
   }
