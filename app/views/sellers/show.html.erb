@@ -1,25 +1,11 @@
  <%= render 'shared/new_navbar' %>
-<div class='container pt-5'>
 
-
-<div class="profile-card mt-1">
-  <div class="">
-    <%= image_tag 'https://thispersondoesnotexist.com/image', class: 'avatar-large' %>
-    <h2 class="text-center mb-2 mt-2"><%= @user.name %></h2>
-     <p class="text-center mb-0"><%= @user.bio %></p>
-     <h3 class="text-center mb-2 mt-2">Eu vendo</h3>
-      <% @inventory&.products&.each do |product| %>
-    <h4 class="text-center"><%= product.name %> - R$<%= product.price %>
-    <% if current_user.seller %>
-    - <%= link_to "editar", edit_product_path(product.id) %>
-     <%= link_to product_path(product), method: :delete do%>
-      <i class="far fa-trash-alt"></i>
-    <% end %>
-    <% end %></h4>
-    <% end %>
-    <% if current_user.seller %>
-    <%= link_to "Novo produto", new_product_path, class: "btn general" %>
-    <% end %>
+<div class="card-profile p-1 mt-5">
+  <%= image_tag 'https://thispersondoesnotexist.com/image', class: "avatar-bordered" %>
+    <div class="card-profile-infos">
+    <h2><%= @user.name %></h2>
+    <p><strong>Rating <%= "4,5" %></strong></p>
+    <p><%= @user.bio %></p>
   </div>
 </div>
 
@@ -40,14 +26,21 @@
     <div class="w-100">    
       <h3 class="text-center"><%= @inventory.name %></h3>
       <p class="text-center mb-0"><%= @inventory.description %></p>
-      <div class="row justify-content-around">
-        <% @inventory.photos.each do |photo| %>
-        <div class="col-12">
-          <div>
-          <%=  cl_image_tag photo.key, crop: :fill, class: "grid-left width-height-full mt-2" %>      </div>
-          </div>
-        <% end %>
-      </div>
+      <% @inventory&.products&.each do |product| %>
+      <h4 class="text-center"><%= product.name %> - R$<%= product.price %>
+      <% if current_user.seller %>
+      - <%= link_to "editar", edit_product_path(product.id) %>
+      <%= link_to product_path(product), method: :delete do%>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
+      <% end %></h4>
+      <% end %>
+      <% if current_user.seller %>
+      <%= link_to "Novo produto", new_product_path, class: "btn general" %>
+      <% end %>
+
+      <%= render 'carousel_show' %>
+
     </div>
   </div>
 <% end %>
@@ -60,9 +53,3 @@
 <div class="mt-4 mb-5 pb-3">
   <%= link_to "Voltar", sellers_path, class:"btn general" %>
 </div>
-
-
-
-
-</div>
-

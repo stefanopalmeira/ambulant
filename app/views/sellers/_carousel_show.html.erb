@@ -1,0 +1,20 @@
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="3000">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="d-block w-100">
+        <div class="inventory-pic"></div>
+      </div>
+    </div>
+    <% if @inventory.photos.attached? %>
+      <% @inventory.photos.each do |photo| %>
+        <div class="carousel-item">
+          <div class="d-block w-100">
+            <%=  cl_image_tag photo.key , class: 'inventory-pic2', crop: :fill %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <%= image_tag 'ambulant_logo.png', class: 'inventory-pic2' %>
+    <% end %>
+  </div>
+</div>
