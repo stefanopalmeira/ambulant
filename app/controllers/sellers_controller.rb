@@ -17,7 +17,7 @@ class SellersController < ApplicationController
   end
 
   def show
-    @messages = Message.includes(:chat).where(chats:{recipient: @user, 
+    @messages = Message.includes(:chat).where(read: false, chats:{recipient: @user, 
                 created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day}).count
     @inventory = @user.selling_inventory
     respond_to do |format| 

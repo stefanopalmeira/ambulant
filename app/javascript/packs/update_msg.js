@@ -12,17 +12,16 @@ const updateMessage = () => {
           checkMsg.innerHTML = `Mensagens: ${jsonResponse['msg']}`;
           }
           if (checkNoMsg) {            
-            if (jsonResponse['msg'] > 0) {              
-            checkNoMsg.innerHTML = `Mensagens: ${jsonResponse['msg']}`;
-            checkNoMsg.classList.add('btn-danger');
-            checkNoMsg.classList.remove('btn-secondary');
-            const msgLink = document.createElement('a');
+            if (jsonResponse['msg'] > 0) {  
+              if (checkNoMsg) { checkNoMsg.remove(); }
+              else { checkMsg.remove(); }
+              const msgLink = document.createElement('a');
+              msgLink.innerHTML = `Mensagens: ${jsonResponse['msg']}`;
               msgLink.setAttribute('href', checkButton.dataset.chatUrl)
               msgLink.classList.add('btn');
               msgLink.classList.add('btn-danger');
               msgLink.classList.add('btn-msg');
               checkButton.appendChild(msgLink);
-              checkNoMsg.remove();
             }
           }
         });
