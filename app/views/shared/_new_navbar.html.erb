@@ -12,7 +12,7 @@
 
     <% if user_signed_in? && current_user.seller %>
       <div class="col text-center">
-        <%= link_to sellers_chats_path do%>
+        <%= link_to seller_chats_path do%>
           <i class="fas fa-comment-alt"></i>
           <p>Mensagens</p>
           <% end %>
@@ -46,8 +46,8 @@
           <% end %>
         </div>
       <% end %>
-    
-        
+
+
 
     <div class="col text-center">
       <%= link_to destroy_user_session_path, method: :delete do %>
