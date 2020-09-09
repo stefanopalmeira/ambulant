@@ -24,7 +24,7 @@ const updateMessage = () => {
               checkButton.appendChild(msgLink);
               checkNoMsg.remove();
             }
-          }        
+          }
         });
     }, 10000)
   }
