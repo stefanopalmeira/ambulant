@@ -20,6 +20,7 @@ function updateSellerLocation() {
         method: "PATCH", 
         headers: { "X-CSRF-Token": csrfToken }
       });
+      console.log('chamei') 
     }
   }
 
