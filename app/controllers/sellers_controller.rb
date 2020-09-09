@@ -23,8 +23,6 @@ class SellersController < ApplicationController
       format.html 
       format.json { render json: { lat: @user.lat, lng: @user.long, msg: @messages } } 
     end
-    # Review.last.order.inventory.selling_user
-    # @ratings = Review.joins(:order).where(selling_user:@inventory.selling_user)
     @orders = @inventory.orders
     @nota = 0
     @reviewtimes = 0
@@ -32,7 +30,7 @@ class SellersController < ApplicationController
       @nota += order.review.rating unless order.review.nil?
       @reviewtimes += 1 unless order.review.nil?
     end
-    @rating = @nota/@reviewtimes
+    @rating = (@nota.fdiv(@reviewtimes)).round(1)
   end
 
   def edit
