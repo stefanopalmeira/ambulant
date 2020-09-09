@@ -14,6 +14,9 @@
     margin: 0;
   }
 }
+.no-padding{
+  padding: 0 !important;
+}
 
 .card-new-review {
   border-radius: 20px;
@@ -82,8 +85,8 @@
   background-color: rgba($light-gray, 1);
 }
 .order-color-2{
-  background-color: rgba($green, 0.1);
+  background-color: rgb(222,238,222);
 }
 .order-color-3{
-  background-color: rgba($red, 0.1);
+  background-color: rgb(241,220,221);
 }
