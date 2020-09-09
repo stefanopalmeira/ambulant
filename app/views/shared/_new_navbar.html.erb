@@ -10,9 +10,9 @@
       </div>
     <% end %>
 
-    <% if user_signed_in? %>
+    <% if user_signed_in? && current_user.seller %>
       <div class="col text-center">
-        <%= link_to root_path do%>
+        <%= link_to sellers_chats_path do%>
           <i class="fas fa-comment-alt"></i>
           <p>Mensagens</p>
           <% end %>
@@ -38,23 +38,16 @@
         </div>
       <% end %>
 
-    <% unless current_user.seller %>
-      <% if current_user.orders.last.completed.nil? %>
+      <% if current_user.seller %>
         <div class="col text-center">
-          <%= link_to buyer_order_path(current_user.orders.last) do %>
+          <%= link_to seller_path(current_user) do %>
             <i class="far fa-address-card"></i>
             <p>Perfil</p>
           <% end %>
         </div>
       <% end %>
-    <% else %>
-      <div class="col text-center">
-        <%= link_to seller_path(current_user) do %>
-          <i class="far fa-address-card"></i>
-          <p>Perfil</p>
-        <% end %>
-      </div>
-    <% end %>
+    
+        
 
     <div class="col text-center">
       <%= link_to destroy_user_session_path, method: :delete do %>
