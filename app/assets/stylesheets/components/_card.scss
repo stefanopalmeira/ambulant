@@ -88,15 +88,16 @@ flex-direction: row;
 
 .inventory-pic {
   background-size: cover;
+  object-fit: cover;
   background-position: right 0% bottom 68%;
   padding: 150px 0;
   background-image: linear-gradient(rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.6) 50%), asset-url('ambulant_logo.png');
 }
 
 .inventory-pic2 {
-  background-size: cover;
-  background-position: right 0% bottom 68%;
-  padding: 150px 0;
+  height: 80%;
+  width: 500px;
+  object-fit: cover;
   background-image: linear-gradient(rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.6) 50%);
 }
 

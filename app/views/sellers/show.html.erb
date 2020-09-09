@@ -38,12 +38,13 @@
       <% if current_user.seller %>
       <%= link_to "Novo produto", new_product_path, class: "btn general" %>
       <% end %>
-
-      <%= render 'carousel_show' %>
-
     </div>
   </div>
 <% end %>
+
+<div>
+  <%= render 'carousel_show' %>
+</div>
 
 <% if current_user.seller %>
 <div class="mt-4 mb-1 pb-1">
