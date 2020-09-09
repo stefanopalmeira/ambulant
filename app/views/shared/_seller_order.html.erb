@@ -1,8 +1,8 @@
 <%= simple_form_for(order, url: seller_order_path(order), html: { class: 'd-inline-block' }, remote: true) do |f| %>
     <%= hidden_field_tag 'accepted', 2 %>
-    <%= f.submit "Aceito", class: 'btn btn-success' %>
+    <%= f.submit "Aceitar", class: 'btn aceito' %>
   <% end %>
   <%= simple_form_for(order, url: seller_order_path(order), html: { class: 'd-inline-block' }, remote: true) do |f| %>
     <%= hidden_field_tag 'accepted', 3 %>
-    <%= f.submit "Negado", class: 'btn btn-danger' %>
+    <%= f.submit "Negar", class: 'btn negado' %>
   <% end %>

@@ -35,15 +35,15 @@
 }
 
 .aguarde {
-  background-color: #EF985B;
+  background-color: rgba($orange, 0.4);
 }
 
 .aceito {
-  background-color: $green;
+  background-color: rgba($green, 0.4);
 }
 
 .negado {
-  background-color: $red;
+  background-color: rgba($red, 0.4);
 }
 
 .card-pedido p {
@@ -62,4 +62,28 @@
   height: 50px;
   display: flex;
   justify-content: center;
+}
+
+.mt-orderlist{
+  margin-top: 70px;
+  width: 100%;
+  height: 100%;
+}
+
+.order-item{
+  margin-bottom: 10px;
+  background-color: $light-gray;
+  box-shadow: 0 0 1px $purple;
+  padding: 5px;
+  border-radius: 15px;
+}
+
+.order-color-1{
+  background-color: rgba($light-gray, 1);
+}
+.order-color-2{
+  background-color: rgba($green, 0.1);
+}
+.order-color-3{
+  background-color: rgba($red, 0.1);
 }

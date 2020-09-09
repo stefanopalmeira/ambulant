@@ -1,20 +1,45 @@
- <%= render 'shared/new_navbar' %>
-<div>
-  <% @orders.each_with_index do |order, index| %>
-    <p> Pedido n: <%= @orders.length - index %></p>
-    <p><%= order.user.name %></p>
-    <% if order.accepted == 1 %>
-      <p id="order-<%= order.id %>">Status: Aguardando Resposta</p>
-      <%= render 'shared/seller_order', order: order %>
-      <br><br>
-    <% elsif order.accepted == 2 %>
-      <p id="order-<%= order.id %>">Status: Pedido aceito =)</p>
-      <br>
-    <% else %>
-      <p id="order-<%= order.id %>">Status: Pedido negado =(</p>
-      <br>
-    <% end %>
-  <% end %>
-</div>
+<%= render 'shared/new_navbar' %>
+<% @orders.each_with_index do |order, index| %>
+  <div class="order-item order-color-<%= order.accepted %>">
 
+    <div class="row text-center">
+      <div class="col text-center">
+        <p> Pedido <%= @orders.length - index %></p>
+      </div>
+      <div class="col text-center">
+        <p><%= order.user.name %></p>
+      </div>
+    </div>
+
+    <% if order.accepted == 1 %>
+
+      <div class="row">
+        <div class="col text-center">
+          <p id="order-<%= order.id %>"><strong>Aguardando sua resposta:</strong></p>
+        </div>
+    </div>
+    <div class="row text-center">
+      <div class="col">
+        <%= render 'shared/seller_order', order: order %>
+      </div>
+    </div>
+
+    <% elsif order.accepted == 2 %>
+
+      <div class="row">
+        <div class="col text-center">
+          <p id="order-<%= order.id %>"><strong>Pedido aceito</strong></p>
+        </div>
+      </div>
+
+    <% else %>
+
+      <div class="row">
+        <div class="col text-center">
+          <p id="order-<%= order.id %>"><strong>Pedido negado</strong></p>
+      </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
 
