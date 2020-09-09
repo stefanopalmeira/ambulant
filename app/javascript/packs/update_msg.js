@@ -1,18 +1,18 @@
 const updateMessage = () => {
-  const checkButton = document.getElementById('button-seller-home');
-  const checkMsg = document.querySelector('.btn-msg');
-  const checkNoMsg = document.querySelector('.btn-no-msg')
+  const checkButton = document.getElementById('button-seller-home');  
   if (checkButton) {
     const sellerUrl = document.getElementById('seller-view').dataset.sellerUrl;
     setInterval(()=>{
       fetch(sellerUrl, { headers: { accept: 'application/json' } })
-        .then(response => response.json())
-        .then(jsonResponse => {
-          if (checkMsg) {            
+      .then(response => response.json())
+      .then(jsonResponse => {
+        const checkMsg = document.querySelector('.btn-msg');
+        const checkNoMsg = document.querySelector('.btn-no-msg')
+        if (checkMsg) {
           checkMsg.innerHTML = `Mensagens: ${jsonResponse['msg']}`;
-          }
-          if (checkNoMsg) {            
-            if (jsonResponse['msg'] > 0) {  
+        }
+        if (checkNoMsg) {            
+          if (jsonResponse['msg'] > 0) {              
               if (checkNoMsg) { checkNoMsg.remove(); }
               else { checkMsg.remove(); }
               const msgLink = document.createElement('a');

@@ -13,6 +13,12 @@ class MessagesController < ApplicationController
     end
   end
 
+  def mark_as_read
+    @message = Message.find(params[:message_id])
+    authorize @message
+    @message.update(read: true)
+  end
+
   private
 
   def set_params

@@ -4,7 +4,7 @@ class ChatsController < ApplicationController
     @chat = Chat.find(params[:id])
     authorize @chat
     other_person_messages = @chat.messages.where.not(user: current_user, read: true)
-    other_person_messages.each { |message| message.update(read:true) }
+    other_person_messages.each { |message| message.update(read: true) }
     @message = Message.new
   end
 
