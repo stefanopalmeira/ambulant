@@ -3,7 +3,7 @@
 <div id="seller-view" data-seller-url="<%= seller_path(current_user) %>" data-seller-id="<%= current_user.id %>">
 </div>
 
-<div id="button-seller-home" class='sellers-msg'>
+<div id="button-seller-home" class='sellers-msg' data-chat-url="<%= seller_chats_path %>">
   <% if @messages == 0 %>    
       <div class='btn btn-secondary btn-no-msg' > Sem mensagens </div>    
   <% else %>
@@ -15,7 +15,7 @@
 
 <div id="map"
      class="buyers-map" 
-     style="width: 100%; height: 100vh;"
+     style="width: 100vw; height: 100vh;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>

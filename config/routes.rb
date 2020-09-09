@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
 
+  resources :messages, only: [] do
+    post "mark_as_read", to: 'messages#mark_as_read'
+  end
+
   resources :seller_chats, only: :index
 
   resources :products, only: [:edit, :update, :create, :new, :destroy]
