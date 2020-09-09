@@ -23,6 +23,14 @@ class SellersController < ApplicationController
       format.html 
       format.json { render json: { lat: @user.lat, lng: @user.long, msg: @messages } } 
     end
+    @orders = @inventory.orders
+    @nota = 0
+    @reviewtimes = 0
+    @orders.each do |order|
+      @nota += order.review.rating unless order.review.nil?
+      @reviewtimes += 1 unless order.review.nil?
+    end
+    @rating = (@nota.fdiv(@reviewtimes)).round(1)
   end
 
   def edit

@@ -4,19 +4,25 @@
   flex-direction: column;
   align-items: center;
   box-shadow: 1px 1px 5px rgba($purple, 0.8);
-  padding: 30px;
+  padding: 10px;
   width: 100%;
   background-color: rgba($light-gray, 0.8);
-  border-radius: 20px;
   color: $purple;
-  width: 200;
   margin: 0 auto;
   h2{
-    font-size: 40px;
+    font-size: 22px;
     font-weight: bold
   }
   h3{
+    font-size: 18px;
     font-weight: bold
+  }
+  h4{
+    font-size: 15px;
+    font-weight: bold
+  }
+  p{
+    font-size: 13px;
   }
 }
 
@@ -56,10 +62,54 @@
 flex-direction: row;
 }
 
+.card-profile {
+  overflow: hidden;
+  height: 120px;
+  background:$light-gray;
+  box-shadow: 1px 1px 5px inset rgba(#ebe6e6, 0.8);
+  display: flex;
+  align-items: center;
+}
+.card-profile img {
+  height: 70%;
+  width: 75px;
+  object-fit: cover;
+  opacity: 0.8;
+}
 
+.card-profile p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+.card-profile .card-profile-infos {
+  padding: 16px;
+  h1 {
+    font-size: 25px;
+    font-weight: bold;
+  }
+}
 
+.inventory-pic {
+  background-size: cover;
+  object-fit: cover;
+  background-position: right 0% bottom 68%;
+  padding: 150px 0;
+  background-image: linear-gradient(rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.6) 50%), asset-url('ambulant_logo.png');
+}
 
+.inventory-pic2 {
+  height: 80%;
+  width: 500px;
+  object-fit: cover;
+  background-image: linear-gradient(rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.6) 50%);
+}
 
+.carousel-height {
+  height: 200px;
+}
 
 
 

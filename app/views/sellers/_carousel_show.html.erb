@@ -1,0 +1,30 @@
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner carousel-height">
+    <div class="carousel-item active">
+      <div class="d-block w-100">
+        <%# <div class="inventory-pic"></div> %>
+        <% photo = @inventory.photos.last%>
+        <%= cl_image_tag photo.key, class: 'inventory-pic2', :width=>250, :height=>150, :gravity=>"center", :crop=>"fill" %>
+      </div>
+    </div>
+    <% if @inventory.photos.attached? %>
+      <% @inventory.photos.each do |photo| %>
+        <div class="carousel-item">
+          <div class="d-block w-100">
+            <%=  cl_image_tag photo.key , class: 'inventory-pic2', :width=>250, :height=>150, :gravity=>"center", :crop=>"fill" %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <%= image_tag 'ambulant_logo.png', class: 'inventory-pic2' %>
+    <% end %>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>

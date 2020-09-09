@@ -1,0 +1,9 @@
+<div class="card-profile p-1 mt-5">
+  <%= image_tag 'https://thispersondoesnotexist.com/image', class: "avatar-bordered" %>
+    <div class="card-profile-infos">
+    <h1><%= @user.name %></h1>
+    <p><strong>Rating <%= @rating %></strong> de <%= @reviewtimes %> avaliações </p>
+    <p><strong>Pedidos <%= @orders.count%></strong></p>
+    <p><%= @user.bio %></p>
+  </div>
+</div>

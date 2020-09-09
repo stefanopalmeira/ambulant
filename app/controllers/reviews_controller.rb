@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :destroy]
 
   def index
-    @reviews = policy_scope(Review)
+    @reviews = policy_scope(Review)    
   end
 
   def show
