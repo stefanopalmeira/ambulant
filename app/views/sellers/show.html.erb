@@ -1,5 +1,5 @@
  <%= render 'shared/new_navbar' %>
-<div class='container pt-5'>
+<div class='container'>
 
 
 <div class="profile-card mt-1">
@@ -37,7 +37,7 @@
 
 <% if @inventory %>
   <div class="profile-card inventory mt-3">
-    <div class="w-100">    
+    <div class="w-100">
       <h3 class="text-center"><%= @inventory.name %></h3>
       <p class="text-center mb-0"><%= @inventory.description %></p>
       <div class="row justify-content-around">
