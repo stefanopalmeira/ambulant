@@ -71,7 +71,7 @@ const initMapbox = () => {
       if (buyerMap) {
         el.style.backgroundImage = 'url("https://res.cloudinary.com/dkljkjqlg/image/upload/v1599595773/Ambulant%20Icons/kombi_Ambulant_th384q.png")';
       } else if (sellerMap) { 
-        el.style.backgroundImage = 'url("https://res.cloudinary.com/dkljkjqlg/image/upload/v1599595626/Ambulant%20Icons/raise_hand_aqognr.jpg")';
+        el.style.backgroundImage = 'url("https://res.cloudinary.com/dkljkjqlg/image/upload/v1599658217/Ambulant%20Icons/purple_raise_hand_rhfvbr.jpg")';
       }
       el.style.backgroundSize = 'contain';
       el.style.width = '40px';
