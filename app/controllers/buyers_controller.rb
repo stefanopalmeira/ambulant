@@ -11,7 +11,7 @@ class BuyersController < ApplicationController
         lat: buyer.lat,
         lng: buyer.long,
         iconSize: [45, 45],
-        image: buyer.photo.attached? ? cl_image_path(buyer.photo&.key) : helpers.asset_url('buyer_icon2.jpg')
+        image: helpers.asset_url('buyer_icon2.jpg')
       }
     end
     respond_to do |format| 
