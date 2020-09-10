@@ -133,6 +133,23 @@ flex-direction: row;
   font-size: 15px;
   color: #6c757d
 }
+#editar-perfil i{
+  font-weight: bold;
+  font-style: oblique;
+  font-size: 15px;
+  color: #6c757d
+}
 
+#quero-comprar span{
+  font-weight: bold;
+  font-style: normal;
+  font-size: 18px;
+  color: $green
+}
 
-
+#quero-comprar i{
+  font-weight: bold;
+  font-style: normal;
+  font-size: 18px;
+  color: $green
+}

@@ -11,19 +11,21 @@
 
   <div class="profile-card inventory mt-1">
     <% unless current_user.seller %>
-      <div class="row m-1 pl-2 text-center" id="editar-perfil">
-      <% if @inventory && (current_user.orders.last.accepted > 1 || !current_user.orders.last.completed.nil? ) %>
-        <%= link_to inventory_buyer_orders_path(@inventory, authenticity_token: form_authenticity_token), method: :post do %>
-          <i class="fas fa-shopping-cart"></i><span>QUERO COMPRAR</span>
-        <%end%>
-      <% end %>
+      <div class="row m-1 pl-2 text-center" id="quero-comprar">
+        <% if @inventory && (current_user.orders.last.accepted > 1 || !current_user.orders.last.completed.nil? ) %>
+          <%= link_to inventory_buyer_orders_path(@inventory, authenticity_token: form_authenticity_token), method: :post do %>
+            <i class="fas fa-shopping-cart"></i><span>QUERO COMPRAR</span>
+          <%end%>
+        <% end %>
       </div>
     <% else %>
-      <div class="row text-center" id="editar-perfil">
-        <%= link_to edit_seller_path do%>
-          <i class="far fa-user"></i><span>EDITAR PERFIL</span>
-        <%end%>
-      </div>
+      <%if current_user == @user%>
+        <div class="row text-center" id="editar-perfil">
+          <%= link_to edit_seller_path do%>
+            <i class="far fa-user"></i><span>EDITAR PERFIL</span>
+          <%end%>
+        </div>
+      <%end%>
     <% end %>
   </div>
 
@@ -31,31 +33,32 @@
     <div class="profile-card inventory mt-1">
       <div class="w-100">    
         <h2 class="mb-0"><%= @inventory.name %></h2>
-          <h5><%= @inventory.description %></h5>
-            <% if current_user.seller %>
-              <div><%= link_to edit_inventory_path do%>
-                <i class="fas fa-pencil-alt"></i><p>EDITAR</p>
-              <% end %>
-              <%= link_to new_product_path do%>
-                <i class="fas fa-plus-square"></i><p>ADICIONAR PRODUTOS</p>
-              <%end%></div>
-            <% end %>
-        <% @inventory&.products&.each do |product| %>
-          <div class="row text-center mt-3">
-            <div class="col text-center">
-                <h4 ><%= product.name %>
-                  <% if current_user.seller %>
-                    <span><%= link_to "- EDITAR -", edit_product_path(product.id) %>
-                    <%= link_to product_path(product), method: :delete do%>
-                      <i class="far fa-trash-alt"></i></span>
-                    <% end %>
-                  <% end %>
-                </h4>
-            </div>
-            <div class="col text-center">
-                <h4>R$<%= product.price.to_s.gsub(".", ",") + 0.to_s %></h4>  
-          </div>
+          <h5 class="mb-0"><%= @inventory.description %></h5>
+        <% if current_user.seller && @inventory.selling_user == current_user %>
+          <div class="mt-0 pt-0"><%= link_to edit_inventory_path do%>
+            <i class="fas fa-pencil-alt"></i><p>EDITAR</p>
+          <% end %>
+          <%= link_to new_product_path do%>
+            <i class="fas fa-plus-square"></i><p>ADICIONAR PRODUTOS</p>
+          <%end%></div>
         <% end %>
+        <table class="table">
+          <tbody>
+            <% @inventory&.products&.each_with_index do |product, index| %>
+              <tr>
+                <td><%= product.name %></td>
+                <td>R$<%= product.price.to_s.gsub(".", ",") + 0.to_s %></td>
+                <% if current_user.seller && product.inventory.selling_user == current_user %>
+                <td><%= link_to "EDITAR", edit_product_path(product.id) %>
+                <%= link_to product_path(product), method: :delete do%><i class="far fa-trash-alt"></i>
+                <%end%>
+                <%end%></td>
+              </tr>
+              <%end%>
+          </tbody>
+        </table>
+
+
       </div>
     </div>
   <% end %>
