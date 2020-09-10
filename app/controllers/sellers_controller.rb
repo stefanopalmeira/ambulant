@@ -31,7 +31,8 @@ class SellersController < ApplicationController
       @reviewtimes += 1 unless order.review.nil?
     end
     @rating = (@nota.fdiv(@reviewtimes)).round(1)
-  end
+    @rating = 3 if @reviewtimes == 0
+end
 
   def edit
     if current_user != @user

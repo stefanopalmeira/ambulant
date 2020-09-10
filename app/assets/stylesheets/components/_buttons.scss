@@ -30,9 +30,13 @@
 }
 
 .sellers-msg{
-  position: absolute;
-  right: 5%;
-  top: 15%;
+  position: fixed;
+  left: 0;
+  top: 8%;
   z-index: 90;
+}
+
+.orange-message{
+  background-color: $orange;
 }
 

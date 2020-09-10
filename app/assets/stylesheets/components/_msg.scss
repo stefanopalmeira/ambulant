@@ -1,0 +1,29 @@
+.message-in-the-bottle{
+  padding: 0 10px 0 10px;
+}
+
+.message-unit{
+  background-color: rgba($purple, 0.1);
+}
+
+.message-unit-atom{
+  border: 1px solid rgba($orange, 0.4);
+  margin: 1px 0 0 0;
+  border-radius: 10px;
+  padding: 1px 8px 1px 8px;
+}
+
+.bate-papo-uol{
+  margin-top: 2 px;
+  background-color: rgba($purple, 0.1);
+  height: 80px;
+    a{
+      color: $purple;
+    }
+}
+
+.titulo-do-bate-papo{
+  color: $orange;
+  border-bottom: 2px solid rgba($orange, 0.5);
+  margin-bottom: 15px;
+}

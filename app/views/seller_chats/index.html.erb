@@ -1,8 +1,14 @@
-<div>
-  <% @chats.each do |chat| %>  
-    <%= link_to chat_path(chat) do %>
-    <h3> <%=chat.sender.name%> </h3>
-    <% end %>
+<div class="text-center titulo-do-bate-papo">
+<h1>Suas conversas</h1>
+</div>
+<div class="mt-2">
+  <% @chats.each do |chat| %>
+    <div class="btn general bate-papo-uol">
+      <%= link_to chat_path(chat) do %>
+      <h3> <%=chat.sender.name%> </h3>
+      <small><%= chat.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+      <% end %>
+    </div>
   <% end %>
 </div>
 

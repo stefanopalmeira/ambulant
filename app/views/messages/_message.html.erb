@@ -1,4 +1,4 @@
-<div class="message-container" data-mark-path="<%= message_mark_as_read_path(message) %>" data-sender-id= "<%= message.user.id %>" id="message-<%= message.id %>"> 
+<div class="message-container message-unit-atom" data-mark-path="<%= message_mark_as_read_path(message) %>" data-sender-id= "<%= message.user.id %>" id="message-<%= message.id %>">
   <i class="author">
     <% if current_user.seller %>
       <%= message.chat.recipient.name %>
