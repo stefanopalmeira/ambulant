@@ -40,11 +40,11 @@ churrasco = [churras1, churras2, churras3]
 sanduiche = [sand1, sand2]
 
 
-u1 = User.new(email: 'jose@seller.com', password: '123123', name: 'Jose Silva',
-              seller: true, bio: 'Adoro servir meus clientes e trazer meus produtos com a melhor qualidade até eles.')
+u1 = User.new(email: 'jose@seller.com', password: '123123', name: 'José Silva',
+              seller: true, bio: 'Adoro servir meus clientes e trazer produtos da melhor qualidade até eles.')
 u2 = User.new(email: 'maria@seller.com', password: '123123', name: 'Maria Oliveira',
-              seller: true, bio: 'Estou sempre disponível pra atender os pedidos dos clientes com rapidez e bom atendimento.')
-u3 = User.new(email: 'antonio@seller.com', password: '123123', name: 'Antonio Pereira',
+              seller: true, bio: 'Estou sempre disponível pra atender os pedidos dos clientes, com rapidez e bom atendimento.')
+u3 = User.new(email: 'antonio@seller.com', password: '123123', name: 'Antônio Pereira',
               seller: true, bio: 'Eu e minha esposa temos muito gosto em ir por todos os bairros e distribuir bons produtos e alegria.')
 u4 = User.new(email: 'joao@seller.com', password: '123123', name: 'João Santos',
               seller: true, bio: 'Sempre trabalhei com vendas, de casa em casa, e estou pronto para servir ainda mais, agora, com o Ambulant.')
@@ -56,7 +56,7 @@ u7 = User.new(email: 'bruna@buyer.com', password: '123123', name: 'Bruna Carvalh
                   bio: 'Chegando agora para conhecer o Ambulant, e por enquanto estou adorando!')                  
 u8 = User.new(email: 'elena@buyer.com', password: '123123', name: 'Elena Carneiro',
                   bio: 'Chegando agora para conhecer o Ambulant, e por enquanto estou adorando!')
-u9 = User.new(email: 'marcos@buyer.com', password: '123123', name: 'Marcos Palmeira',
+u9 = User.new(email: 'marcos@buyer.com', password: '123123', name: 'Marcos Silveira',
                   bio: 'Chegando agora para conhecer o Ambulant, e por enquanto estou adorando!')
 u10 = User.new(email: 'renata@buyer.com', password: '123123', name: 'Renata Queiroz',
                   bio: 'Chegando agora para conhecer o Ambulant, e por enquanto estou adorando!')
@@ -109,26 +109,28 @@ u10.address = 'Rua Aimberê, 507 - Perdizes, São Paulo - SP'
 u10.save
 
 
-i1 = Inventory.new(name: 'Ovos', description: 'Ovos frescos de granja.')
+i1 = Inventory.new(name: 'Carro dos Ovos', description: 'Sempre frescos, direto da granja!')
 i1.selling_user = u1
 ovos.each_with_index do |ovo_url, index|
   file = URI.open(ovo_url)
   i1.photos.attach(io: file, filename: "ovo#{index}.jpg", content_type: 'image/jpg')
 end
 i1.save!
+Product.create!(name: "Caixa de Ovos Vermelhos", price: 12.00, inventory: i1)
 Product.create!(name: "Caixa de Ovos Brancos", price: 10.00, inventory: i1)
 
-i2 = Inventory.new(name: 'Produtos de limpeza',
-               description: 'Todos os tipos de produtos pra sua casa ficar limpinha!')
+i2 = Inventory.new(name: 'Especialista em Produtos de Limpeza',
+               description: 'A maior variedade pra sua casa ficar limpinha!')
 i2.selling_user = u3
 limpeza.each_with_index do |limpeza_url, index|
   file = URI.open(limpeza_url)
   i2.photos.attach(io: file, filename: "limpeza#{index}.jpg", content_type: 'image/jpg')
 end
 i2.save!
+Product.create!(name: "Desinfetante", price: 8.00, inventory: i2)
 Product.create!(name: "Água sanitária", price: 5.00, inventory: i2)
 
-i3 = Inventory.new(name: 'Pamonha',
+i3 = Inventory.new(name: 'Pamonha e Cia.',
                description: 'Pamonha quentinha e outros produtos deliciosos para você.')
 i3.selling_user = u3
 pamonha.each_with_index do |pamonha_url, index|
@@ -136,20 +138,22 @@ pamonha.each_with_index do |pamonha_url, index|
   i3.photos.attach(io: file, filename: "pamonha#{index}.jpg", content_type: 'image/jpg')
 end
 i3.save!
+Product.create!(name: "Curau", price: 3.00, inventory: i3)
 Product.create!(name: "Pamonha de Piracicaba", price: 4.00, inventory: i3)
 
-i4 = Inventory.new(name: 'Churrasquinho',
-               description: 'Churrasquinho de carne, frango e linguiça de primeira qualidade!')
+i4 = Inventory.new(name: 'Churrasquinho de Primeira',
+               description: 'Carne, frango ou linguiça - tudo de primeira qualidade!')
 i4.selling_user = u4
 churrasco.each_with_index do |churrasco_url, index|
   file = URI.open(churrasco_url)
   i4.photos.attach(io: file, filename: "churrasco#{index}.jpg", content_type: 'image/jpg')
 end
 i4.save!
+Product.create!(name: "Espetinho de frango", price: 5.00, inventory: i4)
 Product.create!(name: "Espetinho de carne", price: 5.00, inventory: i4)
 
-i5 = Inventory.new(name: 'Sanduíche natural',
-               description: 'Sanduíches naturais, fresquinhos e saudáveis.')
+i5 = Inventory.new(name: 'Olha o Sanduíche Natural',
+               description: 'Saudáveis e feitos com muito carinho.')
 i5.selling_user = u5
 sanduiche.each_with_index do |sanduiche_url, index|
   file = URI.open(sanduiche_url)
@@ -157,28 +161,31 @@ sanduiche.each_with_index do |sanduiche_url, index|
 end
 i5.save!
 Product.create!(name: "Queijo e salame", price: 6.00, inventory: i5)
+Product.create!(name: "Palmito e cenoura", price: 6.00, inventory: i5)
 
-i6 = Inventory.new(name: 'Churrasquinho',
-description: 'Churrasquinho de carne, frango e linguiça de primeira qualidade!')
+i6 = Inventory.new(name: 'Churrasquinho de Primeira',
+description: 'Carne, frango ou linguiça - tudo de primeira qualidade!')
 i6.selling_user = u6
 churrasco.each_with_index do |churrasco_url, index|
   file = URI.open(churrasco_url)
   i6.photos.attach(io: file, filename: "churrasco#{index}.jpg", content_type: 'image/jpg')
 end
 i6.save!
-Product.create!(name: "Espetinho de frango", price: 5.00, inventory: i4)
+Product.create!(name: "Espetinho de frango", price: 5.00, inventory: i6)
+Product.create!(name: "Espetinho de carne", price: 5.00, inventory: i6)
 
-i7 = Inventory.new(name: 'Sanduíche natural',
-description: 'Sanduíches naturais, fresquinhos e saudáveis.')
+i7 = Inventory.new(name: 'Olha o Sanduíche Natural',
+description: 'Saudáveis e feitos com muito carinho.')
 i7.selling_user = u5
 sanduiche.each_with_index do |sanduiche_url, index|
   file = URI.open(sanduiche_url)
   i7.photos.attach(io: file, filename: "sanduiche#{index}.jpg", content_type: 'image/jpg')
 end
 i7.save!
+Product.create!(name: "Queijo e salame", price: 6.00, inventory: i7)
 Product.create!(name: "Palmito e cenoura", price: 6.00, inventory: i7)
 
-i8 = Inventory.new(name: 'Pamonha',
+i8 = Inventory.new(name: 'Pamonha e Cia.',
 description: 'Pamonha quentinha e outros produtos deliciosos para você.')
 i8.selling_user = u2
 pamonha.each_with_index do |pamonha_url, index|
@@ -187,9 +194,10 @@ pamonha.each_with_index do |pamonha_url, index|
 end
 i8.save!
 Product.create!(name: "Curau", price: 3.00, inventory: i8)
+Product.create!(name: "Pamonha de Piracicaba", price: 4.00, inventory: i8)
 
-i9 = Inventory.new(name: 'Produtos de limpeza',
-description: 'Todos os tipos de produtos pra sua casa ficar limpinha!')
+i9 = Inventory.new(name: 'Especialista em Produtos de Limpeza',
+description: 'A maior variedade pra sua casa ficar limpinha!')
 i9.selling_user = u3
 limpeza.each_with_index do |limpeza_url, index|
   file = URI.open(limpeza_url)
@@ -197,16 +205,18 @@ limpeza.each_with_index do |limpeza_url, index|
 end
 i9.save!
 Product.create!(name: "Desinfetante", price: 8.00, inventory: i9)
+Product.create!(name: "Água sanitária", price: 5.00, inventory: i9)
 
-i10 = Inventory.new(name: 'Ovos',
-description: 'Ovos frescos de granja.')
+i10 = Inventory.new(name: 'Ovos da Granja',
+description: 'Sempre frescos, direto da granja!')
 i10.selling_user = u4
 ovos.each_with_index do |ovo_url, index|
   file = URI.open(ovo_url)
   i10.photos.attach(io: file, filename: "ovo#{index}.jpg", content_type: 'image/jpg')
 end
 i10.save!
-Product.create!(name: "Caixa de Ovos Vermelhor", price: 12.00, inventory: i10)
+Product.create!(name: "Caixa de Ovos Vermelhos", price: 12.00, inventory: i10)
+Product.create!(name: "Caixa de Ovos Brancos", price: 10.00, inventory: i10)
 
 o1 = Order.new(completed: true, accepted: 2)
 o1.inventory = i1
