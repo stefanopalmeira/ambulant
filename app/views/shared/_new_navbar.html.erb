@@ -5,7 +5,7 @@
       <div class="col text-center">
         <%= link_to root_path do%>
           <i class="fas fa-map-marker-alt"></i>
-          <p>Home</p>
+          <p>INÍCIO</p>
         <% end %>
       </div>
     <% end %>
@@ -14,7 +14,7 @@
       <div class="col text-center">
         <%= link_to seller_chats_path do%>
           <i class="fas fa-comment-alt"></i>
-          <p>Mensagens</p>
+          <p>MENSAGENS</p>
           <% end %>
       </div>
     <% end %>
@@ -25,7 +25,7 @@
           <div class="col text-center">
             <%= link_to buyer_order_path(current_user.orders.last) do%>
               <i class="fas fa-shopping-bag"></i>
-              <p>Pedido</p>
+              <p>PEDIDO</p>
             <% end %>
           </div>
         <% end %>
@@ -33,7 +33,7 @@
         <div class="col text-center">
           <%= link_to seller_orders_path do %>
             <i class="far fa-money-bill-alt"></i>
-            <p>Pedidos</p>
+            <p>PEDIDOS</p>
           <% end %>
         </div>
       <% end %>
@@ -42,22 +42,20 @@
         <div class="col text-center">
           <%= link_to seller_path(current_user) do %>
             <i class="far fa-address-card"></i>
-            <p>Perfil</p>
+            <p>PERFIL</p>
           <% end %>
         </div>
       <% end %>
 
-
-
     <div class="col text-center">
       <%= link_to destroy_user_session_path, method: :delete do %>
         <i class="fas fa-sign-out-alt"></i>
-        <p>Logout</p>
+        <p>SAIR</p>
       <% end %>
     </div>
 
     <% else %>
-      <%= link_to "Login", new_user_session_path %>
+      <%= link_to "SAIR", new_user_session_path %>
     <% end %>
   </div>
 </div>

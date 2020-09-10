@@ -35,15 +35,19 @@ class SellersController < ApplicationController
 
   def edit
     if current_user != @user
-      redirect_to seller_path, notice: "You can't edit this profile!"
+      redirect_to root_path, notice: "Você não pode editar esse perfil!"
     end
   end
 
   def update
-    if @user.update(user_params)
-      redirect_to seller_path(@user), notice: 'Your profile was successfully updated.'
+    if current_user == @user    
+      if @user.update(user_params)
+        redirect_to root_path, notice: 'Perfil atualizado com sucesso'
+      else
+        render :edit
+      end
     else
-      render :edit
+      redirect_to root_path, notice: "Você não pode editar esse perfil!"
     end
   end
 
