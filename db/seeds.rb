@@ -42,45 +42,72 @@ sanduiche = [sand1, sand2]
 
 u1 = User.new(email: 'jose@seller.com', password: '123123', name: 'Jose Silva',
               seller: true, bio: 'Adoro servir meus clientes e trazer meus produtos com a melhor qualidade até eles.')
-u2 = User.new(email: 'maria@seller.com', password: '123123', name: 'Maria de Oliveira',
+u2 = User.new(email: 'maria@seller.com', password: '123123', name: 'Maria Oliveira',
               seller: true, bio: 'Estou sempre disponível pra atender os pedidos dos clientes com rapidez e bom atendimento.')
-u3 = User.new(email: 'antonio@seller.com', password: '123123', name: 'Antonio M Pereira',
+u3 = User.new(email: 'antonio@seller.com', password: '123123', name: 'Antonio Pereira',
               seller: true, bio: 'Eu e minha esposa temos muito gosto em ir por todos os bairros e distribuir bons produtos e alegria.')
 u4 = User.new(email: 'joao@seller.com', password: '123123', name: 'João Santos',
               seller: true, bio: 'Sempre trabalhei com vendas, de casa em casa, e estou pronto para servir ainda mais, agora, com o Ambulant.')
 u5 = User.new(email: 'ana@seller.com', password: '123123', name: 'Ana Maria Santos',
-              seller: true, bio: 'Meus produtos são todos produzidos e vendidos com muito carinho')
-u6 = User.new(email: 'ricardo@seller.com', password: '123123', name: 'Ricardo R Marinho',
+              seller: true, bio: 'Meus produtos são todos feitos e vendidos com muito carinho')
+u6 = User.new(email: 'ricardo@seller.com', password: '123123', name: 'Ricardo Marinho',
               seller: true, bio: 'Adoro servir meus clientes e trazer meus produtos com a melhor qualidade até eles.')
-u7 = User.new(email: 'bruna@buyer.com', password: '123123', name: 'Bruna de Carvalho', 
+u7 = User.new(email: 'bruna@buyer.com', password: '123123', name: 'Bruna Carvalho', 
                   bio: 'Chegando agora para conhecer o Ambulant, e por enquanto estou adorando!')                  
-u8 = User.new(email: 'elena@buyer.com', password: '123123', name: 'Elena T Carneiro',
+u8 = User.new(email: 'elena@buyer.com', password: '123123', name: 'Elena Carneiro',
                   bio: 'Chegando agora para conhecer o Ambulant, e por enquanto estou adorando!')
-u9 = User.new(email: 'marcos@buyer.com', password: '123123', name: 'Marcos P Palmeira',
+u9 = User.new(email: 'marcos@buyer.com', password: '123123', name: 'Marcos Palmeira',
                   bio: 'Chegando agora para conhecer o Ambulant, e por enquanto estou adorando!')
-u10 = User.new(email: 'renata@buyer.com', password: '123123', name: 'Renata E Queiroz',
+u10 = User.new(email: 'renata@buyer.com', password: '123123', name: 'Renata Queiroz',
                   bio: 'Chegando agora para conhecer o Ambulant, e por enquanto estou adorando!')
 
+
+
+
+photo1 = URI.open('https://res.cloudinary.com/dkljkjqlg/image/upload/v1599744326/Ambulant%20seed/Captura_de_Tela_2020-09-08_a%CC%80s_09.38.24_cexjb6.png')
+photo2 = URI.open('https://res.cloudinary.com/dkljkjqlg/image/upload/v1599744328/Ambulant%20seed/Captura_de_Tela_2020-09-08_a%CC%80s_09.37.47_tsl0zj.png')
+photo3 = URI.open('https://res.cloudinary.com/dkljkjqlg/image/upload/v1599744328/Ambulant%20seed/Captura_de_Tela_2020-09-08_a%CC%80s_09.36.31_z0mszq.png')
+photo4 = URI.open('https://res.cloudinary.com/dkljkjqlg/image/upload/v1599751454/joao_seller_ao1hml.jpg')
+photo5 = URI.open('https://res.cloudinary.com/dkljkjqlg/image/upload/v1599744326/Ambulant%20seed/Captura_de_Tela_2020-09-08_a%CC%80s_09.38.45_s9l7tt.png')
+photo6 = URI.open('https://res.cloudinary.com/dkljkjqlg/image/upload/v1599744326/Ambulant%20seed/Captura_de_Tela_2020-09-08_a%CC%80s_09.37.35_lzsaui.png')
+
+
 u1.address = 'Rua Cotoxó, 580 - Perdizes, São Paulo - SP'
+u1.photo.attach(io: photo1, filename: 'u1.png', content_type: 'image/png')
 u1.save
+
 u2.address = 'Rua Ministro Gastão Mesquita, 728 - Pompeia, São Paulo - SP'
+u2.photo.attach(io: photo2, filename: 'u2.png', content_type: 'image/png')
 u2.save
+
 u3.address = 'Rua Cajaíba, 959 - Pompeia, São Paulo - SP'
+u3.photo.attach(io: photo3, filename: 'u3.png', content_type: 'image/png')
 u3.save
+
 u4.address = 'Rua Campevas, 489 - Perdizes, São Paulo - SP'
+u4.photo.attach(io: photo4, filename: 'u4.jpg', content_type: 'image/jpg')
 u4.save
+
 u5.address = 'Rua Raul Pompéia, 330 - Pompeia - São Paulo - SP'
+u5.photo.attach(io: photo5, filename: 'u5.png', content_type: 'image/png')
 u5.save
+
 u6.address = 'Rua Coriolano, 215 - Vila Romana, São Paulo - SP'
+u6.photo.attach(io: photo6, filename: 'u6.png', content_type: 'image/png')
 u6.save
+
 u7.address = 'Rua Aimberê, 507 - Perdizes, São Paulo - SP'
 u7.save
+
 u8.address = 'Rua Aimberê, 507 - Perdizes, São Paulo - SP'
 u8.save
+
 u9.address = 'Rua Aimberê, 507 - Perdizes, São Paulo - SP'
 u9.save
+
 u10.address = 'Rua Aimberê, 507 - Perdizes, São Paulo - SP'
 u10.save
+
 
 i1 = Inventory.new(name: 'Ovos', description: 'Ovos frescos de granja.')
 i1.selling_user = u1

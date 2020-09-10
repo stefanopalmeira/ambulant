@@ -1,7 +1,7 @@
 en:
   simple_form:
-    "yes": 'Yes'
-    "no": 'No'
+    "yes": 'Sim, quero vender meus produtos!'
+    "no": 'Não, quero encontrar vendedores e comprar seus produtos.'
     required:
       text: 'required'
       mark: '*'
