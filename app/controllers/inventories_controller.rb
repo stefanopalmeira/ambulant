@@ -1,9 +1,9 @@
 class InventoriesController < ApplicationController
   before_action :set_inventory, only: [:show, :edit, :update, :destroy]
 
- def show
-  authorize @inventory
- end
+#  def show
+#   authorize @inventory
+#  end
 
  def new
   @inventory = Inventory.new
@@ -36,11 +36,11 @@ class InventoriesController < ApplicationController
   end
  end
 
- def destroy
-  authorize @inventory
-  @inventory.destroy
-  redirect_to root_path
- end
+#  def destroy
+#   authorize @inventory
+#   @inventory.destroy
+#   redirect_to root_path
+#  end
 
 
  private

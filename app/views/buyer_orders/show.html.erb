@@ -1,29 +1,43 @@
  <%= render 'shared/new_navbar' %>
-  <div class="container">
+<div class="container no-padding" style="overflow: hidden;">
+    <div class="vertical-centralized">
     <% if @order.first.accepted == 1 %>
     <div class="card-pedido aguarde">
-      <h4 class="text-center">Aguarde</h4>
+      <h4 class="text-center">Pedido recebido. Aguarde...</h4>
     </div>
     <% elsif @order.first.accepted == 2 %>
     <div class="card-pedido aceito">
-      <h4 class="text-center">Vendedor a caminho!</h4>
+      <h4 class="text-center">O vendendor confirmou seu pedido!</h4>
     </div>
     <% else %>
     <div class="card-pedido negado">
       <h4 class="text-center">Vendedor não poderá ir...</h4>
     </div>
     <% end %>
-  </div>
 
-  <%= link_to "Chat", buyer_order_chats_path(@order.first), method: :post %>
+
+    <div class="aguarde mt-3 table-2lines">
+      <div class="text-center d-inline-block">
+        <h9>Entre em contato com o vendedor para combinar os detalhes:</h9>
+      </div>
+      <div class="mt-2">
+        <%= link_to buyer_order_chats_path(@order.first), class: "d-flex", method: :post do %>
+          <i class="fas fa-comment-alt"></i>
+          <p class="ml-2 mt-1">  MANDAR MENSAGEM</p>
+        <% end %>
+      </div>
+    </div>
+
 
 <div id="map"
-     class="sellers-map"
-     style="width: 85%; margin: 25px auto; height: 30vh;"
+     class="sellers-map map-shadow"
+     style="width: 100%; margin: 25px auto; height: 30vh;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 
 <div class="container buttons mt-3">
-  <%= link_to "Deu certo?", new_buyer_order_review_path(@order.first), class:'btn general' %>
+  <%= link_to "Avaliar vendedor", new_buyer_order_review_path(@order.first), class:'btn general' %>
+</div>
+</div>
 </div>

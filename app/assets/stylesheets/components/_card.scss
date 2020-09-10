@@ -9,6 +9,7 @@
   background-color: rgba($light-gray, 0.8);
   color: $purple;
   margin: 0 auto;
+  justify-content: center;
   h2{
     font-size: 22px;
     font-weight: bold
@@ -23,17 +24,21 @@
     color: $gray
   }
   h5{
-    font-size: 10px;
+    font-size: 14px;
     font-weight: bold;
-    color: $gray
   }
   p{
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
   }
   span{
     font-size: 13px;
     color: $gray
+  }
+  a{
+    font-size: 11px;
+    font-style: normal;
+    color: #6c757d
   }
 }
 
@@ -89,7 +94,7 @@ flex-direction: row;
 }
 
 .card-profile p {
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
@@ -122,7 +127,34 @@ flex-direction: row;
   height: 200px;
 }
 
+#editar-perfil span{
+  font-weight: bold;
+  font-style: normal;
+  font-size: 15px;
+  color: #6c757d
+}
+#editar-perfil i{
+  font-weight: bold;
+  font-style: normal;
+  font-size: 15px;
+  color: #6c757d
+}
 
+#quero-comprar{
+  background-color: #92da92;
+  border-radius: 20px
+}
 
+#quero-comprar span{
+  font-weight: bold;
+  font-style: normal;
+  font-size: 18px;
+  color: $purple
+}
 
-
+#quero-comprar i{
+  font-weight: bold;
+  font-style: normal;
+  font-size: 18px;
+  color: $purple
+}
