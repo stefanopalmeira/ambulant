@@ -1,56 +1,79 @@
  <%= render 'shared/new_navbar' %>
-
-<div class='container pt-2'>
-
- <%= render 'seller_profile' %>
-
-<% unless current_user.seller %>
-  <div class="mt-3">
-  <% if @inventory && (current_user.orders.last.accepted > 1 || !current_user.orders.last.completed.nil? ) %>
-    <%= link_to 'Quero comprar!', inventory_buyer_orders_path(@inventory, authenticity_token: form_authenticity_token), method: :post, class:"btn general quero" %>
-  <% end %>
+<div class="container no-padding" style="overflow: hidden;">
+  <div class="card-profile pl-1">
+  <%= image_tag 'https://thispersondoesnotexist.com/image', class: "avatar-bordered" %>
+    <div class="card-profile-infos">
+    <h1><%= @user.name %></h1>
+    <p>Rating <strong><%= @rating %></strong>/5  (<strong><%= @reviewtimes %></strong> avaliações e <strong><%= @orders.count%></strong> pedidos)</p>
+    <p><%= @user.bio %></p>
   </div>
-<% else %>
-  <div class="m-1 pl-2">
-    <%= link_to edit_seller_path do%>
-      <i class="far fa-user"></i><span>EDITAR PERFIL</span>
-    <%end%>
   </div>
-<% end %>
 
-<% if @inventory %>
   <div class="profile-card inventory mt-1">
-    <div class="w-100">    
-      <h2 class="mb-0"><%= @inventory.name %></h2>
-        <p class="mb-0"><%= @inventory.description %></p>
-          <% if current_user.seller %>
-            <span><%= link_to edit_inventory_path do%>
-              <i class="fas fa-pencil-alt"></i><p>EDITAR</p></span>
-            <%end%>
-          <% end %>
-      <% @inventory&.products&.each do |product| %>
-        <h4 ><%= product.name %> - R$<%= product.price.to_s.gsub(".", ",") + 0.to_s %>
-          <% if current_user.seller %>
-            <span><%= link_to "- EDITAR -", edit_product_path(product.id) %>
-            <%= link_to product_path(product), method: :delete do%>
-            <i class="far fa-trash-alt"></i></span>
+    <% unless current_user.seller %>
+      <div class="row py-2 px-4 text-center" id="quero-comprar">
+        <% if @inventory && (current_user.orders.last.accepted > 1 || !current_user.orders.last.completed.nil? ) %>
+          <%= link_to inventory_buyer_orders_path(@inventory, authenticity_token: form_authenticity_token), method: :post do %>
+            <i class="fas fa-shopping-cart"></i><span>    QUERO COMPRAR</span>
+          <%end%>
+        <% end %>
+      </div>
+    <% else %>
+      <%if current_user == @user%>
+        <div class="row text-center" id="editar-perfil">
+          <%= link_to edit_seller_path do%>
+            <i class="far fa-user"></i><span>   EDITAR PERFIL</span>
+          <%end%>
+        </div>
+      <%end%>
+    <% end %>
+  </div>
+  <% if @inventory %>
+    <div class="profile-card inventory mt-1">
+      <div class="w-100">    
+        <div class="d-inline-block">
+          <h2 class="mb-0"><%= @inventory.name %></h2>
+            <h5 class="mb-0"><%= @inventory.description %></h5>
+        </div>
+        <div class="d-inline-block ml-3">
+          <% if current_user.seller && @inventory.selling_user == current_user %>
+            <%= link_to edit_inventory_path(@inventory) do%>
+              <i class="fas fa-pencil-alt"></i><p>EDITAR</p>
             <% end %>
           <% end %>
-        </h4>
-      <% end %>
-      <% if current_user.seller %>
-        <%= link_to new_product_path do%>
-          <i class="fas fa-plus-square"></i><p>ADICIONAR PRODUTOS</p>
-        <% end %>
-      <% end %>
+        </div>
+        <div>
+          <% if current_user.seller && @inventory.selling_user == current_user %>
+            <%= link_to new_product_path do%>
+              <i class="fas fa-plus-square"></i><p class="mb-0">ADICIONAR PRODUTOS</p>
+            <%end%>
+          <% end %>
+        </div>
+        <table class="table">
+          <tbody>
+            <% @inventory&.products&.each do |product| %>
+              <tr>
+                <% if current_user.seller && product.inventory.selling_user == current_user %>
+                <td><%= link_to product_path(product), method: :delete do%>
+                  <i class="far fa-trash-alt"></i>
+                <%end%></td>
+                <%end%>
+                <td><%= product.name %></td>
+                <td>R$<%= product.price.to_s.gsub(".", ",") + 0.to_s %></td>
+                <% if current_user.seller && product.inventory.selling_user == current_user %>
+                <td><%= link_to "EDITAR", edit_product_path(product.id) %></td>
+                <%end%>
+              </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-<% end %>
-
+  <% end %>
+</div>
 <div>
   <%= render 'carousel_show' %>
 </div>
-
 <div class="mt-1 mb-5 pb-3">
   <%= link_to "Voltar", sellers_path, class:"btn general" %>
 </div>
