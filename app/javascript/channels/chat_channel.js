@@ -11,7 +11,7 @@ const initChatCable = () => {
         input.focus();
         messagesContainer.insertAdjacentHTML('beforeend', data);
         const message = document.querySelector('.message-container:last-child');
-        if (messagesContainer.dataset.userId != message.dataset.senderId ) {
+        if (messagesContainer && messagesContainer.dataset.userId != message.dataset.senderId ) {
           // fetch para marcar msg como lida
           const csrfToken = document.head.querySelector("[name='csrf-token']").content;
           fetch(message.dataset.markPath, { method: "post", headers: { "X-CSRF-Token": csrfToken }});
