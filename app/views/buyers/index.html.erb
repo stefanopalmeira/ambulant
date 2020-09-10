@@ -4,17 +4,17 @@
 </div>
 
 <div id="button-seller-home" class='sellers-msg' data-chat-url="<%= seller_chats_path %>">
-  <% if @messages == 0 %>    
-      <div class='btn btn-secondary btn-no-msg' > Sem mensagens </div>    
+  <% if @messages == 0 %>
+      <div class='btn btn-secondary btn-no-msg rounded' > Sem mensagens </div>
   <% else %>
     <%= link_to seller_chats_path do %>
-      <div class='btn btn-danger btn-msg'> Mensagens: <%= @messages %> </div>
-    <% end %>    
+      <div class='btn btn-danger orange-message btn-msg rounded'> Mensagens: <%= @messages %> </div>
+    <% end %>
   <% end %>
 </div>
 
 <div id="map"
-     class="buyers-map" 
+     class="buyers-map"
      style="width: 100vw; height: 100vh;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">

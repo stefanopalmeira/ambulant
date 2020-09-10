@@ -5,7 +5,7 @@ class BuyerOrdersController < ApplicationController
   def show
     @order = Order.where(user_id: current_user).order(created_at: :desc).limit(1)
     authorize @order.first, policy_class: BuyerOrdersPolicy
-    seller = User.includes(selling_inventory: :orders).where(id: Order.last.inventory.selling_user, orders: {user: current_user}) 
+    seller = User.includes(selling_inventory: :orders).where(id: Order.last.inventory.selling_user, orders: {user: current_user})
     @markers = seller.geocoded.map do |seller|
       {
         lat: seller.lat,
@@ -23,7 +23,7 @@ class BuyerOrdersController < ApplicationController
     @order.inventory = @inventory
     @order.user = current_user
     @order.accepted = 1
-    authorize @order, policy_class: BuyerOrdersPolicy 
+    authorize @order, policy_class: BuyerOrdersPolicy
     if @order.save
       redirect_to buyer_order_path(@order)
     else
@@ -33,7 +33,7 @@ class BuyerOrdersController < ApplicationController
 
   def destroy
     @order = Order.find(params[:id])
-    authorize @order, policy_class: BuyerOrdersPolicy 
+    authorize @order, policy_class: BuyerOrdersPolicy
     @order.destroy
     redirect_to root_path #adaptar rota
   end
