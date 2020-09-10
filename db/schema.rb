@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_153741) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.text "bio"
-    t.boolean "seller", default: false
+    t.boolean "seller"
     t.float "lat"
     t.float "long"
     t.string "address"
