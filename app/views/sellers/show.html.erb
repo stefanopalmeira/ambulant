@@ -20,7 +20,7 @@
   <div class="profile-card inventory mt-1">
     <div class="w-100">    
       <h2 class="mb-0"><%= @inventory.name %></h2>
-        <h5 class="mb-0"><%= @inventory.description %></h5>
+        <h5><%= @inventory.description %></h5>
           <% if current_user.seller %>
             <span><%= link_to edit_inventory_path do%>
               <i class="fas fa-pencil-alt"></i><p>EDITAR</p></span>
