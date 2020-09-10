@@ -6,22 +6,22 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def edit?
-    true
+    user == record.inventory.selling_user
   end
 
   def update?
-    true
+    user == record.inventory.selling_user
   end
 
   def new?
-    true
+    user == record.inventory.selling_user
   end
 
   def create?
-    true
+    user == record.inventory.selling_user
   end
 
   def destroy?
-    true
+    user == record.inventory.selling_user
   end
 end
