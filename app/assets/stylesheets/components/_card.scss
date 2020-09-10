@@ -9,6 +9,7 @@
   background-color: rgba($light-gray, 0.8);
   color: $purple;
   margin: 0 auto;
+  justify-content: center;
   h2{
     font-size: 22px;
     font-weight: bold
@@ -126,9 +127,10 @@ flex-direction: row;
   height: 200px;
 }
 
-#editar-perfil a{
+#editar-perfil span{
   font-weight: bold;
   font-style: oblique;
+  font-size: 15px;
   color: #6c757d
 }
 
