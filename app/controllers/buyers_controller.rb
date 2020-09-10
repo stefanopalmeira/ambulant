@@ -3,7 +3,7 @@ class BuyersController < ApplicationController
   before_action :check_seller, only: :index
 
   def index
-    @messages = Message.includes(:chat).where(chats:{recipient: current_user, 
+    @messages = Message.includes(:chat).where(read: false, chats:{recipient: current_user, 
                 created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day}).count    
     @buyers = User.where(seller: false)
     @markers = @buyers.geocoded.map do |buyer|

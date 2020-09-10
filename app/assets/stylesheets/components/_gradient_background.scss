@@ -1,5 +1,13 @@
 .gradient-background{
-  background-image: linear-gradient($purple, $light-gray, $light-gray);
-  background-size: cover;
+  background-image: linear-gradient($purple, $light-gray, $light-gray, $light-gray, $light-gray);
+  background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
+}
+.escape-from-navbar{
+  margin-top: 50px;
+}
+
+.no-padding{
+  padding: 18px 0 0 0 !important;
 }

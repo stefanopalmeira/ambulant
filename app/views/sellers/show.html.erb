@@ -1,12 +1,14 @@
  <%= render 'shared/new_navbar' %>
 
+<div class='container pt-2'>
+
  <%= render 'seller_profile' %>
 
 <% unless current_user.seller %>
-  <div class="mt-1">
-    <% if @inventory %>
-      <%= link_to 'Quero comprar!', inventory_buyer_orders_path(@inventory, authenticity_token: form_authenticity_token), method: :post, class:"btn general quero" %>
-    <% end %>
+  <div class="mt-3">
+  <% if @inventory && (current_user.orders.last.accepted > 1 || !current_user.orders.last.completed.nil? ) %>
+    <%= link_to 'Quero comprar!', inventory_buyer_orders_path(@inventory, authenticity_token: form_authenticity_token), method: :post, class:"btn general quero" %>
+  <% end %>
   </div>
 <% else %>
   <div class="m-1 pl-2">
