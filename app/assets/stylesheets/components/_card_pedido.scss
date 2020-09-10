@@ -17,10 +17,18 @@
   h2 {
     margin: 0;
   }
-  p{
-    font-size: 1px;
-  }
+  a{
+    color: $orange;
+    p{
+    font-size: 15px;
+    color: $orange;
+  }}
 }
+
+.table-2lines{
+
+}
+
 .vertical-centralized{
   margin-top: 75px;
 }
@@ -99,4 +107,9 @@
 
 h9{
  font-size: 13px;
+ color: rgba($purple, 0.6);
+}
+
+.no-bg{
+  background-color: grba(white, 0)
 }
