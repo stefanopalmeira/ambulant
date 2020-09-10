@@ -22,14 +22,14 @@ class BuyersController < ApplicationController
 
   def edit
     if current_user != @user
-      redirect_to buyer_path, notice: "You can't edit this profile!"
+      redirect_to buyer_path, notice: "Você não pode editar esse perfil!"
     end
   end
 
   def update
     puts user_params
     if @user.update(user_params)
-      redirect_to buyer_path(@user), notice: 'Your profile was successfully updated.'
+      redirect_to buyer_path(@user), notice: 'Seu perfil foi editado com sucesso.'
     else
       render :edit
     end
