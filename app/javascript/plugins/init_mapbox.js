@@ -9,7 +9,7 @@ const buildMap = () => {
     zoom: 3
   });
 };
-const addMarkersToMap = (map, markers) => {  
+const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
     const el = document.createElement('div');
     el.className = 'marker';
@@ -34,11 +34,11 @@ const addMarkersToMap = (map, markers) => {
         currMarker.setLngLat([
           data.lng, data.lat
         ]);
-        currMarker.addTo(map);        
+        currMarker.addTo(map);
       });
       }
-    } 
-    setInterval(animateMarker, 5000)
+    }
+    setInterval(animateMarker, 15000)
   });
 };
 
@@ -47,7 +47,7 @@ const fitMapToMarkers = (map, markers) => {
   markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
   map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
 };
- 
+
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
   if (mapElement) {
@@ -70,7 +70,7 @@ const initMapbox = () => {
       el.className = 'marker';
       if (buyerMap) {
         el.style.backgroundImage = 'url("https://res.cloudinary.com/dkljkjqlg/image/upload/v1599595773/Ambulant%20Icons/kombi_Ambulant_th384q.png")';
-      } else if (sellerMap) { 
+      } else if (sellerMap) {
         el.style.backgroundImage = 'url("https://res.cloudinary.com/dkljkjqlg/image/upload/v1599658217/Ambulant%20Icons/purple_raise_hand_rhfvbr.jpg")';
       }
       el.style.backgroundSize = 'contain';

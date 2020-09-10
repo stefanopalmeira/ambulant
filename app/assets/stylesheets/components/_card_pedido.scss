@@ -64,6 +64,8 @@
   margin: 0 auto;
   border-radius: 20px;
   margin-top: 30%;
+  background-color: rgba($orange, 0.5);
+
     h2{
       color: $purple;
     }
@@ -74,6 +76,10 @@
 
 .aguarde {
   background-color: rgba($light-gray, 1);
+}
+
+.review-bg{
+  background-color: $orange;
 }
 
 .aceito {

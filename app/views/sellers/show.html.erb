@@ -1,23 +1,32 @@
  <%= render 'shared/new_navbar' %>
 <div class="container no-padding" style="overflow: hidden;">
-  <div class="card-profile pl-1">
+
+   <% if @user.photo.attached? %>
+   <%= render 'seller_profile'  %>
+   <% else %>
+   <div class="card-profile pl-1">
   <%= image_tag 'https://thispersondoesnotexist.com/image', class: "avatar-bordered" %>
+
     <div class="card-profile-infos">
     <h1><%= @user.name %></h1>
     <p>Rating <strong><%= @rating %></strong>/5  (<strong><%= @reviewtimes %></strong> avaliações e <strong><%= @orders.count%></strong> pedidos)</p>
     <p><%= @user.bio %></p>
   </div>
   </div>
+  <% end %>
+
 
   <div class="profile-card inventory mt-1">
     <% unless current_user.seller %>
-      <div class="row py-2 px-4 text-center" id="quero-comprar">
+
         <% if @inventory && (current_user.orders.last.accepted > 1 || !current_user.orders.last.completed.nil? ) %>
-          <%= link_to inventory_buyer_orders_path(@inventory, authenticity_token: form_authenticity_token), method: :post do %>
-            <i class="fas fa-shopping-cart"></i><span>    QUERO COMPRAR</span>
-          <%end%>
+          <div class="row py-2 px-4 text-center" id="quero-comprar">
+            <%= link_to inventory_buyer_orders_path(@inventory, authenticity_token: form_authenticity_token), method: :post do %>
+              <i class="fas fa-shopping-cart"></i><span>    QUERO COMPRAR</span>
+           <%end%>
+          </div>
         <% end %>
-      </div>
+
     <% else %>
       <%if current_user == @user%>
         <div class="row text-center" id="editar-perfil">
@@ -30,7 +39,7 @@
   </div>
   <% if @inventory %>
     <div class="profile-card inventory mt-1">
-      <div class="w-100">    
+      <div class="w-100">
         <div class="d-inline-block">
           <h2 class="mb-0"><%= @inventory.name %></h2>
             <h5 class="mb-0"><%= @inventory.description %></h5>

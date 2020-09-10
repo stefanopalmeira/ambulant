@@ -3,7 +3,7 @@ class SellersController < ApplicationController
   before_action :check_buyer, only: :index
 
   def index
-    @sellers = User.where(seller: true)    
+    @sellers = User.where(seller: true)
     @markers = @sellers.geocoded.map do |seller|
       {
         lat: seller.lat,
@@ -16,12 +16,12 @@ class SellersController < ApplicationController
   end
 
   def show
-    @messages = Message.includes(:chat).where(read: false, chats:{recipient: @user, 
+    @messages = Message.includes(:chat).where(read: false, chats:{recipient: @user,
                 created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day}).count
     @inventory = @user.selling_inventory
-    respond_to do |format| 
-      format.html 
-      format.json { render json: { lat: @user.lat, lng: @user.long, msg: @messages } } 
+    respond_to do |format|
+      format.html
+      format.json { render json: { lat: @user.lat, lng: @user.long, msg: @messages } }
     end
     @orders = @inventory.orders
     @nota = 0
@@ -40,7 +40,7 @@ class SellersController < ApplicationController
   end
 
   def update
-    if current_user == @user    
+    if current_user == @user
       if @user.update(user_params)
         redirect_to root_path, notice: 'Perfil atualizado com sucesso'
       else

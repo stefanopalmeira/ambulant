@@ -10,26 +10,26 @@ function updateSellerLocation() {
     if (sellerView) {
       const id = sellerView.dataset.sellerId;
       const csrfToken = document.head.querySelector("[name='csrf-token']").content;
-      const params = { 
-        'lat': pos.coords.latitude, 
-        'long': pos.coords.longitude 
+      const params = {
+        'lat': pos.coords.latitude,
+        'long': pos.coords.longitude
       };
       const url = `update_sellers/${id}?lat=${params['lat']}&long=${params['long']}`;
-      
+
       fetch(url, {
-        method: "PATCH", 
+        method: "PATCH",
         headers: { "X-CSRF-Token": csrfToken }
       });
-      console.log('chamei') 
+      console.log('chamei')
     }
   }
 
   function error(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   };
-  
-  
-  setInterval(() => { navigator.geolocation.getCurrentPosition(success, error, options) }, 5000);
+
+
+  setInterval(() => { navigator.geolocation.getCurrentPosition(success, error, options) }, 15000);
 }
 
 export { updateSellerLocation };
