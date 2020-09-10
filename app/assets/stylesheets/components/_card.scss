@@ -23,17 +23,21 @@
     color: $gray
   }
   h5{
-    font-size: 10px;
+    font-size: 14px;
     font-weight: bold;
-    color: $gray
   }
   p{
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
   }
   span{
     font-size: 13px;
     color: $gray
+  }
+  a{
+    font-size: 11px;
+    font-style: oblique;
+    color: #6c757d
   }
 }
 
@@ -89,7 +93,7 @@ flex-direction: row;
 }
 
 .card-profile p {
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
@@ -122,7 +126,11 @@ flex-direction: row;
   height: 200px;
 }
 
-
+#editar-perfil a{
+  font-weight: bold;
+  font-style: oblique;
+  color: #6c757d
+}
 
 
 

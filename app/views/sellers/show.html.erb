@@ -1,7 +1,5 @@
  <%= render 'shared/new_navbar' %>
 
-<div class='container pt-2'>
-
  <%= render 'seller_profile' %>
 
 <% unless current_user.seller %>
@@ -11,7 +9,7 @@
   <% end %>
   </div>
 <% else %>
-  <div class="m-1 pl-2">
+  <div class="m-1 pl-2 text-center" id="editar-perfil">
     <%= link_to edit_seller_path do%>
       <i class="far fa-user"></i><span>EDITAR PERFIL</span>
     <%end%>
@@ -22,7 +20,7 @@
   <div class="profile-card inventory mt-1">
     <div class="w-100">    
       <h2 class="mb-0"><%= @inventory.name %></h2>
-        <p class="mb-0"><%= @inventory.description %></p>
+        <h5 class="mb-0"><%= @inventory.description %></h5>
           <% if current_user.seller %>
             <span><%= link_to edit_inventory_path do%>
               <i class="fas fa-pencil-alt"></i><p>EDITAR</p></span>
