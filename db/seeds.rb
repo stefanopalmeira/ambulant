@@ -11,10 +11,10 @@ puts 'Cleaning database...'
 
 Review.destroy_all
 Product.destroy_all
-Order.destroy_all
-Inventory.destroy_all
 Message.destroy_all
 Chat.destroy_all
+Order.destroy_all
+Inventory.destroy_all
 User.destroy_all
 
 puts "Creating Users and Inventories..."
@@ -110,7 +110,7 @@ u10.save
 
 
 i1 = Inventory.new(name: 'Carro dos Ovos', description: 'Sempre frescos, direto da granja!')
-i1.selling_user = u1
+i1.selling_user 
 ovos.each_with_index do |ovo_url, index|
   file = URI.open(ovo_url)
   i1.photos.attach(io: file, filename: "ovo#{index}.jpg", content_type: 'image/jpg')
@@ -118,6 +118,7 @@ end
 i1.save!
 Product.create!(name: "Caixa de Ovos Vermelhos", price: 12.00, inventory: i1)
 Product.create!(name: "Caixa de Ovos Brancos", price: 10.00, inventory: i1)
+u1.save!
 
 i2 = Inventory.new(name: 'Especialista em Produtos de Limpeza',
                description: 'A maior variedade pra sua casa ficar limpinha!')
@@ -129,6 +130,7 @@ end
 i2.save!
 Product.create!(name: "Desinfetante", price: 8.00, inventory: i2)
 Product.create!(name: "Água sanitária", price: 5.00, inventory: i2)
+u2.save
 
 i3 = Inventory.new(name: 'Pamonha e Cia.',
                description: 'Pamonha quentinha e outros produtos deliciosos para você.')
@@ -140,6 +142,7 @@ end
 i3.save!
 Product.create!(name: "Curau", price: 3.00, inventory: i3)
 Product.create!(name: "Pamonha de Piracicaba", price: 4.00, inventory: i3)
+u3.save
 
 i4 = Inventory.new(name: 'Churrasquinho de Primeira',
                description: 'Carne, frango ou linguiça - tudo de primeira qualidade!')
@@ -151,6 +154,7 @@ end
 i4.save!
 Product.create!(name: "Espetinho de frango", price: 5.00, inventory: i4)
 Product.create!(name: "Espetinho de carne", price: 5.00, inventory: i4)
+u4.save
 
 i5 = Inventory.new(name: 'Olha o Sanduíche Natural',
                description: 'Saudáveis e feitos com muito carinho.')
@@ -162,6 +166,7 @@ end
 i5.save!
 Product.create!(name: "Queijo e salame", price: 6.00, inventory: i5)
 Product.create!(name: "Palmito e cenoura", price: 6.00, inventory: i5)
+u5.save!
 
 i6 = Inventory.new(name: 'Churrasquinho de Primeira',
 description: 'Carne, frango ou linguiça - tudo de primeira qualidade!')
@@ -173,6 +178,7 @@ end
 i6.save!
 Product.create!(name: "Espetinho de frango", price: 5.00, inventory: i6)
 Product.create!(name: "Espetinho de carne", price: 5.00, inventory: i6)
+u6.save
 
 i7 = Inventory.new(name: 'Olha o Sanduíche Natural',
 description: 'Saudáveis e feitos com muito carinho.')
@@ -184,6 +190,7 @@ end
 i7.save!
 Product.create!(name: "Queijo e salame", price: 6.00, inventory: i7)
 Product.create!(name: "Palmito e cenoura", price: 6.00, inventory: i7)
+u7.save
 
 i8 = Inventory.new(name: 'Pamonha e Cia.',
 description: 'Pamonha quentinha e outros produtos deliciosos para você.')
@@ -195,6 +202,7 @@ end
 i8.save!
 Product.create!(name: "Curau", price: 3.00, inventory: i8)
 Product.create!(name: "Pamonha de Piracicaba", price: 4.00, inventory: i8)
+u8.save
 
 i9 = Inventory.new(name: 'Especialista em Produtos de Limpeza',
 description: 'A maior variedade pra sua casa ficar limpinha!')
@@ -206,6 +214,7 @@ end
 i9.save!
 Product.create!(name: "Desinfetante", price: 8.00, inventory: i9)
 Product.create!(name: "Água sanitária", price: 5.00, inventory: i9)
+u9.save
 
 i10 = Inventory.new(name: 'Ovos da Granja',
 description: 'Sempre frescos, direto da granja!')
@@ -217,6 +226,7 @@ end
 i10.save!
 Product.create!(name: "Caixa de Ovos Vermelhos", price: 12.00, inventory: i10)
 Product.create!(name: "Caixa de Ovos Brancos", price: 10.00, inventory: i10)
+u10.save
 
 o1 = Order.new(completed: true, accepted: 2)
 o1.inventory = i1
