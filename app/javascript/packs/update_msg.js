@@ -15,13 +15,19 @@ const updateMessage = () => {
           if (jsonResponse['msg'] > 0) {              
               if (checkNoMsg) { checkNoMsg.remove(); }
               else { checkMsg.remove(); }
-              const msgLink = document.createElement('a');
-              msgLink.innerHTML = `Mensagens: ${jsonResponse['msg']}`;
-              msgLink.setAttribute('href', checkButton.dataset.chatUrl)
-              msgLink.classList.add('btn');
-              msgLink.classList.add('btn-danger');
-              msgLink.classList.add('btn-msg');
+              let msgLink = document.createElement('div');
+              let msgLinkContent = document.createElement('a')
+              msgLink.appendChild(msgLinkContent);
               checkButton.appendChild(msgLink);
+              msgLinkContent.textContent = `Mensagens: ${jsonResponse['msg']}`;
+              msgLinkContent.setAttribute('href', checkButton.dataset.chatUrl)
+              msgLinkContent.style.color = 'white';
+              msgLink.classList.add('btn');
+              msgLink.classList.add('btn-danger')
+              msgLink.classList.add('orange-message');
+              msgLink.classList.add('btn-msg');
+              ;
+              
             }
           }
         });
