@@ -32,7 +32,7 @@ class SellersController < ApplicationController
     end
     @rating = (@nota.fdiv(@reviewtimes)).round(1)
     @rating = 3 if @reviewtimes == 0
-    if @inventory.products.blank?
+    if current_user.seller && @inventory.products.blank?
       redirect_to new_product_path
     end
 end
