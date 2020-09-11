@@ -2,7 +2,7 @@
   <%= cl_image_tag @user.photo.key, class: "avatar-bordered" %>
     <div class="card-profile-infos">
     <h1><%= @user.name %></h1>
-    <p>Rating <strong><%= @rating %></strong>/5  (<strong><%= @reviewtimes %></strong> avaliações e <strong><%= @orders.count%></strong> pedidos)</p>
+    <p>Rating <strong><%= @rating %></strong>/5  (<strong><%= @reviewtimes %></strong> avaliações e <strong><%= @orders&.count%></strong> pedidos)</p>
     <p><%= @user.bio %></p>
   </div>
 </div>

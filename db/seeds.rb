@@ -11,10 +11,10 @@ puts 'Cleaning database...'
 
 Review.destroy_all
 Product.destroy_all
-Message.destroy_all
-Chat.destroy_all
 Order.destroy_all
 Inventory.destroy_all
+Message.destroy_all
+Chat.destroy_all
 User.destroy_all
 
 puts "Creating Users and Inventories..."
@@ -60,20 +60,21 @@ u9 = User.new(email: 'marcos@buyer.com', password: '123123', name: 'Marcos Silve
                   bio: 'Chegando agora para conhecer o Ambulant, e por enquanto estou adorando!')
 u10 = User.new(email: 'renata@buyer.com', password: '123123', name: 'Renata Queiroz',
                   bio: 'Chegando agora para conhecer o Ambulant, e por enquanto estou adorando!')
+u11 = User.new(email: 'zegalinha@seller.com', password: '123123', name: 'José SiIva',
+              seller: true, bio: 'Adoro servir meus clientes e trazer produtos da melhor qualidade até eles.')
 
 
 
-
-photo1 = URI.open('https://res.cloudinary.com/dkljkjqlg/image/upload/v1599744326/Ambulant%20seed/Captura_de_Tela_2020-09-08_a%CC%80s_09.38.24_cexjb6.png')
+photo1 = URI.open('https://res.cloudinary.com/dkljkjqlg/image/upload/v1599837571/Ambulant%20seed/ze_galinha_wubidw.jpg')
 photo2 = URI.open('https://res.cloudinary.com/dkljkjqlg/image/upload/v1599744328/Ambulant%20seed/Captura_de_Tela_2020-09-08_a%CC%80s_09.37.47_tsl0zj.png')
 photo3 = URI.open('https://res.cloudinary.com/dkljkjqlg/image/upload/v1599744328/Ambulant%20seed/Captura_de_Tela_2020-09-08_a%CC%80s_09.36.31_z0mszq.png')
 photo4 = URI.open('https://res.cloudinary.com/dkljkjqlg/image/upload/v1599751454/joao_seller_ao1hml.jpg')
 photo5 = URI.open('https://res.cloudinary.com/dkljkjqlg/image/upload/v1599744326/Ambulant%20seed/Captura_de_Tela_2020-09-08_a%CC%80s_09.38.45_s9l7tt.png')
 photo6 = URI.open('https://res.cloudinary.com/dkljkjqlg/image/upload/v1599744326/Ambulant%20seed/Captura_de_Tela_2020-09-08_a%CC%80s_09.37.35_lzsaui.png')
-
+photo11 = URI.open('https://res.cloudinary.com/dkljkjqlg/image/upload/v1599744326/Ambulant%20seed/Captura_de_Tela_2020-09-08_a%CC%80s_09.37.35_lzsaui.png')
 
 u1.address = 'Rua Cotoxó, 580 - Perdizes, São Paulo - SP'
-u1.photo.attach(io: photo1, filename: 'u1.png', content_type: 'image/png')
+u1.photo.attach(io: photo1, filename: 'u1.jpg', content_type: 'image/jpg')
 u1.save
 
 u2.address = 'Rua Ministro Gastão Mesquita, 728 - Pompeia, São Paulo - SP'
@@ -108,9 +109,13 @@ u9.save
 u10.address = 'Rua Aimberê, 507 - Perdizes, São Paulo - SP'
 u10.save
 
+u11.address = 'Rua Vergueiro, 2729 - Vila Mariana, São Paulo - SP'
+u11.photo.attach(io: photo11, filename: 'u11.jpg', content_type: 'image/jpg')
+u11.save
+
 
 i1 = Inventory.new(name: 'Carro dos Ovos', description: 'Sempre frescos, direto da granja!')
-i1.selling_user 
+i1.selling_user = u1
 ovos.each_with_index do |ovo_url, index|
   file = URI.open(ovo_url)
   i1.photos.attach(io: file, filename: "ovo#{index}.jpg", content_type: 'image/jpg')
@@ -118,11 +123,11 @@ end
 i1.save!
 Product.create!(name: "Caixa de Ovos Vermelhos", price: 12.00, inventory: i1)
 Product.create!(name: "Caixa de Ovos Brancos", price: 10.00, inventory: i1)
-u1.save!
+u1.save
 
 i2 = Inventory.new(name: 'Especialista em Produtos de Limpeza',
-               description: 'A maior variedade pra sua casa ficar limpinha!')
-i2.selling_user = u3
+                   description: 'A maior variedade pra sua casa ficar limpinha!')
+i2.selling_user = u2
 limpeza.each_with_index do |limpeza_url, index|
   file = URI.open(limpeza_url)
   i2.photos.attach(io: file, filename: "limpeza#{index}.jpg", content_type: 'image/jpg')
@@ -133,7 +138,7 @@ Product.create!(name: "Água sanitária", price: 5.00, inventory: i2)
 u2.save
 
 i3 = Inventory.new(name: 'Pamonha e Cia.',
-               description: 'Pamonha quentinha e outros produtos deliciosos para você.')
+                   description: 'Pamonha quentinha e outros produtos deliciosos para você.')
 i3.selling_user = u3
 pamonha.each_with_index do |pamonha_url, index|
   file = URI.open(pamonha_url)
@@ -145,7 +150,7 @@ Product.create!(name: "Pamonha de Piracicaba", price: 4.00, inventory: i3)
 u3.save
 
 i4 = Inventory.new(name: 'Churrasquinho de Primeira',
-               description: 'Carne, frango ou linguiça - tudo de primeira qualidade!')
+                   description: 'Carne, frango ou linguiça - tudo de primeira qualidade!')
 i4.selling_user = u4
 churrasco.each_with_index do |churrasco_url, index|
   file = URI.open(churrasco_url)
@@ -157,7 +162,7 @@ Product.create!(name: "Espetinho de carne", price: 5.00, inventory: i4)
 u4.save
 
 i5 = Inventory.new(name: 'Olha o Sanduíche Natural',
-               description: 'Saudáveis e feitos com muito carinho.')
+                   description: 'Saudáveis e feitos com muito carinho.')
 i5.selling_user = u5
 sanduiche.each_with_index do |sanduiche_url, index|
   file = URI.open(sanduiche_url)
@@ -166,10 +171,10 @@ end
 i5.save!
 Product.create!(name: "Queijo e salame", price: 6.00, inventory: i5)
 Product.create!(name: "Palmito e cenoura", price: 6.00, inventory: i5)
-u5.save!
+u5.save
 
 i6 = Inventory.new(name: 'Churrasquinho de Primeira',
-description: 'Carne, frango ou linguiça - tudo de primeira qualidade!')
+                   description: 'Carne, frango ou linguiça - tudo de primeira qualidade!')
 i6.selling_user = u6
 churrasco.each_with_index do |churrasco_url, index|
   file = URI.open(churrasco_url)
@@ -180,53 +185,64 @@ Product.create!(name: "Espetinho de frango", price: 5.00, inventory: i6)
 Product.create!(name: "Espetinho de carne", price: 5.00, inventory: i6)
 u6.save
 
-i7 = Inventory.new(name: 'Olha o Sanduíche Natural',
-description: 'Saudáveis e feitos com muito carinho.')
-i7.selling_user = u5
-sanduiche.each_with_index do |sanduiche_url, index|
-  file = URI.open(sanduiche_url)
-  i7.photos.attach(io: file, filename: "sanduiche#{index}.jpg", content_type: 'image/jpg')
-end
-i7.save!
-Product.create!(name: "Queijo e salame", price: 6.00, inventory: i7)
-Product.create!(name: "Palmito e cenoura", price: 6.00, inventory: i7)
-u7.save
-
-i8 = Inventory.new(name: 'Pamonha e Cia.',
-description: 'Pamonha quentinha e outros produtos deliciosos para você.')
-i8.selling_user = u2
-pamonha.each_with_index do |pamonha_url, index|
-  file = URI.open(pamonha_url)
-  i8.photos.attach(io: file, filename: "pamonha#{index}.jpg", content_type: 'image/jpg')
-end
-i8.save!
-Product.create!(name: "Curau", price: 3.00, inventory: i8)
-Product.create!(name: "Pamonha de Piracicaba", price: 4.00, inventory: i8)
-u8.save
-
-i9 = Inventory.new(name: 'Especialista em Produtos de Limpeza',
-description: 'A maior variedade pra sua casa ficar limpinha!')
-i9.selling_user = u3
-limpeza.each_with_index do |limpeza_url, index|
-  file = URI.open(limpeza_url)
-  i9.photos.attach(io: file, filename: "limpeza#{index}.jpg", content_type: 'image/jpg')
-end
-i9.save!
-Product.create!(name: "Desinfetante", price: 8.00, inventory: i9)
-Product.create!(name: "Água sanitária", price: 5.00, inventory: i9)
-u9.save
-
-i10 = Inventory.new(name: 'Ovos da Granja',
-description: 'Sempre frescos, direto da granja!')
-i10.selling_user = u4
+i11 = Inventory.new(name: 'Carro dos Ovos', description: 'Sempre frescos, direto da granja!')
+i11.selling_user = u11
 ovos.each_with_index do |ovo_url, index|
   file = URI.open(ovo_url)
-  i10.photos.attach(io: file, filename: "ovo#{index}.jpg", content_type: 'image/jpg')
+  i11.photos.attach(io: file, filename: "ovo#{index}.jpg", content_type: 'image/jpg')
 end
-i10.save!
-Product.create!(name: "Caixa de Ovos Vermelhos", price: 12.00, inventory: i10)
-Product.create!(name: "Caixa de Ovos Brancos", price: 10.00, inventory: i10)
-u10.save
+i11.save!
+Product.create!(name: "Caixa de Ovos Vermelhos", price: 12.00, inventory: i1)
+Product.create!(name: "Caixa de Ovos Brancos", price: 10.00, inventory: i1)
+u11.save
+
+# i7 = Inventory.new(name: 'Olha o Sanduíche Natural',
+# description: 'Saudáveis e feitos com muito carinho.')
+# i7.selling_user = u5
+# sanduiche.each_with_index do |sanduiche_url, index|
+#   file = URI.open(sanduiche_url)
+#   i7.photos.attach(io: file, filename: "sanduiche#{index}.jpg", content_type: 'image/jpg')
+# end
+# i7.save!
+# Product.create!(name: "Queijo e salame", price: 6.00, inventory: i7)
+# Product.create!(name: "Palmito e cenoura", price: 6.00, inventory: i7)
+# u7.save
+
+# i8 = Inventory.new(name: 'Pamonha e Cia.',
+# description: 'Pamonha quentinha e outros produtos deliciosos para você.')
+# i8.selling_user = u2
+# pamonha.each_with_index do |pamonha_url, index|
+#   file = URI.open(pamonha_url)
+#   i8.photos.attach(io: file, filename: "pamonha#{index}.jpg", content_type: 'image/jpg')
+# end
+# i8.save!
+# Product.create!(name: "Curau", price: 3.00, inventory: i8)
+# Product.create!(name: "Pamonha de Piracicaba", price: 4.00, inventory: i8)
+# u8.save
+
+# i9 = Inventory.new(name: 'Especialista em Produtos de Limpeza',
+# description: 'A maior variedade pra sua casa ficar limpinha!')
+# i9.selling_user = u3
+# limpeza.each_with_index do |limpeza_url, index|
+#   file = URI.open(limpeza_url)
+#   i9.photos.attach(io: file, filename: "limpeza#{index}.jpg", content_type: 'image/jpg')
+# end
+# i9.save!
+# Product.create!(name: "Desinfetante", price: 8.00, inventory: i9)
+# Product.create!(name: "Água sanitária", price: 5.00, inventory: i9)
+# u9.save
+
+# i10 = Inventory.new(name: 'Ovos da Granja',
+# description: 'Sempre frescos, direto da granja!')
+# i10.selling_user = u4
+# ovos.each_with_index do |ovo_url, index|
+#   file = URI.open(ovo_url)
+#   i10.photos.attach(io: file, filename: "ovo#{index}.jpg", content_type: 'image/jpg')
+# end
+# i10.save!
+# Product.create!(name: "Caixa de Ovos Vermelhos", price: 12.00, inventory: i10)
+# Product.create!(name: "Caixa de Ovos Brancos", price: 10.00, inventory: i10)
+# u10.save
 
 o1 = Order.new(completed: true, accepted: 2)
 o1.inventory = i1
@@ -258,25 +274,25 @@ o6.inventory = i6
 o6.user = u8
 o6.save!
 
-o7 = Order.new(completed: false, accepted: 1)
-o7.inventory = i1
-o7.user = u9
-o7.save!
+# o7 = Order.new(completed: false, accepted: 1)
+# o7.inventory = i1
+# o7.user = u9
+# o7.save!
 
-o8 = Order.new(completed: false, accepted: 1)
-o8.inventory = i8
-o8.user = u10
-o8.save!
+# o8 = Order.new(completed: false, accepted: 1)
+# o8.inventory = i8
+# o8.user = u10
+# o8.save!
 
-o9 = Order.new(completed: false, accepted: 3)
-o9.inventory = i1
-o9.user = u7
-o9.save!
+# o9 = Order.new(completed: false, accepted: 3)
+# o9.inventory = i1
+# o9.user = u7
+# o9.save!
 
-o10 = Order.new(completed: false, accepted: 3)
-o10.inventory = i10
-o10.user = u10
-o10.save!
+# o10 = Order.new(completed: false, accepted: 3)
+# o10.inventory = i10
+# o10.user = u10
+# o10.save!
 
 r1 = Review.new(description: "Excelente produto e qualidade!", rating:5 )
 r1.order = o1
@@ -298,24 +314,24 @@ r5 = Review.new(description: "Vale a pena experimentar", rating:3 )
 r5.order = o5
 r5.save!
 
-r6 = Review.new(description: "Vale a pena experimentar", rating:3 )
+r6 = Review.new(description: "Poderia ser um pouco melhor", rating:2 )
 r6.order = o6
 r6.save!
 
-r7 = Review.new(description: "Poderia ser um pouco melhor", rating:2 )
-r7.order = o7
-r7.save!
+# r7 = Review.new(description: "Poderia ser um pouco melhor", rating:2 )
+# r7.order = o7
+# r7.save!
 
-r8 = Review.new(description: "Poderia ser um pouco melhor", rating:2 )
-r8.order = o8
-r8.save!
+# r8 = Review.new(description: "Poderia ser um pouco melhor", rating:2 )
+# r8.order = o8
+# r8.save!
 
-r9 = Review.new(description: "Não recomendo de forma alguma", rating:1 )
-r9.order = o9
-r9.save!
+# r9 = Review.new(description: "Não recomendo de forma alguma", rating:1 )
+# r9.order = o9
+# r9.save!
 
-r10 = Review.new(description: "Não recomendo de forma alguma", rating:1 )
-r10.order = o10
-r10.save!
+# r10 = Review.new(description: "Não recomendo de forma alguma", rating:1 )
+# r10.order = o10
+# r10.save!
 
 puts "Users, inventories and everything else created, son!!"
