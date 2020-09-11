@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_09_153741) do
+ActiveRecord::Schema.define(version: 2020_09_11_111935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2020_09_09_153741) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "sender_id"
     t.bigint "recipient_id"
+    t.bigint "order_id"
+    t.index ["order_id"], name: "index_chats_on_order_id"
     t.index ["recipient_id"], name: "index_chats_on_recipient_id"
     t.index ["sender_id"], name: "index_chats_on_sender_id"
   end
@@ -113,6 +115,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_153741) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chats", "orders"
   add_foreign_key "chats", "users", column: "recipient_id"
   add_foreign_key "chats", "users", column: "sender_id"
   add_foreign_key "inventories", "users"
