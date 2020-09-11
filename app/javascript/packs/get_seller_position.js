@@ -5,7 +5,7 @@ function updateSellerLocation() {
     maximumAge: 0
   };
 
-  function success(pos) {
+  async function success(pos) {
     const sellerView = document.getElementById("seller-view")
     if (sellerView) {
       const id = sellerView.dataset.sellerId;
@@ -16,7 +16,7 @@ function updateSellerLocation() {
       };
       const url = `update_sellers/${id}?lat=${params['lat']}&long=${params['long']}`;
 
-      fetch(url, {
+      await fetch(url, {
         method: "PATCH",
         headers: { "X-CSRF-Token": csrfToken }
       });
