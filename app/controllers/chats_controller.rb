@@ -11,6 +11,7 @@ class ChatsController < ApplicationController
   def create
     @chat = Chat.new()
     @order =  Order.find(params[:buyer_order_id])
+    @chat.order = @order
     @chat.sender = @order.user
     @chat.recipient = @order.inventory.selling_user
     authorize @chat

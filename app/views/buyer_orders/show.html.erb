@@ -17,12 +17,24 @@
 
 
     <div class="aguarde mt-3 table-2lines">
-      <div class="mt-2">
-          <%= link_to buyer_order_chats_path(@order.first), class: "d-flex", method: :post do %>
+      <div>
+        Entre em contato com o vendedor.
+      </div>
+      <% if @order.first.chat.present? %>
+        <div class="mt-2">
+          <%= link_to chat_path(@order.first.chat), class: "d-flex" do %>
             <i class="fas fa-comment-alt"></i>
             <p class="ml-2 mt-1">MANDAR MENSAGEM</p>
           <% end %>
-      </div>
+        </div>
+      <% else %>
+        <div class="mt-2">
+            <%= link_to buyer_order_chats_path(@order.first), class: "d-flex", method: :post do %>
+              <i class="fas fa-comment-alt"></i>
+              <p class="ml-2 mt-1">MANDAR MENSAGEM</p>
+            <% end %>
+        </div>
+      <% end %>
     </div>
 
 
