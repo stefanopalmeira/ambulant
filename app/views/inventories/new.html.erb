@@ -1,6 +1,6 @@
 <%= simple_form_for(@inventory) do |f| %>
   <%= f.input :name, label: "Nome" %>
   <%= f.input :description, label: "Descrição" %>
-  <%= f.input :photos, label: "Fotos", as: :file, input_html: { multiple: true } %>
+  <%= f.input :photos, "Fotos", as: :file, input_html: { multiple: true } %>
   <%= f.button :submit,"Atualizar", class: 'btn general' %>
-  <% end %>
+<% end %>

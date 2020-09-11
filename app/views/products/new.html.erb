@@ -9,5 +9,5 @@
       <%= f.input :price, label: "Preço", required: true %>
       <%= f.button :submit, "Cadastrar", class: 'btn general form-button mt-3' %>
     <%end%>
-    <%= link_to "Voltar", seller_path(current_user), class: "btn general mt-2" %>
+    <%= link_to "Voltar", :back, class: "btn general mt-2" %>
 </div>

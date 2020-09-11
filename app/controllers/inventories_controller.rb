@@ -14,7 +14,7 @@ class InventoriesController < ApplicationController
   @inventory = Inventory.new(inventory_params)
   @inventory.selling_user = current_user
   if @inventory.save
-    redirect_to inventory_path(@inventory)
+    redirect_to new_product_path, alert: "Iventário criado com sucesso"
   else
     render :new
   end
@@ -50,7 +50,7 @@ class InventoriesController < ApplicationController
  end
 
  def inventory_params
-  params.require(:inventory).permit(:name, :description, :photos)
+  params.require(:inventory).permit(:name, :description, photos: [])
  end
 
 end

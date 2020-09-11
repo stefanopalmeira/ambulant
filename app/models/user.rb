@@ -10,6 +10,17 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :address, presence: true
   has_one_attached :photo
+  after_create :redirect_seller
   geocoded_by :address, latitude: :lat, longitude: :long
   after_validation :geocode, if: :will_save_change_to_address?
+
+  private
+  def redirect_seller
+    if seller
+      @inventory = Inventory.new
+      @inventory.selling_user = self
+      @inventory.name = "Novo inventário"
+      @inventory.save
+    end
+  end
 end
