@@ -17,6 +17,9 @@
 
 
     <div class="aguarde mt-3 table-2lines">
+      <div>
+        Entre em contato com o vendedor.
+      </div>
       <% if @order.first.chat.present? %>
         <div class="mt-2">
           <%= link_to chat_path(@order.first.chat), class: "d-flex" do %>
