@@ -97,16 +97,16 @@ u6.address = 'Rua Coriolano, 215 - Vila Romana, São Paulo - SP'
 u6.photo.attach(io: photo6, filename: 'u6.png', content_type: 'image/png')
 u6.save
 
-u7.address = 'Rua Aimberê, 507 - Perdizes, São Paulo - SP'
+u7.address = 'Rua Cotoxó, 600 - Perdizes - Perdizes, São Paulo - SP'
 u7.save
 
-u8.address = 'Rua Aimberê, 507 - Perdizes, São Paulo - SP'
+u8.address = 'Rua Cajaíba, 851 - Pompeia, São Paulo - SP'
 u8.save
 
 u9.address = 'Rua Aimberê, 507 - Perdizes, São Paulo - SP'
 u9.save
 
-u10.address = 'Rua Aimberê, 507 - Perdizes, São Paulo - SP'
+u10.address = 'Rua Raul Pompéia, 300 - Pompeia, São Paulo - SP'
 u10.save
 
 u11.address = 'Rua Vergueiro, 2729 - Vila Mariana, São Paulo - SP'
