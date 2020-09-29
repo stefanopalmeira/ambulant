@@ -125,6 +125,11 @@ flex-direction: row;
 
 .carousel-height {
   height: 200px;
+  margin-bottom: 1em;
+  @media (min-width: 992px) {
+    height: 500px;
+    margin-bottom: 10px;
+  }
 }
 
 #editar-perfil span{
@@ -158,3 +163,13 @@ flex-direction: row;
   font-size: 18px;
   color: $purple
 }
+
+.inventory-pic2 {
+  width: 100%;
+  height: 250px;
+  @media (min-width: 992px) {
+    width: 100%;
+    height: 800px;
+  }
+}
+
