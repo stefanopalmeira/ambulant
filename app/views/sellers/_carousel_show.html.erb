@@ -6,13 +6,13 @@
         <% if index == 0 %>
           <div class="carousel-item active">
             <div class="d-block w-100">
-              <%=  cl_image_tag photo.key , class: 'inventory-pic2', :width=>250, :height=>150, :gravity=>"center", :crop=>"fill" %>
+              <%=  cl_image_tag photo.key , class: 'inventory-pic2', :gravity=>"center", :crop=>"fill" %>
             </div>
           </div>  
         <%else%>
           <div class="carousel-item">
             <div class="d-block w-100">
-              <%=  cl_image_tag photo.key , class: 'inventory-pic2', :width=>250, :height=>150, :gravity=>"center", :crop=>"fill" %>
+              <%=  cl_image_tag photo.key , class: 'inventory-pic2', :gravity=>"center", :crop=>"fill" %>
             </div>
           </div>
         <%end%>

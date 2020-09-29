@@ -84,12 +84,12 @@
       </div>
     </div>
   <% end %>
-</div>
-<div>
-  <% if @inventory&.photos&.attached? %>
-    <%= render 'carousel_show' %>
-  <% end %>
-</div>
-<div class="mt-1 mb-5 pb-3">
-  <%= link_to "Voltar", sellers_path, class:"btn general" %>
+  <div>
+    <% if @inventory&.photos&.attached? %>
+      <%= render 'carousel_show' %>
+    <% end %>
+  </div>
+  <div class="mt-1 pb-3">
+    <%= link_to "Voltar", sellers_path, class:"btn general" %>
+  </div>
 </div>
