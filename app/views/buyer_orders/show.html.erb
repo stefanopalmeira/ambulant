@@ -8,7 +8,9 @@
     <% elsif @order.first.accepted == 2 %>
     <div class="card-pedido aceito">
       <h4 class="text-center">O vendendor confirmou seu pedido!</h4>
-      <p class="m-0"> Preço total: <%= humanized_money_with_symbol(@order.first.price) %></p>
+    </div>
+    <div class="card-pedido aceito mt-2">
+      <p class="mt-2 ml-2"> Preço total: <%= Money.new(@order.first.price).format  %></p>
     </div>
     <% else %>
     <div class="card-pedido negado">

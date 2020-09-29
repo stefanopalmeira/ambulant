@@ -10,7 +10,7 @@ class SellerOrdersController < ApplicationController
     status = params[:accepted].to_i
     if status == 2
       @order.accepted = 2
-      @order.price =  params[:order][:price].to_f
+      @order.price = params[:order][:price]
       authorize @order, policy_class: SellerOrdersPolicy
       if @order.save
         redirect_to seller_orders_path(anchor: "order-#{@order.id}")

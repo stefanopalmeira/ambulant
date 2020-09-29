@@ -1,8 +1,4 @@
 # encoding : utf-8
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 Money.locale_backend = :currency
 
 MoneyRails.configure do |config|
