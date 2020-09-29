@@ -1,5 +1,6 @@
 <%= simple_form_for(order, url: seller_order_path(order), html: { class: 'd-inline-block' }, remote: true) do |f| %>
     <%= hidden_field_tag 'accepted', 2 %>
+    <%= f.input :price, label: "Preço" %>
     <%= f.submit "Aceitar", class: 'btn aceito' %>
   <% end %>
   <%= simple_form_for(order, url: seller_order_path(order), html: { class: 'd-inline-block' }, remote: true) do |f| %>

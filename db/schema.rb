@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_09_16_180422) do
+=======
+ActiveRecord::Schema.define(version: 2020_09_16_181454) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +78,7 @@ ActiveRecord::Schema.define(version: 2020_09_16_180422) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "accepted"
+    t.integer "price_cents", default: 0, null: false
     t.index ["inventory_id"], name: "index_orders_on_inventory_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -106,7 +111,7 @@ ActiveRecord::Schema.define(version: 2020_09_16_180422) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.text "bio"
-    t.boolean "seller", default: false
+    t.boolean "seller"
     t.float "lat"
     t.float "long"
     t.string "address"
