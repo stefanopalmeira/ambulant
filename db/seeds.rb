@@ -52,8 +52,8 @@ u5 = User.new(email: 'ana@seller.com', password: '123123', name: 'Ana Maria Sant
               seller: true, bio: 'Meus produtos são todos feitos e vendidos com muito carinho')
 u6 = User.new(email: 'ricardo@seller.com', password: '123123', name: 'Ricardo Marinho',
               seller: true, bio: 'Adoro servir meus clientes e trazer meus produtos com a melhor qualidade até eles.')
-u7 = User.new(email: 'bruna@buyer.com', password: '123123', name: 'Bruna Carvalho', 
-                  bio: 'Chegando agora para conhecer o Ambulant, e por enquanto estou adorando!')                  
+u7 = User.new(email: 'bruna@buyer.com', password: '123123', name: 'Bruna Carvalho',
+                  bio: 'Chegando agora para conhecer o Ambulant, e por enquanto estou adorando!')
 u8 = User.new(email: 'elena@buyer.com', password: '123123', name: 'Elena Carneiro',
                   bio: 'Chegando agora para conhecer o Ambulant, e por enquanto estou adorando!')
 u9 = User.new(email: 'marcos@buyer.com', password: '123123', name: 'Marcos Silveira',

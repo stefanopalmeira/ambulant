@@ -1,6 +1,6 @@
 class SellerOrdersController < ApplicationController
   before_action :check_seller
-  
+
   def index
     @orders = policy_scope(Order, policy_scope_class: SellerOrdersPolicy::Scope)
   end
@@ -10,6 +10,7 @@ class SellerOrdersController < ApplicationController
     status = params[:accepted].to_i
     if status == 2
       @order.accepted = 2
+      @order.price =  params[:order][:price].to_f
       authorize @order, policy_class: SellerOrdersPolicy
       if @order.save
         redirect_to seller_orders_path(anchor: "order-#{@order.id}")
@@ -20,7 +21,7 @@ class SellerOrdersController < ApplicationController
       if @order.save
         redirect_to seller_orders_path(anchor: "order-#{@order.id}")
       end
-    end 
+    end
   end
 
   private

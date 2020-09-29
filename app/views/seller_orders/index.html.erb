@@ -30,6 +30,7 @@
       <div class="row">
         <div class="col text-center">
           <p id="order-<%= order.id %>"><strong>Pedido aceito</strong></p>
+          <p> Preço total: <%= humanized_money_with_symbol(order.price) %></p>
         </div>
       </div>
 
