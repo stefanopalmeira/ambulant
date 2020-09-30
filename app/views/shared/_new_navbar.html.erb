@@ -21,7 +21,7 @@
 
     <% if user_signed_in? %>
       <% unless current_user.seller %>
-        <% if current_user.orders.present? && current_user&.orders&.last&.completed.nil? %>
+        <% if current_user.orders.present? && current_user&.orders&.order(:id).last&.completed.nil? %>
           <div class="col text-center">
             <%= link_to buyer_order_path(current_user&.orders&.last || 0) do%>
               <i class="fas fa-shopping-bag"></i>
